@@ -42,16 +42,16 @@ export function NewUser(){
     }
 
     return (
-        <div className='container-user-logs'>
+        <div className='container-user-logss'>
     
-            <div className='user-card'>
+            <div className='user-cards'>
 
-            <div className='user-header'>
+            <div className='user__header'>
                 <h3>Create an account to save your recipes!</h3>
                 <small>Already have an account? Login <a href="">here.</a></small>
             </div>
 
-                <div className='user-info'>
+                <div className='user__info'>
                     <form onSubmit={handleSubmit}>
                     <input 
                         type="text" 

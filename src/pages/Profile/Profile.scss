@@ -6,7 +6,7 @@
     
 
     .user__profile__page{
-        flex: .5;
+        flex: .25;
         margin-top: 70px;
         background-color: #FAE7BF;
         display:flex;
@@ -18,18 +18,49 @@
            flex-direction: column;
            align-items: center;
            justify-content: center;
-           -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-           clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+
             background-color: #DC893B;
             width: 100%;
+            padding: 10px;
+
+            .pPicture{
+                border: 1px solid white;
+                margin: 10px;
+                border-radius: 10px;
+            }
+        }
+
+        .user__profile__info{
+            height: 100%;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+      
+
+            .acc__personal__details{
+               
+                height: 50%;
+                padding: 10px;
+                display:flex;
+                flex-direction: column;
+                justify-content: space-around;
+            }
         }
     }
 
-    .user__extra__page{
+    .user__recipes__page{
         flex: .5;
         background-color: $offWhite;
    
        
+    }
+
+    .user__store__page{
+        flex: .25;
+        width: 100%;
+        display:flex;
+        align-items: center;
+        justify-content: center;
     }
 
     img {

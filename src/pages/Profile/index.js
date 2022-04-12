@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState, useEffect,useContext } from 'react'
 import { AuthContext } from '../../context';
 import { useNavigate } from "react-router-dom";
-
+import { ProductsCarousel } from '../../components'
 import './Profile.scss'
 
 export function Profile(){
@@ -41,23 +41,23 @@ export function Profile(){
 
                         
                 <div className='user__profile__info'>
-                <div className='acc__details__container'>
+              
                     <div className='acc__personal__details'>
-                    <h3>User Details </h3>
-                    <p> username </p>
-                    <p> email </p>
-                    <p> orders created </p>
+                  
+                    <h3> username </h3>
+                    <h3> email </h3>
+                    <h3> orders created </h3>
                     <p> Created date: </p>
                     <hr />
                     
                     </div>
                
-                    <button> Check Store </button>
-                    </div>
+                
+                  
                 </div>
 
             </div>
-            <div className='user__extra__page'>
+            <div className='user__recipes__page'>
 
                 <h3>My Recipes</h3>
                 <h4> Title </h4>
@@ -65,6 +65,13 @@ export function Profile(){
                 <p> Info on the recipes ... </p>
 
                 <hr />
+            </div>
+
+            <div className='user__store__page'>
+
+              <ProductsCarousel />
+
+      
             </div>
         </div>
     )

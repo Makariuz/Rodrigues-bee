@@ -30,11 +30,8 @@ export function Products(){
 
     return (
         <div className='product-list-page'>
-            <div className='top-banner-wrapper'>
-            <div className='top-banner'>
-            <h1 id="products">Productss page</h1>
-            </div>
-            </div>
+
+            <div className='product-background'></div>
 
             <div className='product-list'>
               {products.map((product) => {
@@ -53,17 +50,7 @@ export function Products(){
                 )
               })}
             </div>
-            
-            <div className="product-car-2">
-              <ProductsCarousel  />
-            </div>
-
-            <div className='bottom-banner-wrapper'>
-            <div className='bottom-banner'>
-            <h1 id="products">Products bottom</h1>
-            </div>
-            </div>
-
+        
         
       
         </div>
