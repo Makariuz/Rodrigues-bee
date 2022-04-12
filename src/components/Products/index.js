@@ -1,5 +1,6 @@
 import './ProductList.scss'
 import axios from 'axios';
+import bees from '../../images/bee__bg.png'
 
 import { useState, useEffect } from 'react'
 import { ProductsCarousel } from '../ProductCarousel';
@@ -31,7 +32,10 @@ export function Products(){
     return (
         <div className='product-list-page'>
 
-            <div className='product-background'></div>
+          <div className='image__bar'>
+          <img src={bees} alt= "" />
+          </div>
+         
 
             <div className='product-list'>
               {products.map((product) => {

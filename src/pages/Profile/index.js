@@ -1,33 +1,23 @@
 import axios from 'axios';
 
-import { useState, useEffect,useContext } from 'react'
+import { useContext, useState } from 'react'
 import { AuthContext } from '../../context';
 import { useNavigate } from "react-router-dom";
 import { ProductsCarousel } from '../../components'
 import './Profile.scss'
 
 export function Profile(){
-/*   const navigate = useNavigate();
-  
-      const [uiUser, setUiUser] = useState('')
 
-      const user = useContext(AuthContext)
-      
-      const getUser = async () => {
-        if(user.user !== null){ 
-          setUiUser(user.user)
-        } else {
-          setUiUser('')
-        }
-      }
-      useEffect(() => {
-        getUser()
-      }, []) */
     
+      const { user, logout } = useContext(AuthContext);
+    
+
  
+      console.log(user)
+
       return (
         <div className='container__user__profile'>
-            
+         
             <div className='user__profile__page'>
 
                 <div className='pPicture__header__container'>
@@ -35,7 +25,7 @@ export function Profile(){
                         <img src="/assets/new-logo.png" alt="" />
                     </div>
                     <div className='uProfile__name'>
-                        <h3> USERNAME </h3>
+                        <h3>  {user.username} </h3>
                     </div>
                 </div>
 
@@ -44,12 +34,12 @@ export function Profile(){
               
                     <div className='acc__personal__details'>
                   
-                    <h3> username </h3>
-                    <h3> email </h3>
-                    <h3> orders created </h3>
-                    <p> Created date: </p>
+                    <h3>  {user.username} </h3>
+                    <h3>  {user.email} </h3>
+                    <h3> orders created: 0 </h3>
+                    <p> Created date:  {user.createdAt} </p>
                     <hr />
-                    
+                    <button onClick={logout}>Logout</button>
                     </div>
                
                 

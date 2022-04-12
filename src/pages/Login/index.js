@@ -1,9 +1,9 @@
 import './Login.scss'
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { NewUser } from '../../components';
-
+import { AuthContext } from '../../context';
 /* import { Navigation } from "../components"; */
 
 
@@ -17,10 +17,12 @@ export function Login(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [show, setShow] = useState(false)
+    const { login } = useContext(AuthContext);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const url = `${process.env.REACT_APP_BACKEND_URL}/auth/login`;
+        login(email, password);
+       /*  const url = `${process.env.REACT_APP_BACKEND_URL}/auth/login`;
         const data = {
 
             email,
@@ -33,13 +35,9 @@ export function Login(){
             localStorage.setItem("token", `Bearer ${tokenRes.data.token}`);
             localStorage.setItem("user", JSON.stringify(tokenRes.data.user));
             navigate("/user/profile");
-        }
+        } */
     }
-    const handleShow = () => {
-        setShow((previousValue) => {
-          return !previousValue;
-        });
-      };
+
     return (
         <div className='container-user-login'>
             

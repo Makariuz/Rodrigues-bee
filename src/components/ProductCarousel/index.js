@@ -27,15 +27,15 @@ export function ProductsCarousel(){
       }, []);
 
     return(
-        <div class="product-wrapper">
+        <div className="product-wrapper">
         
         {/* https://css-tricks.com/css-only-carousel/ */}
 
-        <div class="product-slides">
+        <div className="product-slides">
             
             {products.map((product) => {
                return (
-                <div id="product-slide">
+                <div key={product._id} id="product-slide">
                 <img src={product.picture} alt="" />
                 {product.name}
                 <br />

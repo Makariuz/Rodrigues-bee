@@ -6,9 +6,11 @@ import { AuthContext } from '../../context';
 export function Navbar({menuOpen, setMenuOpen}){
     const user = useContext(AuthContext)
 
+    
+
    /*  const isAdmin = user.user.isAdmin
     console.log(isAdmin) */
-
+    console.log(user.user)
     return (
         <div className={"navbar " + (menuOpen && "active")}>
             <div className="wrapper">
@@ -22,7 +24,12 @@ export function Navbar({menuOpen, setMenuOpen}){
                        
                         {!user.user && <li><Link to="/user/create"> Create User  </Link></li>}
                         {!user.user && <li><Link to="/user/login" > Login        </Link></li>}
-                        {user.user && <li><Link to="/user/admin" > Admin </Link></li> }
+                        {user.user && 
+                        <>
+                            <li><Link to="/user/admin" > Admin </Link></li> 
+                            <li><Link to="/user/profile" > Profile </Link></li> 
+                            </>
+                            }
                         
                     
                         <li><Link to="/store" > Store        </Link></li>
