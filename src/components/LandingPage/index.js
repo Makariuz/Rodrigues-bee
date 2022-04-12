@@ -9,24 +9,14 @@ export function LandingPage(){
   
     return (
         <div className="landing__page" id="landing__page">
-            <div className='left'>
-                <div className='imgContainer'>
-                    <img src="assets/logo2.jpeg" alt="" />
-                </div>
-                <div className='wrapper'>
-                <h3>Call to actions  sentence Lorem ipsum dolor sit amet... </h3>
 
-                </div>
-                <a href="#products">
-                    <BsChevronCompactDown className='down__icon' />
-                </a>
+        
+            <div className='wrapper__landing__page'>
+             
+                    <img src="assets/logo4.png" alt="" />
+     
             </div>
-            <div className='right'>
-                <div className='wrapper'>
-                    <ProductsCarousel />
-                </div>
- 
-            </div>
+
         </div>
     )
 }
