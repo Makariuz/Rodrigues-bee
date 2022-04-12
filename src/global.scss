@@ -1,0 +1,13 @@
+$mainColor: #170b2e;
+$buttonColor: #992409;
+$offWhite: #F9F5F2;
+$offYellow: #FAE7BF;
+
+$width: 780px;
+
+@mixin mobile {
+    @media (max-width: #{$width}){
+        @content
+    }
+}
+

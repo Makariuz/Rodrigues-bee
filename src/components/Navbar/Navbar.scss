@@ -1,0 +1,134 @@
+@import '../../global.scss';
+
+.navbar{
+    width: 100%;
+    height: 70px;
+    background-color: $buttonColor;
+    color: $mainColor;
+    position: fixed;
+    top: 0;
+    z-index: 3;
+    transition: all 1s ease;
+    
+
+
+
+    .wrapper{
+        padding: 10px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+       
+
+        .left{
+            display:flex;
+            align-items: center;
+            .logo{
+                
+                font-weight: 700;
+                text-decoration: none;
+                margin-right: 40px;
+                display:flex;
+                align-items: center;
+                
+            }
+            a{
+                text-decoration: none;
+                color: #FFFFFF;
+                overflow: hidden;
+
+                img{
+                    height: 50px;
+                    transform: scale(1.3);
+                    
+                }
+            }
+        }
+
+        .center{
+            
+            width: 100%;
+            height: 50px;
+
+
+            @include mobile{
+                display:none;
+            }
+
+            .center-links {
+               
+                ul{
+                
+                    height: 50px;
+                    padding: 10px;
+                    list-style: none;
+                   
+                    display:flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-size: 1.1rem;
+    
+                    li{
+                        
+                        a{
+                            font-size: inherit;
+                            color: white;
+                            text-decoration: none;
+                           
+                          
+                        }
+            
+                        &:hover{
+                            font-weight: 200;
+                        }
+                    }
+                }
+
+            }
+            
+        }
+
+        .right{
+            .hamburger{
+                width: 32px;
+                height: 25px;
+                margin-left: 40px;
+                display:flex;
+                flex-direction: column;
+                justify-content: space-between;
+                cursor: pointer;
+            
+
+                span{
+                    width: 100%;
+                    height: 3px;
+                    background-color: #FFFFFF;
+                    transform-origin: left;
+                    transition: all 700ms ease;
+                
+                }
+            }
+        }
+    }
+    &.active{
+       
+        color: white;
+       
+
+        .hamburger{
+            span{
+                &:first-child{
+                    background-color: white;
+                    transform: rotate(45deg);
+                }
+                &:nth-child(2){
+                    opacity: 0;
+                }
+                &:last-child{
+                    background-color: white;
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,130 @@
+@import '../../global.scss';
+
+.container-user-login{
+  
+    height: 100vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+ 
+   
+    .user-card{
+        display:flex;
+        margin: 0 auto;
+        padding: 20px 0;
+        position: relative;
+        width: 960px;
+        height: 456px;
+        background-color: lightgrey;
+
+        .logo-container{
+            flex: .5;
+            display:flex;
+            flex-direction: column;
+            padding: 20px;
+            
+            .logo{
+
+                background-color: white;
+
+                height: 70%;
+                display:flex;
+                align-items: center;
+                justify-content: center;
+
+                img{
+                    object-fit: cover;
+                    height: 100%;
+                }
+            }
+
+            .call-to-action{
+                height: 30%;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                button {
+                    background-color: green;
+                    color: $offWhite;
+                    border: none;
+                    border-radius: 6px;
+                    font-size: 14px;
+                    line-height: 30px;
+                    padding: 0 16px;
+                    width: 150px;
+                    margin: 10px;
+                }
+            }
+      
+        }
+
+        .user-info{
+            flex: .5;
+            padding:20px;
+
+            .acc-container{
+                background-color: #FAE7BF;
+                display:flex;
+                flex-direction: column;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+                border-radius: 10px;
+
+                form{
+                 
+                    
+                    border-radius: 10px;
+                    display:flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    flex-grow: inherit;
+                    gap: 10px;
+    
+                    input{
+                        border: .9px solid darkgray;
+                        outline: none;
+                        width: 330px;
+                        padding: 14px 16px;
+                        font-size: 17px;
+                        border-radius: 10px;
+                    }
+                    button {
+                        background-color: $buttonColor;
+                        color: $offWhite;
+                        border: none;
+                        border-radius: 6px;
+                        font-size: 20px;
+                       
+                        padding: 14px 16px;
+                        width: 330px;
+                    }
+    
+                    .hr__width{
+                        display:flex;
+                        justify-content: center;
+                        margin: 10px 50px 0px 50px;
+                    }
+    
+                }
+                button {
+                    background-color: green;
+                    color: $offWhite;
+                    border: none;
+                    border-radius: 6px;
+                    font-size: 14px;
+                    line-height: 20px;
+                    padding: 0 16px;
+                    width: 150px;
+                    margin: 10px;
+                }
+
+
+            }
+            
+        }
+    }
+    
+}

@@ -1,0 +1,88 @@
+@import '../../global.scss';
+
+
+/* PRODUCT CAROUSEL */
+
+.product-wrapper {
+
+    width: 80%; /* affects the card size */
+    /* text-align: center; */
+    height: 60%;
+  
+    overflow: hidden;
+    display:flex;
+    align-items: center;
+    padding: 100px;
+    border-radius: 10px;
+    
+   background-color: black;
+
+  
+
+    .product-slides {
+        
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 10px;
+     
+        background-color: $offWhite;
+        /*
+        scroll-snap-points-x: repeat(300px);
+        scroll-snap-type: mandatory;
+        */
+
+        div {
+            
+            scroll-snap-align: end;
+       
+            flex-shrink: 0;
+            width: 50%;
+            height: 300px;
+            margin-right: 50px;
+            border-radius: 10px;
+            background: $offWhite;
+            transform-origin: center center;
+            transform: scale(1);
+            transition: transform 500ms;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            @include mobile{
+                height: 200px;
+                font-size: 1rem;
+            
+            }
+
+            img {
+                width: 100%;
+                height: 60%;
+               
+                
+            }
+          }
+    }
+    .product-slides::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+        
+        
+      }
+    .product-slides::-webkit-scrollbar-thumb {
+        background:  $buttonColor;
+        border-radius: 10px;
+       
+      }
+    .product-slides::-webkit-scrollbar-track {
+        background: transparent;
+       
+
+      }
+
+
+}

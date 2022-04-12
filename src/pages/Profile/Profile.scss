@@ -1,0 +1,41 @@
+@import '../../global.scss';
+
+.container__user__profile{
+    background-color: darkgrey;
+    display:flex;
+    
+
+    .user__profile__page{
+        flex: .5;
+        margin-top: 70px;
+        background-color: #FAE7BF;
+        display:flex;
+        flex-direction: column;
+  
+
+        .pPicture__header__container{
+            display:flex;
+           flex-direction: column;
+           align-items: center;
+           justify-content: center;
+           -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+           clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            background-color: #DC893B;
+            width: 100%;
+        }
+    }
+
+    .user__extra__page{
+        flex: .5;
+        background-color: $offWhite;
+   
+       
+    }
+
+    img {
+        height: 100px;
+        
+    }
+
+
+}

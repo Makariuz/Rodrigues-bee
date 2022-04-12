@@ -3,10 +3,29 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { AuthContextProvider } from "./context";
+
+import { Admin, Home, Login, NotFound, Profile, Signup, Store } from "./pages";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <AuthContextProvider>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<Home />} />
+            <Route path="user/create" element={<Signup />} />
+            <Route path="user/login" element={<Login />} />
+            <Route path="user/profile" element={<Profile />} />
+            <Route path="user/admin" element={<Admin />} />
+            <Route path="store" element={<Store />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>  
+        </Routes>
+      </AuthContextProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
