@@ -1,20 +1,21 @@
 import './LandingPage.scss'
+import { useNavigate } from "react-router-dom";
 
-import {BsChevronCompactDown} from 'react-icons/bs'
-import { ProductsCarousel } from '../ProductCarousel';
-import { AuthContext } from '../../context';
-import { useContext, useState } from "react";
 export function LandingPage(){
-    const user = useContext(AuthContext)
-  
+    const navigate = useNavigate();
+   
+    const handleNavigate = () => {
+        navigate('/store')
+    }
     return (
         <div className="landing__page" id="landing__page">
 
         
             <div className='wrapper__landing__page'>
-             
-                    <img src="assets/logo4.png" alt="" />
-     
+                <div className='img__container'>
+                    <img src="assets/logo8.png" alt="" />
+                </div>
+            <button onClick={handleNavigate}>STORE</button>
             </div>
 
         </div>

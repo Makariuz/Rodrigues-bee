@@ -3,13 +3,76 @@
 .landing__page{
   
     height: 100vh;
-    background-color: $offWhite;
-    .wrapper__landing__page{
-       
-        img {
-            height: 500px;
-        }
+    background: rgb(255,227,141);
+    background: -moz-linear-gradient(267deg, rgba(255,227,141,1) 2%, rgba(255,236,210,1) 38%, rgba(255,227,141,1) 80%, rgba(255,236,210,1) 100%);
+    background: -webkit-linear-gradient(267deg, rgba(255,227,141,1) 2%, rgba(255,236,210,1) 38%, rgba(255,227,141,1) 80%, rgba(255,236,210,1) 100%);
+    background: linear-gradient(267deg, rgba(255,227,141,1) 2%, rgba(255,236,210,1) 38%, rgba(255,227,141,1) 80%, rgba(255,236,210,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffe38d",endColorstr="#ffecd2",GradientType=1);
 
+    .wrapper__landing__page{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+       .img__container{
+        width: 50%;
+        height: 700px;
+        
+        padding: 20px;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        @include mobile {
+            
+            height: 50%;
+            width: 100%;
+        }
+        
+        img {
+            display:flex;
+            
+            height: 90%;
+            @include mobile {
+                width: 70%;
+                height: 90%;
+            }
+           }
+   
+       }
+
+       button {
+        background-color: green;
+        color: $offWhite;
+        border: none;
+        outline: none;
+        font-family: 'Roboto', sans-serif;
+        border-radius: 6px;
+        font-size: 2rem;
+        font-weight: 600;
+        letter-spacing: 2.5px;
+        padding: 10px 50px;
+        width: 300px;
+        margin: 10px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+
+        @include mobile {
+            width: 200px;
+            padding: 10px 20px;
+            font-weight: 400;
+        }
+        
+
+        &:hover{
+            background-color: darkgreen;
+            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+            color: #fff;
+            transform: /* translateY(-7px); */ scale(1.1);
+            transition: all 800ms ease;
+        }
+    }
+       
     }
 
    
