@@ -7,9 +7,10 @@
         width: 100%;
         height: calc(100vh - 70px) ;
        /*  height: 100vh; */
+       /*  margin-top: 70px; */
         background-color: $offWhite;
         position: relative;
-       /*  top: 70px; */
+        top: 70px;
         scroll-behavior: smooth;
         scroll-snap-type: y mandatory;
         scrollbar-width: none; //firefox

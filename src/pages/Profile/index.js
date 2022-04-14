@@ -9,7 +9,7 @@ import './Profile.scss'
 export function Profile(){
 
     
-      const { user, logout } = useContext(AuthContext);
+      const { user, logout, recipes } = useContext(AuthContext);
     
 
  

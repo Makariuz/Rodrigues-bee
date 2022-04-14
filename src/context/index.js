@@ -13,6 +13,7 @@ export function AuthContextProvider({ children }) {
 
 
     const [user, setUser] = useState(null);
+    const [recipes, setRecipes] = useState([])
 
     const saveToken = (token) => {
       localStorage.setItem("token", `Bearer ${token}`);
@@ -34,9 +35,27 @@ export function AuthContextProvider({ children }) {
      
     }
 
+    const createRecipe = async (title, ingredients, instructions) => {
+
+      const response = await client.post(`${process.env.REACT_APP_BACKEND_URL}/recipes/create`, {
+        title,
+        ingredients,
+        instructions
+      });
+      navigate('/recipes/all')
+     
+    }
+
+    const getRecipes = async () => {
+      const response = await client.get(`${process.env.REACT_APP_BACKEND_URL}/recipes`)
+      
+      setRecipes(response.data);
+
+    }
+
     const login = async (email, password) => {
       try {
-        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, {
+        const response = await client.post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, {
           email,
           password,
         });
@@ -50,7 +69,7 @@ export function AuthContextProvider({ children }) {
   
     const verify = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/auth/verify`);
+        const response = await client.get(`${process.env.REACT_APP_BACKEND_URL}/auth/verify`);
         setUser(response.data.user);
         navigate("/");
       } catch (error) {
@@ -66,6 +85,7 @@ export function AuthContextProvider({ children }) {
   
     useEffect(() => {
       verify();
+      getRecipes();
     }, []);
 
       const value = {
@@ -73,6 +93,8 @@ export function AuthContextProvider({ children }) {
         signup,
         login,
         logout,
+        createRecipe,
+        recipes,
       };
     
       return (

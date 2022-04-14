@@ -3,28 +3,28 @@ import './Navbar.scss'
 import { useState, useEffect,useContext } from 'react'
 import { AuthContext } from '../../context';
 
-export function Navbar({menuOpen, setMenuOpen}){
-    const user = useContext(AuthContext)
+export function Navbar({users, menuOpen, setMenuOpen}){
+/*     const user = useContext(AuthContext) */
 
     
 
    /*  const isAdmin = user.user.isAdmin
     console.log(isAdmin) */
-    console.log(user.user)
+ 
     return (
         <div className={"navbar " + (menuOpen && "active")}>
             <div className="wrapper">
                 <div className="left">
-                    <a href="/" className='logo'> {/* <h1>bee.</h1> */}  <img src="/assets/logoTop.png" alt="" />  </a>
+                <Link to="/" className='logo'> {/* <h1>bee.</h1> */}>  <img src="/assets/logoTop.png" alt="" />  </Link>
                 </div>
                 <div className="center">
 
                     <div className='center-links'>
                         <ul>
                        
-                        {!user.user && <li><Link to="/user/create"> Create User  </Link></li>}
-                        {!user.user && <li><Link to="/user/login" > Login        </Link></li>}
-                        {user.user && 
+                        {!users && <li><Link to="/user/create"> Create User  </Link></li>}
+                        {!users && <li><Link to="/user/login" > Login        </Link></li>}
+                        {users && 
                         <>
                             <li><Link to="/user/admin" > Admin </Link></li> 
                             <li><Link to="/user/profile" > Profile </Link></li> 
@@ -33,7 +33,7 @@ export function Navbar({menuOpen, setMenuOpen}){
                         
                     
                         <li><Link to="/store" > Store        </Link></li>
-                        <li><Link to="/recipes/all" > Recipes      </Link></li>
+                        <li><Link to="/recipes" > Recipes      </Link></li>
                         <li><Link to="/about" > About        </Link></li>
                         </ul>
                     </div>

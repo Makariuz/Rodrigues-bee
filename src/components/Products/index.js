@@ -31,9 +31,11 @@ export function Products(){
 
     return (
         <div className='product-list-page'>
+          <h1>STORE</h1>
 
-          <div className='image__bar'>
-          <img src={bees} alt= "" />
+          <div className='wrapper__store'>
+          <div className='left__bar'>
+          
           </div>
          
 
@@ -54,7 +56,7 @@ export function Products(){
                 )
               })}
             </div>
-        
+            </div>
         
       
         </div>
