@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { AuthContextProvider } from "./context";
 
-import { Admin, CreateRecipe, Home, Login, NotFound, Profile, Recipes, Signup, Store } from "./pages";
+import { Admin, CreateRecipe, Home, Login, NotFound, Profile, ReadRecipe, Recipes, Signup, Store } from "./pages";
 
 
 
@@ -28,6 +28,7 @@ ReactDOM.render(
             <Route path="user/admin" element={<Admin />} />
             <Route path="store" element={<Store />} />
             <Route path="recipes" element={<Recipes />} />
+            <Route path="recipes/read/:id" element={<ReadRecipe />} />
             <Route path="recipes/create" element={<CreateRecipe />} />
             <Route path="*" element={<NotFound />} />
           </Route>  

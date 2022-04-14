@@ -14,6 +14,7 @@ export function AuthContextProvider({ children }) {
 
     const [user, setUser] = useState(null);
     const [recipes, setRecipes] = useState([])
+    const [rdRecipe, setRdRecipe] = useState([])
 
     const saveToken = (token) => {
       localStorage.setItem("token", `Bearer ${token}`);
@@ -53,6 +54,12 @@ export function AuthContextProvider({ children }) {
 
     }
 
+    const readRecipe = async (id) => {
+      const response = await client.get(`${process.env.REACT_APP_BACKEND_URL}/recipes/read/${id}`)
+     
+      return response.data
+    }
+
     const login = async (email, password) => {
       try {
         const response = await client.post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, {
@@ -70,8 +77,10 @@ export function AuthContextProvider({ children }) {
     const verify = async () => {
       try {
         const response = await client.get(`${process.env.REACT_APP_BACKEND_URL}/auth/verify`);
-        setUser(response.data.user);
-        navigate("/");
+      
+        setUser(response.data);
+        navigate("/user/profile");
+   
       } catch (error) {
         navigate("/");
       }
@@ -95,6 +104,7 @@ export function AuthContextProvider({ children }) {
         logout,
         createRecipe,
         recipes,
+        readRecipe,
       };
     
       return (

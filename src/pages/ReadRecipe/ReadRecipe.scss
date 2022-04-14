@@ -1,0 +1,19 @@
+
+
+@import "../../global.scss";
+
+.read__recipes__container{
+
+   .loading__screen{
+       display:flex;
+       flex-direction: column;
+       .img__wrapper__loading{
+           display:flex;
+            justify-content: center;
+         
+          img{
+              height: 100px;
+          }
+       }
+   }
+}

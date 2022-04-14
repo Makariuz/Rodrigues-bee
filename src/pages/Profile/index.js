@@ -11,7 +11,7 @@ export function Profile(){
     
       const { user, logout, recipes } = useContext(AuthContext);
     
-      if(!user.user) {navigate('/user/login')}
+      
 
       return (
         <div className='container__user__profile'>
@@ -23,7 +23,7 @@ export function Profile(){
                         <img src="/assets/new-logo.png" alt="" />
                     </div>
                     <div className='uProfile__name'>
-                        <h3>  {user.username} </h3>
+                        <h3>  {user?.username} </h3>
                         <h3><Link to="/recipes/create">create</Link> </h3>
                     </div>
                 </div>
@@ -33,10 +33,10 @@ export function Profile(){
               
                     <div className='acc__personal__details'>
                   
-                    <h3>  {user.username} </h3>
-                    <h3>  {user.email} </h3>
+                    <h3>  {user?.username} </h3>
+                    <h3>  {user?.email} </h3>
                     <h3> orders created: 0 </h3>
-                    <p> Created date:  {user.createdAt} </p>
+                    <p> Created date:  {user?.createdAt} </p>
                     <hr />
                     <button onClick={logout}>Logout</button>
                     </div>

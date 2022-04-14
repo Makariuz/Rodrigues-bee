@@ -8,4 +8,79 @@
     background: linear-gradient(267deg, rgba(255,227,141,1) 2%, rgba(255,236,210,1) 38%, rgba(255,227,141,1) 80%, rgba(255,236,210,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffe38d",endColorstr="#ffecd2",GradientType=1);
 
+    display:flex;
+    overflow-y: hidden;
+    .wrapper__left{
+        flex: .5;
+       height: calc(100vh - 70px);
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        /* padding-bottom: 70px; */
+        overflow-y: hidden;
+
+        h1{
+            text-align: center;
+            font-family: 'Bowlby One SC', cursive;
+            font-size: 10vw;
+        }
+        
+     
+    }
+
+    .wrapper__right{
+        flex: .5;
+        overflow-y: scroll;
+        
+        .search__input{
+          
+            margin: 10px;
+          
+            border-radius: 10px;
+            border: 1px solid $buttonColor;
+            input {
+                width: 100%;
+                padding: 10px;
+                font-size: 1.3rem;
+                border-radius: 10px;
+                outline: none;
+                border: 0px;
+            }
+           
+        }
+
+        ul{
+            list-style: none;
+            .recipe__card__container{
+                display:flex;
+                background-color: white;
+                cursor: pointer;
+                margin: 10px;
+                padding: 10px;
+                border-radius: 10px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+                .recipe__card {
+                   flex: .7;
+                    
+                    
+                }
+    
+                .ing__list > div {
+                    border: .5px solid black;
+                }
+                .img__card__container{
+                    flex: .3;
+                   
+                    display:flex;
+                    align-items: center;
+                    justify-content: center;
+                    img{
+                        height: 100px;
+                    }
+                }
+            }
+
+
+        }
+    }
 }
