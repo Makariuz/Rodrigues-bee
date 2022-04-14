@@ -6,3 +6,4 @@ export { Profile } from './Profile';
 export { Signup } from './Signup';
 export { Store } from './Store';
 export { Recipes } from './Recipes'
+export { CreateRecipe } from './CreateRecipe'

@@ -1,0 +1,11 @@
+@import '../../global.scss';
+
+.recipe__container{
+    height: 100vh;
+    background: rgb(255,227,141);
+    background: -moz-linear-gradient(267deg, rgba(255,227,141,1) 2%, rgba(255,236,210,1) 38%, rgba(255,227,141,1) 80%, rgba(255,236,210,1) 100%);
+    background: -webkit-linear-gradient(267deg, rgba(255,227,141,1) 2%, rgba(255,236,210,1) 38%, rgba(255,227,141,1) 80%, rgba(255,236,210,1) 100%);
+    background: linear-gradient(267deg, rgba(255,227,141,1) 2%, rgba(255,236,210,1) 38%, rgba(255,227,141,1) 80%, rgba(255,236,210,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffe38d",endColorstr="#ffecd2",GradientType=1);
+
+}

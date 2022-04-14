@@ -42,7 +42,7 @@ export function AuthContextProvider({ children }) {
         ingredients,
         instructions
       });
-      navigate('/recipes/all')
+      navigate('/recipes')
      
     }
 

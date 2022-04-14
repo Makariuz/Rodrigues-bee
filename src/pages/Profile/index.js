@@ -2,18 +2,16 @@ import axios from 'axios';
 
 import { useContext, useState } from 'react'
 import { AuthContext } from '../../context';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ProductsCarousel } from '../../components'
 import './Profile.scss'
 
 export function Profile(){
-
+    const navigate = useNavigate();
     
       const { user, logout, recipes } = useContext(AuthContext);
     
-
- 
-      console.log(user)
+      if(!user.user) {navigate('/user/login')}
 
       return (
         <div className='container__user__profile'>
@@ -26,6 +24,7 @@ export function Profile(){
                     </div>
                     <div className='uProfile__name'>
                         <h3>  {user.username} </h3>
+                        <h3><Link to="/recipes/create">create</Link> </h3>
                     </div>
                 </div>
 

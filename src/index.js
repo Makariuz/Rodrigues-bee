@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -7,7 +7,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { AuthContextProvider } from "./context";
 
-import { Admin, Home, Login, NotFound, Profile, Recipes, Signup, Store } from "./pages";
+import { Admin, CreateRecipe, Home, Login, NotFound, Profile, Recipes, Signup, Store } from "./pages";
+
+
+
+
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,11 +23,12 @@ ReactDOM.render(
             <Route index element={<Home />} />
             <Route path="user/create" element={<Signup />} />
             <Route path="user/login" element={<Login />} />
+            
             <Route path="user/profile" element={<Profile />} />
             <Route path="user/admin" element={<Admin />} />
             <Route path="store" element={<Store />} />
             <Route path="recipes" element={<Recipes />} />
-            
+            <Route path="recipes/create" element={<CreateRecipe />} />
             <Route path="*" element={<NotFound />} />
           </Route>  
         </Routes>

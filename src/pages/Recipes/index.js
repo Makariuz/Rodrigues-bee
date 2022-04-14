@@ -1,30 +1,34 @@
 import { useContext, useState } from "react"
 import { NewRecipe } from "../../components";
 import { AuthContext } from '../../context';
-
+import './Recipes.scss'
 export function Recipes(){
 
-    const {  recipes } = useContext(AuthContext);
-
-    let arr = []
-
-    for (let i = 0; i < recipes.length; i++) {
-        {arr.push(recipes[i])}
-    }
-  
+    const {user,  recipes } = useContext(AuthContext);
 
     return (
         <div className="recipe__container">
-      <h1> tttt</h1>
-     <code>{JSON.stringify(recipes)}</code>
-      <div> 
+        <div className="wrapper__left">
+        <h1> Recipes </h1>
+
+        </div>
+      
+     
+      <div className="wrapper__right"> 
+      
       <ul>
-          {arr.forEach(n => {
-              <li>{n}</li>
-          })}
+      {recipes.map((recipe) => {
+          return(
+            <>
+          <li>{recipe.title}</li>
+          <li>{recipe.ingredients}</li>
+          <li>{recipe.instructions}</li>
+          <li>{recipe.author.username}</li>
+          
+          </>
+      )
+      })}
       </ul>
-      {}
-  
       </div>
         </div>
     )

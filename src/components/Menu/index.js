@@ -1,12 +1,16 @@
 import { Link } from 'react-router-dom'
 import './Menu.scss'
 
-export function Menu({menuOpen, setMenuOpen}){
+export function Menu({users, menuOpen, setMenuOpen}){
+
+    const handleClose = () => {
+        setMenuOpen(false)
+    }
     return (
         <div className={'menu ' + (menuOpen && "active")}>
             <ul> {/* create a component for the function */}
                 <li onClick={() => setMenuOpen(false)}>
-                <a href="/"> Home </a>
+                <Link to="/"> Home </Link>
                 </li>
                 <li onClick={() => setMenuOpen(false)}>
                 <Link to="/new-user">  Create User </Link>
