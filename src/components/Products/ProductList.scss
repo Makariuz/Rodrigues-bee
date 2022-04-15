@@ -1,60 +1,39 @@
 @import '../../global.scss';
 
-.product-list-page{
+.product-list{
+   
     display:flex;
-    /* align-items: center; */
-  /*   justify-content: center; */
-    flex-direction: column;
-    height: 100vh;
-  /*   flex-wrap: wrap; */
-    background-color: white;
-    .wrapper__store{
-
-        display:flex;
-        .left__bar{
-
-            width: 100px;
-            height: 100vh;
-            background-color: $offYellow;
-    
-        }
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
         
-        .product-list{
-          
+        @include mobile{
+            display:none;
+        }
+    
+        .prod-card{
+            height: 200px;
+            width: 200px;
+            box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
             display:flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-          
-            @include mobile{
-                display:none;
+            gap: 10px;
+            margin: 20px;
+            background-color: white;
+            
+            .prod-card-pic{
+                flex: .5;
+                text-align: center;
             }
-        
-            .prod-card{
-                height: 200px;
-                width: 200px;
-                box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
-                border-radius: 32px;
-                display:flex;
-                flex-direction: column;
-                align-items: center;
-                margin: 50px;
-               
-                .prod-card-pic{
-                    flex: .5;
-                }
-    
-                .prod-card-info{
-                    flex: .3;
-                    background-color: $offYellow;
-                    width: 100%;
-    
-                }
+
+            .prod-card-info{
+                flex: .3;
+                text-align: center;
+                width: 100%;
+
             }
         }
-        
-    }
-
-    
-
 }

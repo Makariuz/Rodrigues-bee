@@ -30,16 +30,10 @@ export function Products(){
       }, []);
 
     return (
-        <div className='product-list-page'>
-          <h1>STORE</h1>
-
-          <div className='wrapper__store'>
-          <div className='left__bar'>
+        <div className='product-list'>
           
-          </div>
-         
 
-            <div className='product-list'>
+           
               {products.map((product) => {
                 return(
                   <div className='prod-card'>
@@ -55,8 +49,8 @@ export function Products(){
                   </div>
                 )
               })}
-            </div>
-            </div>
+       
+       
         
       
         </div>

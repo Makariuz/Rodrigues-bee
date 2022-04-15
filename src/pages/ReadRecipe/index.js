@@ -11,22 +11,43 @@ export function ReadRecipe(){
 
 
 
-  /*   useEffect(() => {
+    useEffect(() => {
      readRecipe(id).then(setRecipe)
     }, [])
- */
+
+    let newArr= []
+
+    recipe ?
+    newArr = recipe.ingredients.split(',')
+    :
+    console.log('loading...')
     
-    
-    console.log(recipe)
   
     return (
        <div className='read__recipes__container'>
+
+       
+      
+
        {recipe ? (
-           <>           
+           <div className='read__card'>
+            <div className='header__read__recipe'> 
+            <img src="/assets/Emily-s-Honey-Lime-Coleslaw_EXPS_THJJ17_201853_C02_02_4b-10.jpeg" alt="" />          
            <h2>{recipe.title}</h2>
-          <h3>Ingredientss</h3>
-         <p> {recipe.ingredients} </p>
-         </>
+           </div>
+         
+         <div className='ingredients__instructions__wrapper'>
+         <ul> 
+         {newArr.map((ingredient) => {
+          return  <li>{ingredient}</li>
+         })}
+    
+         </ul>
+         <div className='inst__section'>
+         <p>{recipe.instructions}</p>
+         </div>
+         </div>
+         </div>
         ) :
         <div className='loading__screen'>        
         <div className='img__wrapper__loading'> 

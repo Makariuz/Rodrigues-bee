@@ -36,7 +36,7 @@ export function ProductsCarousel(){
             {products.map((product) => {
                return (
                 <div key={product._id} id="product-slide">
-                <img src={product.picture} alt="" />
+                <img src="/assets/1.png" alt="" />
                 {product.name}
                 <br />
                 {product.price} €
