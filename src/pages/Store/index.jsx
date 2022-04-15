@@ -9,13 +9,14 @@ export function Store(){
 return (
   <div className="store__container">
     <div className="store__wrapper__top">
-    <img src="/assets/honey2.png" alt="" />
+   {/*  <img src="/assets/honey2.png" alt="" /> */}
     <h1>Our Products</h1>
     </div>
     
     <div className="store__wrapper__right">
 
     <Products />
+    <ProductsCarousel />
   
 
     </div>

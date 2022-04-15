@@ -44,7 +44,7 @@ export function Signup(){
             <div className='user-card'>
 
             <div className='user-header'>
-                <h3>Create an account to save your recsipes!</h3>
+                <h3>Create an account to save your recipes!</h3>
                 <small>Already have an account? Login <a href="#">here.</a></small>
             </div>
 

@@ -12,23 +12,32 @@ export function Menu({users, menuOpen, setMenuOpen}){
                 <li onClick={() => setMenuOpen(false)}>
                 <Link to="/"> Home </Link>
                 </li>
+                {!users &&
                 <li onClick={() => setMenuOpen(false)}>
-                <Link to="/new-user">  Create User </Link>
+                 <Link to="/user/create"> Create User  </Link>
+                </li>}
+                {!users &&
+                <li onClick={() => setMenuOpen(false)}>
+                <Link to="/user/login" > Login        </Link>
+                </li>}
+                {users && 
+                <>
+                <li onClick={() => setMenuOpen(false)}>
+                <Link to="/user/admin" > Admin        </Link>
                 </li>
                 <li onClick={() => setMenuOpen(false)}>
-                <Link to="/landing-page" > Login      </Link>
+                <Link to="/user/profile" > Profile        </Link>
+                </li>
+                </>
+                }
+                <li onClick={() => setMenuOpen(false)}>
+                <Link to="/store" > Store        </Link>
                 </li>
                 <li onClick={() => setMenuOpen(false)}>
-                <Link to="/landing-page" > Admin        </Link>
+                <Link to="/recipes" > Recipes      </Link>
                 </li>
                 <li onClick={() => setMenuOpen(false)}>
-                <Link to="/landing-page" > Store        </Link>
-                </li>
-                <li onClick={() => setMenuOpen(false)}>
-                <Link to="/landing-page" > Recipes      </Link>
-                </li>
-                <li onClick={() => setMenuOpen(false)}>
-                <Link to="/landing-page" > About        </Link>
+                <Link to="/about" > About        </Link>
                 </li>
                 
                 

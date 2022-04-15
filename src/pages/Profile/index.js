@@ -4,6 +4,8 @@ import { useContext, useState } from 'react'
 import { AuthContext } from '../../context';
 import { Link, useNavigate } from "react-router-dom";
 import { ProductsCarousel } from '../../components'
+
+import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai'
 import './Profile.scss'
 
 export function Profile(){
@@ -11,8 +13,9 @@ export function Profile(){
     
       const { user, logout, recipes } = useContext(AuthContext);
     
+       
 
-  
+    
 
       return (
         <div className='container__user__profile'>
@@ -64,12 +67,15 @@ export function Profile(){
                 return    (
                 <div key={recipe._id} className='recipe__owned'>
                     {recipe.author.username === user.username &&
-                    <>
+                    <div className='recipe__details'>
                       <h3>  {recipe.title} </h3>
                       <p> {recipe.instructions.slice(0, 50)}...</p>
-                      </>
+                      </div>
                     }
-                   
+                    <div className='btn__options'>
+                    <button> <AiOutlineEdit /> </button>
+                   <button> <AiOutlineDelete /> </button>
+                   </div>
                     </div>
                     )
                 })}

@@ -14,7 +14,7 @@ export function AuthContextProvider({ children }) {
 
     const [user, setUser] = useState(null);
     const [recipes, setRecipes] = useState([])
-    const [rdRecipe, setRdRecipe] = useState([])
+
 
     const saveToken = (token) => {
       localStorage.setItem("token", `Bearer ${token}`);

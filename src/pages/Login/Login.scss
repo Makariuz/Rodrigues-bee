@@ -6,7 +6,8 @@
     display:flex;
     align-items: center;
     justify-content: center;
- 
+   
+
    
     .user-card{
         display:flex;
@@ -15,13 +16,25 @@
         position: relative;
         width: 960px;
         height: 456px;
-        background-color: lightgrey;
+      
+        @include mobile{
+            display:flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 0 auto;
+           
+        }
 
         .logo-container{
             flex: .5;
             display:flex;
             flex-direction: column;
             padding: 20px;
+            @include mobile{
+                
+                padding: 0 auto;
+               height: 300px;
+            }
             
             .logo{
 
@@ -31,10 +44,16 @@
                 display:flex;
                 align-items: center;
                 justify-content: center;
+                @include mobile{
+                    height: 100%;
+                }
 
                 img{
                     object-fit: cover;
                     height: 100%;
+                    @include mobile{
+                        height: 100%;
+                    }
                 }
             }
 
@@ -44,6 +63,11 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+
+                @include mobile{
+                    display:none;
+                  
+                }
                 button {
                     background-color: green;
                     color: $offWhite;
@@ -62,7 +86,10 @@
         .user-info{
             flex: .5;
             padding:20px;
-
+            
+            @include mobile{
+                padding: 0 auto;
+            }
             .acc-container{
                 background-color: #FAE7BF;
                 display:flex;
@@ -71,6 +98,9 @@
                 justify-content: center;
                 align-items: center;
                 border-radius: 10px;
+                @include mobile{
+                    padding: 10px;
+                }
 
                 form{
                  
@@ -80,7 +110,7 @@
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    flex-grow: inherit;
+                 /*    flex-grow: inherit; */
                     gap: 10px;
     
                     input{
@@ -119,6 +149,11 @@
                     padding: 0 16px;
                     width: 150px;
                     margin: 10px;
+
+                    @include mobile {
+                        width: 160px;
+                        padding: 5px 10px;
+                    }
                 }
 
 

@@ -10,12 +10,18 @@
     height: 300px;
   
     overflow: hidden;
-    display:flex;
+    display:none;
     align-items: center;
     justify-content: center;
     padding: 50px;
     border-radius: 10px;
     background-color: white;
+
+    @include mobile {
+      display: flex;
+      width: 100%;
+      height: 80%;
+    }
     
 /*     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
  */
@@ -56,8 +62,9 @@
             font-size: 30px;
 
             @include mobile{
-                height: 200px;
+                height: 100%;
                 font-size: 1rem;
+                margin: 10px;
             
             }
 

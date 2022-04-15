@@ -17,7 +17,13 @@
     position:relative;
     display: flex;
     flex-direction: column;
-
+  
+    @include mobile {
+        width: 80%;
+ 
+         margin: 20px;
+     }
+ 
 
     .user-header{
         display:flex;
@@ -39,10 +45,20 @@
         align-items: center;
         justify-content: center;
         flex: 1;
+        @include mobile {
+            display:flex;
+            align-items: center;
+            
+     
+         }
+     
+        
 
         form{
             display:flex;
             flex-direction: column;
+            align-items: center;
+            margin: 5px;
             gap: 10px;
 
             input{
@@ -52,6 +68,9 @@
                 padding: 14px 16px;
                 font-size: 17px;
                 border-radius: 10px;
+                @include mobile {
+                    width: 80%;
+                 }
             }
             button {
                 background-color: $buttonColor;
@@ -62,6 +81,10 @@
                
                 padding: 14px 16px;
                 width: 330px;
+                @include mobile {
+                    width: 80%;
+                    padding: 5px 8px;
+                 }
             }
         }
     }
