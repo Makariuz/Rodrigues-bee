@@ -1,5 +1,8 @@
 import { useContext, useState } from "react"
 import { AuthContext } from '../../context';
+import './CreateRecipe.scss'
+import {  AiOutlineFileAdd } from 'react-icons/ai'
+
 
 export function CreateRecipe(){
 
@@ -25,24 +28,36 @@ export function CreateRecipe(){
 
    
     return (
-        <div className="recipe__container">
+        <div className="create__recipe__container">
+
+        <div className="create__recipe__card">
+            <div className="create__header">
             <h1>Create a recipe</h1>
+            <div className='recipes__img__container'>
+                <img src="/assets/recipe__honey.png" alt="" />
+                </div>
+            </div>
+           
             <form onSubmit={handleSubmit}> 
             <label htmlFor="title">Title</label>
-            <input value={title} name="title" placeholder="title" onChange={(event) => setTitle(event.target.value)}/>
+            <input value={title} name="title" placeholder="Title" onChange={(event) => setTitle(event.target.value)}/>
             <br/>
-            <label htmlFor="ingredients">ingredients</label>
-            <input value={ingredients}  name="ingredients" placeholder="ingredients (use comma to separate)" onChange={(event) => setIngredients(event.target.value)}/>
-            <button onClick={handleInputs}>add</button>
+            
+            <label htmlFor="ingredients">Ingredients</label>
+            <div className="ingredients__div">
+            <input value={ingredients}  name="ingredients" placeholder="Ingredients (use dash (-) to separate)" onChange={(event) => setIngredients(event.target.value)}/>
+            <button onClick={handleInputs}> <AiOutlineFileAdd /> </button>
+            </div>
 
             <br/>
-            <label htmlFor="instructions">instructions</label>
-            <textarea value={instructions} name="instructions" placeholder="instructions" onChange={(event) => setInstructions(event.target.value)}/>
+            <label htmlFor="instructions">Instructions</label>
+            <textarea value={instructions} name="instructions" placeholder="Instructions" onChange={(event) => setInstructions(event.target.value)}/>
+            <p id="inst__saved">{instructions}</p>
             <br/>
-            <button type="submit"> submit </button>
+            <button type="submit" className="submit__btn"> Submit </button>
             </form>
             <div>
-           
+            </div>
             </div>
         </div>
     )

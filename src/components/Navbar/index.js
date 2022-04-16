@@ -15,7 +15,7 @@ export function Navbar({users, menuOpen, setMenuOpen}){
         <div className={"navbar " + (menuOpen && "active")}>
             <div className="wrapper">
                 <div className="left">
-                <Link to="/" className='logo'> {/* <h1>bee.</h1> */}>  <img src="/assets/logoTop.png" alt="" />  </Link>
+                <Link to="/" className='logo'> {/* <h1>bee.</h1> */}  <img src="/assets/logoTop.png" alt="" />  </Link>
                 </div>
                 <div className="center">
 

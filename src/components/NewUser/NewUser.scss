@@ -39,6 +39,17 @@
        background-color: $buttonColor;
         border-radius: 10px 10px 0 0;
         position: relative;
+
+        .user__top__header{
+            display:flex;
+            align-items: flex-start;
+
+            .close__btn{
+                font-size: 2rem;
+                color: white;
+                cursor: pointer;
+            }
+        }
         @include mobile {
             padding:20px;
         }
@@ -101,5 +112,9 @@
 
     
     
+    }
+
+    &.active {
+        display:none;
     }
 }

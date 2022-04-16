@@ -1,4 +1,5 @@
 import { useContext, useState } from "react"
+import { AiOutlineFileAdd } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { NewRecipe } from "../../components";
 import { AuthContext } from '../../context';
@@ -9,16 +10,25 @@ export function Recipes(){
 
     return (
         <div className="recipe__container">
-        <div className="wrapper__left">
+        <div className="recipe__wrapper">
+        <div className="wrapper__top">
         <h1> Recipes </h1>
-
+        <div className='recipes__img__container'>
+                <img src="/assets/recipe__honey.png" alt="" />
+                </div>
         </div>
       
      
-      <div className="wrapper__right"> 
+      <div className="wrapper__bottom"> 
+      <div className="search__input__wrapper">
       <div className="search__input">
       
         <input type='text' placeholder="Search for ingredients"/>
+        
+      </div>
+      <div className="create__recipe__btn">
+      <button onClick={() => navigate('/recipes/create')}> New <AiOutlineFileAdd /> </button>
+      </div>
       </div>
       <ul>
       {recipes.map((recipe) => {
@@ -41,6 +51,7 @@ export function Recipes(){
       )
       })}
       </ul>
+      </div>
       </div>
         </div>
     )

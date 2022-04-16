@@ -5,16 +5,13 @@ import { AuthContext } from '../../context';
 import { Link, useNavigate } from "react-router-dom";
 import { ProductsCarousel } from '../../components'
 
-import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai'
+import { AiOutlineDelete, AiOutlineEdit, AiOutlineFileAdd } from 'react-icons/ai'
 import './Profile.scss'
 
 export function Profile(){
     const navigate = useNavigate();
     
       const { user, logout, recipes } = useContext(AuthContext);
-    
-       
-
     
 
       return (
@@ -24,11 +21,11 @@ export function Profile(){
 
                 <div className='pPicture__header__container'>
                     <div className='pPicture'>
-                        <img src="/assets/new-logo.png" alt="" />
+                        <img src={user?.picture} alt="" />
                     </div>
                     <div className='uProfile__name'>
                         <h3>  {user?.username} </h3>
-                        <h3><Link to="/recipes/create">create</Link> </h3>
+                        <smal> {user?.email}</smal>
                     </div>
                 </div>
 
@@ -58,8 +55,11 @@ export function Profile(){
                 </div>
                 
 
-               
-                <p> All my recipes </p>
+               <div className='recipes__top__extra'>
+               <h3> All my recipes </h3>
+               <button onClick={() => navigate('/recipes/create')}> Create Recipe <AiOutlineFileAdd /> </button>
+               </div>
+                
 
                 <hr />
 

@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from '../../context';
 
+import { client} from '../../client'
+
+
 
 
 
@@ -17,12 +20,12 @@ export function Signup(){
     
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
- /*    const [pPicture, setPPicture] = useState(""); */
+    const [picture, setPicture] = useState("");
     const [password, setPassword] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        signup(username, email, password);
+        signup(username, email, picture, password);
        /*  const url = `${process.env.REACT_APP_BACKEND_URL}/auth/new-user`;
         const data = {
             username,
@@ -37,6 +40,32 @@ export function Signup(){
         navigate("/");
         } */
     }
+
+    const uploadImage = (file) => {
+        return axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/upload`, file)
+          .then(res => res.data)
+          .catch((err) => console.log(err))
+      };
+    
+    const handleFileUpload = async (e) => {
+        // console.log("The file to be uploaded is: ", e.target.files[0]);
+     
+        const uploadData = new FormData();
+     
+        // imageUrl => this name has to be the same as in the model since we pass
+        // req.body to .create() method when creating a new movie in '/api/movies' POST route
+        uploadData.append("picture", e.target.files[0]);
+      
+        
+        uploadImage(uploadData)
+          .then(response => {
+            // console.log("response is: ", response);
+            // response carries "fileUrl" which we can use to update the state
+            setPicture(response.path);
+      
+          })
+          .catch(err => console.log("Error while uploading the file: ", err));
+      };
 
     return (
         <div className='container-user-logs'>
@@ -66,7 +95,9 @@ export function Signup(){
                         />
                     <input 
                         type="file" 
-                        className='pp-input'    
+                        name="picture"
+                        className='pp-input'   
+                        onChange={handleFileUpload} 
                         />
                     <input 
                         type="password" 

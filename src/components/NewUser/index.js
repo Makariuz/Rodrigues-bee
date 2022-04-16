@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from '../../context';
 
-
+import { AiOutlineCloseSquare } from 'react-icons/ai'
 
 
 export function NewUser(){
@@ -41,13 +41,21 @@ export function NewUser(){
         } */
     }
 
+    const handleShow = () => {
+        setShow(!show)
+    }
+
     return (
-        <div className='container-user-logss'>
-    
+       
+        <div className={'container-user-logss ' +  (show && 'active')}>
+   
             <div className='user-cards'>
 
             <div className='user__header'>
+            <div className='user__top__header'>
                 <h3>Create an account to save your recipes!</h3>
+                <AiOutlineCloseSquare onClick={() => {setShow(!show)} } className='close__btn'/>
+                </div>
                 <small>Already have an account? Login <a href="">here.</a></small>
             </div>
 
@@ -83,6 +91,9 @@ export function NewUser(){
 
                 </div>
             </div>
+        
         </div>
+   
     )
+
 }

@@ -25,11 +25,12 @@ export function AuthContextProvider({ children }) {
     };
   
 
-    const signup = async (username, email, password) => {
+    const signup = async (username, email, picture, password) => {
      
       const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/new-user`, {
         username,
         email,
+        picture,
         password
       });
       navigate('/user/login')

@@ -11,5 +11,6 @@ $width: 780px;
     @media (max-width: #{$width}){
         @content
     }
-}
+};
+
 

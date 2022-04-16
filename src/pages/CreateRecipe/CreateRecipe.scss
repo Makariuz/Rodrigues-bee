@@ -1,0 +1,128 @@
+@import '../../global.scss';
+
+
+.create__recipe__container{
+    background-image: url('../../images/honey__opacity.png');
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+    .create__recipe__card{
+        width: 40%;
+        height: 90%;
+        border-radius: 10px;
+        background-color: whitesmoke;
+        display:flex;
+        flex-direction: column;
+       align-items: center;
+       @include mobile{
+        width: 90%;
+    }
+
+       .create__header{
+        h1{
+            text-shadow: 0px 15px 5px rgba(0,0,0,0.1),
+            10px 20px 5px rgba(0,0,0,0.05),
+            -10px 20px 5px rgba(0,0,0,0.05);
+         font-family: 'Lemonada', cursive;
+         font-weight: 600;
+         font-size: 2rem;
+
+         @include mobile {
+             font-size: 2rem;
+           }
+        }
+        .recipes__img__container{
+          
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid $buttonColor;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+
+       }
+   
+
+        form{
+            display:flex;
+            flex-direction: column;
+            @include mobile{
+                width: 90%;
+            }
+
+            .ingredients__div{
+                display:flex;
+                align-items: center;
+                input{
+                    border-right: 0;
+                    border-top-right-radius: 0px;
+                    border-bottom-right-radius: 0px;
+                }
+                
+                button{
+                    margin: 0;
+                    height: 100%;
+                    border-top-left-radius: 0px;
+                    border-bottom-left-radius: 0px;
+                    width: 40px;
+             
+                }
+            }
+            
+
+            input{
+                border: .9px solid darkgray;
+                outline: none;
+                width: 330px;
+                padding: 14px 16px;
+                font-size: 17px;
+                border-radius: 10px;
+            }
+
+            textarea{
+                border: .9px solid darkgray;
+                outline: none;
+                width: 100%;
+                padding: 14px 16px;
+                font-size: 17px;
+                border-radius: 10px;
+                height: 200px;
+                white-space: pre-line;
+
+            }
+            #inst__saved{
+                white-space: pre-line;
+              }
+
+            .submit__btn{
+                align-self: flex-end;
+            }
+
+              button{
+                background-color: green;
+                color: $offWhite;
+                border: none;
+                outline: none;
+                font-family: 'Roboto', sans-serif;
+                border-radius: 6px;
+                font-size: 1rem;
+                font-weight: 600;
+                padding: 10px 5px;
+                width: 80px;
+                margin: 10px;
+                cursor: pointer;
+                box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+              }
+        }
+        img {
+            height: 100px;
+            text-align: center;
+        }
+    }
+}

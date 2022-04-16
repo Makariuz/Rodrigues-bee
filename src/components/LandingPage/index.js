@@ -14,8 +14,9 @@ export function LandingPage(){
             <div className='wrapper__landing__page'>
                 <div className='img__container'>
                     <img src="assets/logo8.png" alt="" />
+                    <button onClick={handleNavigate}>STORE</button>
                 </div>
-            <button onClick={handleNavigate}>STORE</button>
+           
             </div>
 
         </div>

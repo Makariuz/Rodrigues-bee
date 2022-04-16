@@ -9,3 +9,5 @@ export { Recipes } from './Recipes'
 export { CreateRecipe } from './CreateRecipe'
 
 export { ReadRecipe } from './ReadRecipe'
+
+export { About } from './About'
