@@ -37,6 +37,17 @@ export function AuthContextProvider({ children }) {
      
     }
 
+    const addProduct = async (name, price, image) => {
+     
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/products/add`, {
+        name,
+        price,
+        image
+      });
+      navigate('/user/profile')
+     
+    }
+
     const createRecipe = async (title, ingredients, instructions) => {
 
       const response = await client.post(`${process.env.REACT_APP_BACKEND_URL}/recipes/create`, {
@@ -96,6 +107,7 @@ export function AuthContextProvider({ children }) {
     useEffect(() => {
       verify();
       getRecipes();
+    
     }, []);
 
       const value = {
@@ -106,6 +118,7 @@ export function AuthContextProvider({ children }) {
         createRecipe,
         recipes,
         readRecipe,
+        addProduct,
       };
     
       return (

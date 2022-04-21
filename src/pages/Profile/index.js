@@ -25,7 +25,7 @@ export function Profile(){
                     </div>
                     <div className='uProfile__name'>
                         <h3>  {user?.username} </h3>
-                        <smal> {user?.email}</smal>
+                        <small> {user?.email}</small>
                     </div>
                 </div>
 

@@ -8,15 +8,15 @@ export function Store(){
 
 return (
   <div className="store__container">
-    <div className="store__wrapper__top">
-   {/*  <img src="/assets/honey2.png" alt="" /> */}
+   {/*    <div className="store__wrapper__top">
+  <img src="/assets/honey2.png" alt="" /> 
     <h1>Our Products</h1>
-    </div>
+    </div>*/}
     
-    <div className="store__wrapper__right">
+    <div className="store__wrapper__bottom">
 
     <Products />
-    <ProductsCarousel />
+{/*     <ProductsCarousel /> */}
   
 
     </div>

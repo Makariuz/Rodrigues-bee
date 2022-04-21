@@ -1,10 +1,17 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../context';
 import './Menu.scss'
 
 export function Menu({users, menuOpen, setMenuOpen}){
 
-    const handleClose = () => {
+    const { logout } = useContext(AuthContext);
+
+
+    const handleLogout = () => {
         setMenuOpen(false)
+        logout()
+
     }
     return (
         <div className={'menu ' + (menuOpen && "active")}>
@@ -39,6 +46,11 @@ export function Menu({users, menuOpen, setMenuOpen}){
                 <li onClick={() => setMenuOpen(false)}>
                 <Link to="/about" > About        </Link>
                 </li>
+                {users && 
+                <li  onClick={handleLogout}>
+                <button> Logout        </button>
+                </li>
+                }
                 
                 
                

@@ -1,0 +1,126 @@
+@import '../../global.scss';
+
+.admin__page__container{
+    
+    display:flex;
+    background-image: url('../../images/honey__opacity.png');
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    
+    .logo__left{
+        flex: .5;
+        display:flex;
+            align-items: center;
+            justify-content: flex-end;
+
+        @include mobile{
+            display:none;
+        }
+        .logo__left__img{
+        
+            width: 80%;
+            height: 70%;
+            border-radius: 100px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            
+            background-color: whitesmoke;
+            img{
+                height: 70%;
+              
+                
+            }
+        }
+        
+    }
+    
+    .admin__products__container{
+        flex: .5;
+      
+        display:flex;
+        align-items: center;
+        @include mobile{
+         flex: 1;
+         justify-content: center;
+        }
+       
+        .admin__products{
+          
+    
+            height: 70%;
+            width: 80%;
+            background-color: whitesmoke;
+            display:flex;
+            flex-direction: column; 
+           
+         
+            justify-content: center;
+            flex-wrap: wrap;
+
+            border-radius: 100px;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+            @include mobile{
+                display:flex;
+               justify-content: center;
+             
+               border-radius: 10px;
+            }
+
+            form{
+                display:flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-right: 50px;
+                padding-top: 50px;
+                @include mobile{
+                    display:flex;
+                   justify-content: center;
+                    margin-right: 0px;
+                   border-radius: 10px;
+                }
+
+                input{
+                    border: .9px solid darkgray;
+                    outline: none;
+                    width: 100%;
+                    padding: 10px 15px;
+                    font-size: 1rem;
+                    border-radius: 10px;
+                }
+                button{
+                    align-self: flex-end;
+                    background-color: green;
+                    color: $offWhite;
+                    border: none;
+                    outline: none;
+                    font-family: 'Roboto', sans-serif;
+                    border-radius: 6px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    padding: 10px 5px;
+                    width: 80px;
+                    margin: 10px;
+                    cursor: pointer;
+                    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+                  }
+            }
+
+            > * {
+                height: 50vh;
+                padding: 20px;
+
+
+            }
+        }
+    }
+
+
+
+
+}
