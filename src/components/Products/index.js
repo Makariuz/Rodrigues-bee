@@ -113,40 +113,35 @@ export function Products(){
           )
    
         })}
- 
-            
-                   {/* <div className='prod__cart__list'>
 
-                   {cart.map((item) => {
-          return(
-                  
-                  
-                  <div className='prod__cart__pic'>
-                  <img height='50px' width="50px" src="https://res.cloudinary.com/portkey/image/upload/v1645273815/profile-pictures/hp_owshdn.png" alt="" />
-                  
-                  </div>
-                  <div className='prod__cart__name'>
-                  <h3> name</h3>
-                  </div>
-                  <div className="prod__cart__info">
-                  lorem stuff
-                  
-                  </div>
-
-                  <div className='prod__cart__price'>
-                  <span> €</span>
-                  </div>
-                  <button>Remove</button>
-
-                  )
-   
-        })}
-                  </div>
-               */}
            
       
        
               </div>
+
+              <div className="product-wrapper">
+        
+        {/* https://css-tricks.com/css-only-carousel/ */}
+
+        <div className="product-slides">
+            
+            {products.map((product) => {
+               return (
+                <div key={product._id} id="product-slide">
+                <img src="/assets/1.png" alt="" />
+                {product.name}
+                <br />
+                {product.price} €
+                <br />
+               
+                </div>
+               )
+
+            })}
+            
+        </div>
+
+        </div>
 
         </div>
     )

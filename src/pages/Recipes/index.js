@@ -114,8 +114,8 @@ export function Recipes(){
           <li>{recipe.title}</li>
           <small>Ingredients</small>  
           <li className="ing__list"> <div className="ing__card">{recipe.ingredients.slice(0, 25)}...</div> </li>
-          <small>Instructions</small>  
-          <li>{recipe.instructions.slice(0, 105)}...</li>
+          <small className="inst"> Instructions</small>  
+          <li className="inst">{recipe.instructions.slice(0, 105)}...</li>
           <small>Posted by: {recipe.author.username} </small>  
           
           </div>

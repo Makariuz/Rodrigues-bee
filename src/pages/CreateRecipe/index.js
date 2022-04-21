@@ -53,7 +53,7 @@ export function CreateRecipe(){
             <label htmlFor="instructions">Instructions</label>
             <textarea value={instructions} name="instructions" placeholder="Instructions" onChange={(event) => setInstructions(event.target.value)}/>
             {/* <p id="inst__saved">{instructions}</p> */}
-            <br/>
+           
             <button type="submit" className="submit__btn"> Submit </button>
             </form>
             <div>

@@ -28,6 +28,8 @@
             justify-content: center;
             
             background-color: whitesmoke;
+
+           
             img{
                 height: 70%;
               
@@ -82,13 +84,14 @@
                 font-family: 'Lemonada', cursive;
                 font-weight: 400;
                 font-size: 2vw;
+                @include mobile{
+                    font-size: 8vw;
+                }
             }
 
             img{
                 height: 100px;
-                @include mobile{
-                   height: 60px;
-                }
+               
             }
 
             .search__input__wrapper{
@@ -141,7 +144,33 @@
                         cursor: pointer;
                         box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 
+                       
+
                     }
+
+                    @include mobile{
+
+                        button{
+                            text-indent: -9999px;
+                            width: 50px;
+                            height: 40px;
+                            display:flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 1.5rem;
+                            font-weight: 600;
+                         }
+                        
+                        button:after{
+                         /*   content: "+"; */
+                           text-indent: 0;
+                           display: block;
+                           line-height: initial; 
+                          
+                           
+                        }
+                        
+                     }
     
                    
                 }
@@ -160,7 +189,7 @@
 
 
             @include mobile{
-                border-radius:0px 0x 50px 50px;
+              border-radius: 50px;
             }
 
           
@@ -173,6 +202,8 @@
             ul{
                 list-style: none;
                 overflow-y: scroll;
+
+
                 .recipe__card__container{
                     display:flex;
                     background-color: white;
@@ -183,8 +214,14 @@
                     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
                     .recipe__card {
                        flex: .7;
-                        
-                        
+                        background-color: red;
+                       @include mobile{
+                        flex: 1;
+
+                        .inst{
+                            display:none;
+                        }
+                    }
                     }
         
                     .ing__list > div {
@@ -196,6 +233,12 @@
                         display:flex;
                         align-items: center;
                         justify-content: center;
+
+
+                        @include mobile{
+                            display:none;
+                        }
+  
                         img{
                             height: 100px;
                         }

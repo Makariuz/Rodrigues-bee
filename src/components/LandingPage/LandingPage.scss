@@ -42,6 +42,7 @@
             height: 40%;
             width: 100%;
             border-radius: 100px;
+        
 
         }
         
@@ -51,7 +52,7 @@
  
             height: 80%;
             @include mobile {
-                width: 100%;
+                width: 80%;
 
                 height: 90%;
             }

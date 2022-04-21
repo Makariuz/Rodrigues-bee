@@ -21,6 +21,7 @@
        align-items: center;
        @include mobile{
         width: 90%;
+        height: 83%;
     }
 
        .create__header{
@@ -52,8 +53,11 @@
         form{
             display:flex;
             flex-direction: column;
+ 
+            height: 60%;
             @include mobile{
                 width: 90%;
+                height: 100%;
             }
 
             .ingredients__div{

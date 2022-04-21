@@ -99,11 +99,19 @@
         }
     }
 
+
+    /* USER RECIPES */
+
+
     .user__recipes__page{
         flex: .5;
        
         padding: 20px;
         overflow-y: scroll;
+
+        @include mobile {
+            flex: 1;
+        }
         
      
 
@@ -119,7 +127,7 @@
         justify-content: center;
            width: 100%;
             img{
-               
+                
             }
         }
         
