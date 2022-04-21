@@ -12,6 +12,18 @@ export function Profile(){
     const navigate = useNavigate();
     
       const { user, logout, recipes } = useContext(AuthContext);
+
+    const [recipe, setRecipe] = useState(recipes)
+  
+/*     console.log(recipe[0]) */
+
+     
+
+
+      const handleDelete = () => {
+         
+ 
+      };
     
 
       return (
@@ -63,9 +75,9 @@ export function Profile(){
 
                 <hr />
 
-                {recipes.map(recipe => {
+                {recipes.map((recipe, i) => {
                 return    (
-                <div key={recipe._id} className='recipe__owned'>
+                <div index={i} key={recipe._id} className='recipe__owned'>
                     {recipe.author.username === user.username &&
                     <div className='recipe__details'>
                       <h3>  {recipe.title} </h3>
@@ -74,7 +86,7 @@ export function Profile(){
                     }
                     <div className='btn__options'>
                     <button> <AiOutlineEdit /> </button>
-                   <button> <AiOutlineDelete /> </button>
+                   <button onClick={handleDelete} >  <AiOutlineDelete /> </button>
                    </div>
                     </div>
                     )

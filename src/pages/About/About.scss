@@ -23,6 +23,12 @@
             height: 100%;
             background-color: whitesmoke;
             position: relative;
+
+            &:hover{
+                border-radius: 20px;
+                transition: all 600ms ease;
+            
+            }
             
             .bees__bg{
                 height: 100%;
@@ -71,6 +77,12 @@
             background-color: whitesmoke;
             position: relative;
 
+            &:hover{
+                border-radius: 20px;
+                transition: all 600ms ease;
+            
+            }
+
             .honey__bg{
                 height: 100%;
                 overflow: hidden;
@@ -116,6 +128,11 @@
             height: 100%;
             background-color: whitesmoke;
             position: relative;
+            &:hover{
+                border-radius: 20px;
+                transition: all 600ms ease;
+            
+            }
 
             .beekeeping__bg{
                 height: 100%;
