@@ -5,6 +5,9 @@ import bees from '../../images/bee__bg.png'
 import { useState, useEffect } from 'react'
 import { ProductsCarousel } from '../ProductCarousel';
 
+import {BsCartPlus} from 'react-icons/bs';
+import {IoMdRemoveCircleOutline} from 'react-icons/io'
+
 
 export function Products(){
 
@@ -57,7 +60,7 @@ export function Products(){
            
               {products.map((product) => {
                 return(
-                  <div  className='prod__card'>
+                  <div  key={product._id} className='prod__card'>
                   <div className='prod__card__pic'>
                   <img height='50px' width="50px" src="https://res.cloudinary.com/portkey/image/upload/v1645273815/profile-pictures/hp_owshdn.png" alt="" />
                   
@@ -74,7 +77,7 @@ export function Products(){
                   <div className='prod__card__price'>
                   <span> {product.price} €</span>
                   </div>
-                  <button value={`${product.name} ${product.price}€ `}  onClick={addItemToCart}>Add to Cart</button>
+                  <button value={`${product.name} ${product.price}€ `}  onClick={addItemToCart}>Add to Cart <BsCartPlus /> </button>
                   </div>
                 )
               })}
@@ -95,19 +98,16 @@ export function Products(){
    
         {cart && cart.map((item) => {
           return(
-            <div className='prod__cart__list'>
+            <div key={item._id} className='prod__cart__list'>
             <div className='prod__added__cart'>
 
 
             {item}
 
-            
-                 
-
             </div>
 
             <div className='btn__remove'>
-            <button>Remove</button>
+            <button>Remove <IoMdRemoveCircleOutline /> </button>
             </div>
             </div>
           )

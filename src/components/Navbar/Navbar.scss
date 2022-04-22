@@ -34,9 +34,10 @@
                 align-items: center;
                 
             }
+            .cart,
             a{
                 text-decoration: none;
-                
+                cursor: pointer;
                 overflow: hidden;
 
                 img{
@@ -71,12 +72,12 @@
                     font-size: 1.1rem;
     
                     li{
-                        
+                        .cart,
                         a{
                             font-size: inherit;
                             color: white;
                             text-decoration: none;
-                           
+                            cursor: pointer;
                           
                         }
             

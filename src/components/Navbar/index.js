@@ -3,6 +3,7 @@ import './Navbar.scss'
 import { useState, useEffect,useContext } from 'react'
 import { AuthContext } from '../../context';
 
+import {BsCartPlus} from 'react-icons/bs';
 export function Navbar({users, menuOpen, setMenuOpen}){
 /*     const user = useContext(AuthContext) */
 
@@ -31,10 +32,11 @@ export function Navbar({users, menuOpen, setMenuOpen}){
                             </>
                             }
                         
-                    
+                
                         <li><Link to="/store" > Store        </Link></li>
                         <li><Link to="/recipes" > Recipes      </Link></li>
                         <li><Link to="/about" > About        </Link></li>
+                        <li>  <BsCartPlus className='cart'/> </li>
                         </ul>
                     </div>
                     

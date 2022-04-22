@@ -82,7 +82,8 @@ export function AuthContextProvider({ children }) {
         setUser(response.data.user);
         navigate("/user/profile");
       } catch (error) {
-        console.error(error);
+        console.error('incorrect user ' + error);
+
       }
     };
   

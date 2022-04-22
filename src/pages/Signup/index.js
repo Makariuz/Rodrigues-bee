@@ -1,6 +1,6 @@
 import './Signupp.scss'
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from '../../context';
 
@@ -26,6 +26,7 @@ export function Signup(){
     const handleSubmit = (e) => {
         e.preventDefault();
         signup(username, email, picture, password);
+        
        /*  const url = `${process.env.REACT_APP_BACKEND_URL}/auth/new-user`;
         const data = {
             username,
@@ -74,7 +75,7 @@ export function Signup(){
 
             <div className='user-header'>
                 <h3>Create an account to save your recipes!</h3>
-                <small>Already have an account? Login <a href="#">here.</a></small>
+                <small>Already have an account? Login <Link to='/user/login'>here.</Link></small>
             </div>
 
                 <div className='user-info'>

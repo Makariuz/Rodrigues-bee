@@ -38,6 +38,42 @@
         justify-content: space-between;
         margin: 20px;
         padding: 10px;
+
+        .prod__card__pic{
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .prod__card__name{
+         
+            flex: 1.5;
+            height: 100%;
+            /* text-align: center; */
+            margin: 10px;
+        }
+
+        .prod__card__price{
+    
+            flex: .5;
+            text-align: center;
+        }
+
+        button{
+            background-color: green;
+            color: $offWhite;
+            border: none;
+            outline: none;
+            font-family: 'Roboto', sans-serif;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            padding: 5px 10px;
+            width: 150px;
+            margin: 10px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
         
        }
 
@@ -85,9 +121,30 @@
                font-size: 1.5rem;
                
                 
+
+
             }
 
-            
+            button{
+                background-color: $buttonColor;
+                color: $offWhite;
+                border: none;
+                outline: none;
+                font-family: 'Roboto', sans-serif;
+                border-radius: 6px;
+                font-size: 1rem;
+                font-weight: 600;
+                letter-spacing: 2.5px;
+                padding: 5px 10px;
+                width: 130px;
+                margin: 10px;
+                box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+                cursor: pointer;
+                display:flex;
+                align-items: center;
+                justify-content: center;
+
+            }
             
         }
         &.active{

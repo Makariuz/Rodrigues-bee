@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context';
 import { Link, useNavigate } from "react-router-dom";
 import { ProductsCarousel } from '../../components'
@@ -17,9 +17,18 @@ export function Profile(){
   
 /*     console.log(recipe[0]) */
 
+    const [userRecipes, setUserRecipes] = useState([])
+
+
+
+    
+    recipes.forEach(n => {
+    n.author.username.includes(user?.username)
+    })
      
 
-
+    console.log(userRecipes)
+  
       const handleDelete = () => {
          
  
@@ -48,7 +57,7 @@ export function Profile(){
                   
                     <h3>  {user?.username} </h3>
                     <h3>  {user?.email} </h3>
-                    <h3> recipes created: 1 </h3>
+                    <h3> recipes created: {recipes?.length} </h3>
                     <p> Created date:  {user?.createdAt} </p>
                     <hr />
                     <button onClick={logout}>Logout</button>
@@ -75,19 +84,24 @@ export function Profile(){
 
                 <hr />
 
-                {recipes.map((recipe, i) => {
+                {recipes.map((recipe) => {
                 return    (
-                <div index={i} key={recipe._id} className='recipe__owned'>
-                    {recipe.author.username === user.username &&
+                    
+                <div  key={recipe._id} className='recipe__owned'>
+                    
+             
                     <div className='recipe__details'>
                       <h3>  {recipe.title} </h3>
                       <p> {recipe.instructions.slice(0, 50)}...</p>
                       </div>
-                    }
+                  
+            
+                  
                     <div className='btn__options'>
                     <button> <AiOutlineEdit /> </button>
                    <button onClick={handleDelete} >  <AiOutlineDelete /> </button>
                    </div>
+                  
                     </div>
                     )
                 })}
