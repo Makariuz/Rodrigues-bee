@@ -46,7 +46,7 @@ export function ReadRecipe(){
          <ul> 
          <h3>Ingredients</h3>
          {newArr.map((ingredient) => {
-          return  <li>{ingredient}</li>
+          return  <li key={ingredient.id}>{ingredient}</li>
          })}
     
          </ul>

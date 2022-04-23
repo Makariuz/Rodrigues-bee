@@ -72,6 +72,19 @@ export function AuthContextProvider({ children }) {
       return response.data
     }
 
+    const editRecipe  = async (id) => {
+      const response = await client.get(`${process.env.REACT_APP_BACKEND_URL}/recipes/edit/${id}`)
+     
+      return response.data
+    }
+
+    const deleteRecipe  = async (id) => {
+      const response = await client.delete(`${process.env.REACT_APP_BACKEND_URL}/recipes/${id}`)
+    
+      return response.data
+    }
+
+
     const login = async (email, password) => {
       try {
         const response = await client.post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, {
@@ -118,7 +131,9 @@ export function AuthContextProvider({ children }) {
         logout,
         createRecipe,
         recipes,
+        getRecipes,
         readRecipe,
+        deleteRecipe,
         addProduct,
       };
     

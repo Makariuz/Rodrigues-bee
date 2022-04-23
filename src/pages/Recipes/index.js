@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AiOutlineFileAdd } from "react-icons/ai";
 import {GrFormView} from 'react-icons/gr' 
 import { useNavigate } from "react-router-dom";
@@ -7,13 +7,18 @@ import { AuthContext } from '../../context';
 import './Recipes.scss'
 export function Recipes(){
   const navigate = useNavigate();
-    const {user,  recipes } = useContext(AuthContext);
+    const {user,  recipes,   getRecipes } = useContext(AuthContext);
 
   
 
     const [recipe, setRecipe] = useState(recipes)
 
     const handleSearch = (e) => setRecipe(recipes.filter((recipe) => recipe.title.toLowerCase().includes(e.target.value))) 
+
+    useEffect(() => {
+      getRecipes();
+    
+    }, []);
 
     return (
       
