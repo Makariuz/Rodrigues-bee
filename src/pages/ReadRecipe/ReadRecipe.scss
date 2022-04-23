@@ -27,6 +27,9 @@
     @include mobile {
       width: 90%;
     }
+    @include small_screen {
+      width: 90%;
+    }
 
     @include ipad {
       width: 90%;

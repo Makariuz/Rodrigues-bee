@@ -6,3 +6,4 @@ export { Products } from './Products';
 export { ProductsCarousel } from './ProductCarousel';
 export { NewUser } from './NewUser';
 export { NewRecipe } from './NewRecipe'
+export { ScreenSize } from './ScreenSize'

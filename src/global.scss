@@ -5,9 +5,18 @@ $offYellow: #FAE7BF;
 
 $width: 780px;
 
-$med__width: 820px;
+$med__width: 920px;
+$max__width: 1000px;
+
+$min__width: 279px;
+
+
+$small_screen: 280px;
+
 
 @import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@300;400;600;700&display=swap');
+
+
 
 @mixin mobile {
     @media (max-width: #{$width}){
@@ -15,10 +24,33 @@ $med__width: 820px;
     }
 };
 
+
+
 @mixin ipad {
-    @media (max-width: #{$med__width}){
+    @media (min-width: #{$med__width}){
         @content
     }
 };
+
+/* @mixin ipad {
+    @media (max-width: #{$max__width}){
+        @content
+    }
+}; */
+
+
+@mixin min__width {
+    @media (max-width: #{$min__width}){
+        @content
+    }
+};
+
+@mixin small_screen {
+    @media (max-width: #{$small_screen}){
+        @content
+    }
+};
+
+
 
 

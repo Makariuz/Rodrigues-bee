@@ -2,6 +2,10 @@
 
 .app{
     height: 100vh;
+
+    .screen__size{
+        display:none;
+    }
     
     .app__sections{
         width: 100%;
@@ -23,5 +27,25 @@
              height: calc(100vh - 70px);
              scroll-snap-align: start;
          }
+    }
+
+
+    @include min__width {
+        background-image: url('./images/honey__opacity.png');
+        background-position: 50% 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        .app__sections{
+            display: none;
+        }
+        .screen__size{
+            display:block;
+           
+
+            position: absolute;
+            top: 25%;
+            width: 100%;
+            
+        }
     }
 }

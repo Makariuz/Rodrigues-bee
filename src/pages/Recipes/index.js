@@ -60,8 +60,8 @@ export function Recipes(){
             <div className="recipe__card">
            
           <small>Title</small>  
-          <li>{recipe.title}</li>
-          <small>Ingredients</small>  
+          <li className="title__list">{recipe.title}</li>
+          <small className="ing__list">Ingredients</small>  
           <li className="ing__list"> <div className="ing__card">{recipe.ingredients.slice(0, 25)}...</div> </li>
           <small className="inst"> Instructions</small>  
           <li className="inst">{recipe.instructions.slice(0, 105)}...</li>

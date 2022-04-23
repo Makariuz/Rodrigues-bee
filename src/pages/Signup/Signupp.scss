@@ -26,6 +26,7 @@
  
          margin: 20px;
      }
+    
  
 
     .user-header{
@@ -54,6 +55,10 @@
             
      
          }
+
+
+
+
      
         
 
@@ -74,7 +79,11 @@
                 @include mobile {
                     width: 80%;
                  }
+               
+
+
             }
+            
             button {
                 background-color: $buttonColor;
                 color: $offWhite;

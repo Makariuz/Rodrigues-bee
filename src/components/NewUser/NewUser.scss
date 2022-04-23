@@ -10,11 +10,21 @@
     position: absolute;
     right: 25%;
     background-color: $offYellow;
+    transition: height 4s ease;
 
     @include mobile{
         right: 10%;
         top: 10%;
         width: 80%;
+
+    }
+
+    @include ipad{
+        left: 25%;
+        top: 25%;
+        width: 50%;
+        height: 40%;
+      
 
     }
 
@@ -54,6 +64,10 @@
             padding:20px;
         }
 
+        @include ipad {
+            padding:20px;
+        }
+
         h3{
             font-size: 1.3em;
 
@@ -71,8 +85,8 @@
         width: 100%;
         border-radius: 0 0 10px 10px;
 
-        @include mobile {
-           
+        @include ipad {
+            background-color: whitesmoke;
         }
         form{
             display:flex;

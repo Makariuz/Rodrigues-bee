@@ -112,7 +112,7 @@ export function Profile() {
           .filter((recipe) => recipe.author.username === user?.username)
           .map((recipe, i) => {
             return (
-              <div key={recipe._id} className="recipe__owned" onClick={() => navigate(`read/${recipe._id}`)}>
+              <div key={i} className="recipe__owned" onClick={() => navigate(`read/${recipe._id}`)}>
                 <div className="recipe__details">
                   <h3> {recipe.title} </h3>
                   <p> {recipe.instructions.slice(0, 50)}...</p>

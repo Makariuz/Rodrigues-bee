@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from './context';
 import { Outlet } from 'react-router-dom';
 
-import {  Menu, Navbar } from './components'
+import {  Menu, Navbar, ScreenSize } from './components'
 
 
 
@@ -16,9 +16,12 @@ function App() {
     <div className="app">
      <Navbar users={user.user} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <Menu users={user.user} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+        <div className='screen__size'>
+        <ScreenSize />
+        </div>
       
         <div className='app__sections'>
-      
+
         <Outlet users={user.user}  />
   
          
