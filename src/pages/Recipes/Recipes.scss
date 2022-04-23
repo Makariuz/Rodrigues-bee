@@ -12,6 +12,7 @@
         display:flex;
             align-items: center;
             justify-content: flex-end;
+            
 
         @include mobile{
             display:none;

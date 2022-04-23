@@ -32,18 +32,27 @@ export function ReadRecipe(){
        {recipe ? (
            <div className='read__card'>
             <div className='header__read__recipe'> 
+            <div className='img__wrapper'>
             <img src="/assets/Emily-s-Honey-Lime-Coleslaw_EXPS_THJJ17_201853_C02_02_4b-10.jpeg" alt="" />          
-           <h2>{recipe.title}</h2>
+            </div>
+            
+            <div className='title__wrapper'>
+            <h2>{recipe.title}</h2>
+            </div>
+           
            </div>
          
          <div className='ingredients__instructions__wrapper'>
          <ul> 
+         <h3>Ingredients</h3>
          {newArr.map((ingredient) => {
           return  <li>{ingredient}</li>
          })}
     
          </ul>
+         <hr />
          <div className='inst__section'>
+         <h3>Instructions</h3>
          <p>{recipe.instructions}</p>
          </div>
          </div>
