@@ -1,5 +1,6 @@
 import { useContext, useState } from "react"
 import { AiOutlineFileAdd } from "react-icons/ai";
+import {GrFormView} from 'react-icons/gr' 
 import { useNavigate } from "react-router-dom";
 import { NewRecipe } from "../../components";
 import { AuthContext } from '../../context';
@@ -8,22 +9,11 @@ export function Recipes(){
   const navigate = useNavigate();
     const {user,  recipes } = useContext(AuthContext);
 
-    const [input, setInput] = useState("")
+  
 
+    const [recipe, setRecipe] = useState(recipes)
 
-
-    const handleSearch = (e) => {
-        setInput(e.target.value)
- 
-        recipes.filter((recipe) => {
-
-            if (input.includes(recipe.title)) {console.log(recipe)}
-            return recipe.title.toLowerCase().includes(e.target.value)
-        })
-     
-    }
-
- 
+    const handleSearch = (e) => setRecipe(recipes.filter((recipe) => recipe.title.toLowerCase().includes(e.target.value))) 
 
     return (
       
@@ -48,7 +38,7 @@ export function Recipes(){
                 <div className="search__input__wrapper">
       <div className="search__input">
       
-        <input value={input} type='text' onChange={handleSearch} placeholder="Search for ingredients"/>
+        <input type='text' onChange={handleSearch} placeholder="Search for ingredients"/>
         
       </div>
       <div className="create__recipe__btn">
@@ -59,7 +49,7 @@ export function Recipes(){
         </div>
         <div className="wrapper__bottom">
         <ul>
-      {recipes.map((recipe) => {
+      {recipe.map((recipe) => {
           return(
             <div  key={recipe._id} className="recipe__card__container" onClick={() => navigate(`read/${recipe._id}`)}>
             <div className="recipe__card">
@@ -71,14 +61,17 @@ export function Recipes(){
           <li className="inst">{recipe.instructions.slice(0, 105)}...</li>
           <small>Posted by: {recipe.author.username} </small>  
           
+          
           </div>
           <div className="img__card__container">
             <img height="100px" src='assets/1.png' alt="" />
           </div>
+       
           </div>
       )
       })}
       </ul>
+      
       </div>
         
           

@@ -38,8 +38,12 @@ export function Products(){
       }, []);
 
 
+      const handleRemove = async (i) => {
+        /* cart.splice(i, 1) */
+       
+      }
 
-
+      console.log(cart)
       
 
       const addItemToCart = (e) => {
@@ -96,10 +100,10 @@ export function Products(){
           {cart.map(item => <li key={item}>{item}</li>)}
         </ul> */}
    
-        {cart && cart.map((item) => {
+        {cart && cart.map((item, i) => {
           return(
             <div key={item._id} className='prod__cart__list'>
-            <div className='prod__added__cart'>
+            <div index={i}  className='prod__added__cart'>
 
 
             {item}
@@ -107,7 +111,7 @@ export function Products(){
             </div>
 
             <div className='btn__remove'>
-            <button>Remove <IoMdRemoveCircleOutline /> </button>
+            <button onClick={() => cart.splice(i, 1)}>Remove <IoMdRemoveCircleOutline /> </button>
             </div>
             </div>
           )

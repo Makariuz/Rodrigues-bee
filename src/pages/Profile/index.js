@@ -15,11 +15,7 @@ export function Profile(){
 
     const [recipe, setRecipe] = useState(recipes)
   
-/*     console.log(recipe[0]) */
 
-    /* const [noRecipes, setNoRecipes] = useState(true)
-    
-      */
 
 
   
