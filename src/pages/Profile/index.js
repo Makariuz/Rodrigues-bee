@@ -17,17 +17,11 @@ export function Profile(){
   
 /*     console.log(recipe[0]) */
 
-    const [userRecipes, setUserRecipes] = useState([])
-
-
-
+    /* const [noRecipes, setNoRecipes] = useState(true)
     
-    recipes.forEach(n => {
-    n.author.username.includes(user?.username)
-    })
-     
+      */
 
-    console.log(userRecipes)
+
   
       const handleDelete = () => {
          
@@ -86,9 +80,12 @@ export function Profile(){
 
                 {recipes.map((recipe) => {
                 return    (
+
+                    <>
+                    {recipe.author.username === user?.username && 
                     
                 <div  key={recipe._id} className='recipe__owned'>
-                    
+               
              
                     <div className='recipe__details'>
                       <h3>  {recipe.title} </h3>
@@ -103,8 +100,17 @@ export function Profile(){
                    </div>
                   
                     </div>
+                }
+                    </>
                     )
+                    
                 })}
+               {/*  {noRecipes && 
+                    <div className='no__recipes'>
+                    no recipes
+                    </div>
+                } */}
+                
             </div>
 
             <div className='user__store__page'>

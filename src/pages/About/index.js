@@ -108,10 +108,10 @@ export function About(){
        
 
             
-        <div class="about__wrapper__mobile">
+        <div className="about__wrapper__mobile">
   
   
-  <div class="about__cards">
+  <div className="about__cards">
   <div className='about__bees'>
         <div className='bees__bg'>
             <img src={bees__bg} alt ="" />
