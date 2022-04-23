@@ -32,7 +32,7 @@ export function ReadRecipe(){
        {recipe ? (
            <div className='read__card'>
             <div className='header__read__recipe'> 
-            <div className='img__wrapper'>
+            <div className='img__wrapper' title="Click and hold to view image">
             <img src="/assets/Emily-s-Honey-Lime-Coleslaw_EXPS_THJJ17_201853_C02_02_4b-10.jpeg" alt="" />          
             </div>
             

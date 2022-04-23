@@ -34,12 +34,14 @@
            .img__wrapper{
             height: 10rem;
             transition: height 800ms ease;
+            cursor: pointer;
 
 
-            &:hover{
+            &:active{
                 height: 63%;
                 transform: scale(1);
                 transition: height 800ms ease;
+               
             }
             
            }
