@@ -9,7 +9,7 @@ export function CreateRecipe() {
 
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
-  const [image, setImage] = useState("");
+  const [picture, setPicture] = useState("");
   const [instructions, setInstructions] = useState("");
 
   let arr = [];
@@ -21,7 +21,7 @@ export function CreateRecipe() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    createRecipe(title, ingredients, instructions);
+    createRecipe(title, ingredients, instructions, picture);
     getRecipes();
   };
 
@@ -35,11 +35,11 @@ export function CreateRecipe() {
   const handleFileUpload = async (e) => {
     const uploadData = new FormData();
 
-    uploadData.append("image", e.target.files[0]);
+    uploadData.append("picture", e.target.files[0]);
 
     uploadImage(uploadData)
       .then((response) => {
-        setImage(response.path);
+        setPicture(response.path);
       })
       .catch((err) => console.log("Error while uploading the file: ", err));
   };

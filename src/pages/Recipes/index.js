@@ -58,6 +58,7 @@ export function Recipes(){
           return(
             <div  key={recipe._id} className="recipe__card__container" onClick={() => navigate(`read/${recipe._id}`)}>
             <div className="recipe__card">
+           
           <small>Title</small>  
           <li>{recipe.title}</li>
           <small>Ingredients</small>  
@@ -69,7 +70,7 @@ export function Recipes(){
           
           </div>
           <div className="img__card__container">
-            <img height="100px" src='assets/1.png' alt="" />
+            <img height="100px" src={recipe.image} alt="" />
           </div>
        
           </div>

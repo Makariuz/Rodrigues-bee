@@ -48,14 +48,16 @@ export function AuthContextProvider({ children }) {
      
     }
 
-    const createRecipe = async (title, ingredients, instructions) => {
+    const createRecipe = async (title, ingredients,instructions,image,  ) => {
 
       const response = await client.post(`${process.env.REACT_APP_BACKEND_URL}/recipes/create`, {
         title,
         ingredients,
-        instructions
+        instructions,
+        image
       });
       navigate('/recipes')
+
      
     }
 
