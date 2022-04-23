@@ -1,115 +1,133 @@
-
-
 @import "../../global.scss";
 
-.read__recipes__container{
-   height: 100vh;
-   display:flex;
-   align-items: center;
-   justify-content: center;
-   
-    .read__card{
-        width: 100px;
-        background-color: whitesmoke;
-        height: 400px;
-        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-        border-radius: 10px;
-        display:flex;
-        flex-direction: column;
-        
-        width: 50%;
-        height: 80%;
-        padding: 25px;
-       
-         
-       
-       
+.read__recipes__container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-        .header__read__recipe{
-           
-          /*   overflow: hidden; */
-            text-align: center;
-           
+  background-image: url("../../images/honey__opacity.png");
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: cover;
 
-           .img__wrapper{
-            height: 10rem;
-            transition: height 800ms ease;
-            cursor: pointer;
+  .read__card {
+    width: 100px;
+    background-color: whitesmoke;
+    height: 400px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
 
+    width: 50%;
+    height: 80%;
+    padding: 25px;
 
-            &:active{
-                height: 63%;
-                transform: scale(1);
-                transition: height 800ms ease;
-               
-            }
-            
-           }
-
-           .title__wrapper{
-
-            h2{
-                text-shadow: 0px 15px 5px rgba(0,0,0,0.1),
-                    10px 20px 5px rgba(0,0,0,0.05),
-                    -10px 20px 5px rgba(0,0,0,0.05);
-                font-family: 'Lemonada', cursive;
-                font-weight: 600;
-                font-size: 2rem;
-            }
-            
-
-            height: 100%;
-           }
-            img{
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-               
-            }
-
-
-        }
-
-        .ingredients__instructions__wrapper{
-            display:flex;
-           
-            justify-content: center;
-        
-            width: 100%;
-            flex: 1;
-            padding: 10px;
-           
-            h3{
-                margin-bottom: 10px;
-            }
-            ul{
-                width: 50%;
-               
-                list-style:decimal;
-                padding-left: 20px;
-            
-
-             
-            }
-            .inst__section{
-                width: 50%;
-                padding-left: 20px;
-            }
-        }
+    @include mobile {
+      width: 90%;
     }
 
-   .loading__screen{
-       display:flex;
-       flex-direction: column;
+    @include ipad {
+      width: 90%;
+    }
 
+    .header__read__recipe {
+      /*   overflow: hidden; */
+      text-align: center;
 
-       .img__wrapper__loading{
-           display:flex;
-            justify-content: center;
-         
-          img{
-              height: 100px;
+      .img__wrapper {
+        height: 10rem;
+        transition: height 800ms ease;
+        cursor: pointer;
+
+        &:active {
+          height: 63%;
+          transform: scale(1);
+          transition: height 800ms ease;
+
+          @include mobile {
+            height: 90%;
           }
-       }
-   }
+
+          @include ipad {
+            height: 90%;
+          }
+        }
+      }
+
+      .title__wrapper {
+        h2 {
+          text-shadow: 0px 15px 5px rgba(0, 0, 0, 0.1),
+            10px 20px 5px rgba(0, 0, 0, 0.05),
+            -10px 20px 5px rgba(0, 0, 0, 0.05);
+          font-family: "Lemonada", cursive;
+          font-weight: 600;
+          font-size: 2rem;
+
+          @include mobile {
+            font-size: 1rem;
+          }
+
+        }
+
+        height: 100%;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .ingredients__instructions__wrapper {
+      display: flex;
+
+      justify-content: center;
+
+      width: 100%;
+      flex: 1;
+      padding: 10px;
+
+      @include mobile {
+        overflow-y: scroll;
+      }
+
+      @include ipad {
+        overflow-y: scroll;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+      }
+      ul {
+        width: 50%;
+
+        list-style: decimal;
+        padding-left: 20px;
+
+        @include mobile {
+          width: 100%;
+        }
+      }
+      .inst__section {
+        width: 50%;
+        padding-left: 20px;
+      }
+    }
+  }
+
+  .loading__screen {
+    display: flex;
+    flex-direction: column;
+
+    .img__wrapper__loading {
+      display: flex;
+      justify-content: center;
+
+      img {
+        height: 100px;
+      }
+    }
+  }
 }

@@ -29,6 +29,17 @@
            
         }
 
+              
+        @include ipad{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding: 0px;
+           
+        }
+
         .logo-container{
             flex: .5;
             display:flex;
@@ -39,6 +50,17 @@
                 padding: 0 auto;
                height: 300px;
             }
+
+            @include ipad{
+                display:flex;
+                align-items: center;
+               
+                padding: 0 auto;
+               height: 300px;
+               width: 100%;
+            }
+
+            
             
             .logo{
 
@@ -51,12 +73,21 @@
                 @include mobile{
                     height: 100%;
                 }
+                @include ipad{
+                    height: 100%;
+                    
+                }
+
 
                 img{
                     object-fit: cover;
                     height: 100%;
                     @include mobile{
                         height: 100%;
+                    }
+                    @include ipad{
+                        height: 100%;
+                        
                     }
                 }
             }
@@ -71,6 +102,9 @@
                 @include mobile{
                     display:none;
                   
+                }
+                @include ipad{
+                    display:none;
                 }
                 button {
                     background-color: green;
@@ -94,6 +128,12 @@
             @include mobile{
                 padding: 0 auto;
             }
+            @include ipad{
+                padding: 0 auto;
+                width: 68%;
+            
+            }
+
             .acc-container{
                 background-color: #FAE7BF;
                 display:flex;
@@ -104,6 +144,10 @@
                 border-radius: 10px;
                 @include mobile{
                     padding: 10px;
+                }
+                @include ipad{
+                    padding: 10px;
+
                 }
 
                 form{
@@ -155,6 +199,11 @@
                     margin: 10px;
 
                     @include mobile {
+                        width: 160px;
+                        padding: 5px 10px;
+                    }
+
+                    @include ipad {
                         width: 160px;
                         padding: 5px 10px;
                     }

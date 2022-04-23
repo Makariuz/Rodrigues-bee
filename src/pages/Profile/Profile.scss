@@ -108,6 +108,43 @@
        
         padding: 20px;
         overflow-y: scroll;
+        position: relative;
+
+        .edit__recipe{
+            display:none;
+            height: 400px;
+            width: 95%;
+            margin: 10px;
+            padding: 10px;
+            background-color: lightgrey;
+            position: absolute;
+            border-radius: 10px;
+
+            .edit__card{
+                display:flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                width: 60%;
+
+            }
+
+            button{
+                align-self: center;
+                    
+                background-color: $buttonColor;
+                color: $offWhite;
+                border: none;
+                outline: none;
+                font-family: 'Roboto', sans-serif;
+                border-radius: 6px;
+                font-size: 1.4rem;
+               
+                padding: 5px;
+                box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+                cursor: pointer;
+            }
+
+        }
 
         @include mobile {
             flex: 1;
@@ -165,6 +202,7 @@
             display:flex;
             justify-content: space-between;
             align-items: center;
+            cursor: pointer;
           
 
             &:hover{

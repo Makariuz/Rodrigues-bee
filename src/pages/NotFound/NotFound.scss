@@ -1,0 +1,33 @@
+@import '../../global.scss';
+
+.container__not__found{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url('../../images/honey__opacity.png');
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+   
+    .mid__wrapper{
+       
+        width: 100%;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            height: 200px;
+            animation: move 2s infinite;
+          
+        }
+
+        @keyframes move {
+
+            50% {transform: translateY(20px)}
+           
+        }
+    
+    }
+}
