@@ -5,6 +5,8 @@ $offYellow: #FAE7BF;
 
 $width: 780px;
 
+$ipad_width: 781px;
+
 $med__width: 920px;
 $max__width: 1000px;
 
@@ -23,20 +25,26 @@ $small_screen: 280px;
         @content
     }
 };
-
-
-
-@mixin ipad {
-    @media (min-width: #{$med__width}){
+@mixin mobile {
+    @media (min-width: #{$small_screen}){
         @content
     }
 };
 
-/* @mixin ipad {
-    @media (max-width: #{$max__width}){
+
+
+@mixin ipad {
+    @media (max-width: #{$med__width}){
         @content
     }
-}; */
+};
+@mixin ipad {
+    @media (min-width: #{$ipad_width}){
+        @content
+    }
+};
+
+
 
 
 @mixin min__width {

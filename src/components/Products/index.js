@@ -13,7 +13,9 @@ export function Products(){
 
     const [products, setProducts] = useState([])
     const [cart, setCart] = useState([]);
+    const [price, setPrice] = useState([]);
     const [emptyCart, setEmptyCart] = useState(true);
+    const [total, setTotal] = useState(0)
 
 
 
@@ -43,16 +45,21 @@ export function Products(){
        
       }
 
-      console.log(cart)
+      /* console.log(cart) */
       
 
-      const addItemToCart = (e) => {
+      const addItemToCart = async (e) => {
         const item = e.target.value;
-
-        console.log(item)
+        let matches = await item.match(/(\d+)/);
+        setPrice([...price, matches[0]])
         setCart([...cart, item]);
         setEmptyCart(false)
+        
+       
+        
       }
+
+     
 
     return (
         <div className='products__list__container'>
@@ -66,7 +73,7 @@ export function Products(){
                 return(
                   <div  key={product._id} className='prod__card'>
                   <div className='prod__card__pic'>
-                  <img height='50px' width="50px" src="https://res.cloudinary.com/portkey/image/upload/v1645273815/profile-pictures/hp_owshdn.png" alt="" />
+                  <img height='50px' width="50px" src={product.image} alt="" />
                   
                 
                   </div>
@@ -112,13 +119,21 @@ export function Products(){
 
             <div className='btn__remove'>
             <button onClick={() => cart.splice(i, 1)}>Remove <IoMdRemoveCircleOutline /> </button>
+            
             </div>
+
+            
             </div>
           )
    
         })}
 
-           
+        <div className='total__cost'>
+
+        <h2>Total Cost</h2>
+        
+
+        </div>
       
        
               </div>

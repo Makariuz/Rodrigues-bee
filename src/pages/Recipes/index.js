@@ -15,10 +15,7 @@ export function Recipes(){
 
     const handleSearch = (e) => setRecipe(recipes.filter((recipe) => recipe.title.toLowerCase().includes(e.target.value))) 
 
-    useEffect(() => {
-      getRecipes();
-    
-    }, []);
+
 
     return (
       

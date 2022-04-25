@@ -13,8 +13,10 @@
     align-items: center;
     justify-content: flex-end;
 
+
     @include mobile {
       display: none;
+      
       
     }
 
@@ -24,8 +26,9 @@
 
     @include ipad {
       display: flex;
-      align-items: center;
-      justify-content: flex-start;
+      flex: 1;
+     
+     
     }
 
     .logo__left__img {
@@ -41,11 +44,11 @@
       background-color: whitesmoke;
 
       @include ipad {
-        flex: 1;
+        width: 100%;
         border-radius: 50px;
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
-        margin-left: 10px;
+        margin-left: 20px;
       }
 
 
@@ -58,6 +61,7 @@
           height: 40%;
           width: 100%;
           padding: 10px;
+         
 
         }
 
@@ -72,22 +76,24 @@
     display: flex;
     align-items: center;
 
+   
+
     @include mobile {
       flex: 1;
       justify-content: center;
       
+      
     }
 
-/*     @include small_screen {
-      flex: 1;
-      justify-content: center;
-    } */
 
     @include ipad {
-      display: flex;
-
-      align-items: center;
+      flex: 1;
+        
+      
     }
+
+
+    
 
     .recipe__list__wrapper {
       height: 70%;
@@ -103,22 +109,21 @@
 
       @include mobile {
         border-radius: 50px;
+        height: 500px;
+        width: 95%;
         
       }
 
-/*       @include small_screen {
-        border-radius: 50px;
-      } */
 
       @include ipad {
         display: flex;
 
-        justify-content: center;
-        flex: 1;
+        height: 70%;
+
         border-radius: 50px;
         border-top-left-radius: 0px;
         border-bottom-left-radius: 0px;
-        margin-right: 10px;
+        margin-right: 20px;
       }
     }
 
@@ -137,9 +142,7 @@
         @include mobile {
           font-size: 8vw;
         }
-/*         @include small_screen {
-          font-size: 8vw;
-        } */
+
 
         @include ipad {
           font-size: 8vw;
