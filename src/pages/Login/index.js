@@ -55,6 +55,7 @@ export function Login(){
 
                         
                 <div className='user-info'>
+  
                 <div className='acc-container'>
                     <form onSubmit={handleSubmit}>
                     <input 
@@ -77,7 +78,7 @@ export function Login(){
                     <hr className='hr__width'/>
                     </form>
                
-                    <button onClick={() => setShow(!show)}> Create New Account </button>
+                    <button className='create__acc' onClick={() => setShow(!show)}> Create New Account </button>
                      {show && <NewUser /> }
 
                     </div>

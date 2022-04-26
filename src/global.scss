@@ -7,7 +7,9 @@ $width: 780px;
 
 $ipad_width: 781px;
 
-$med__width: 920px;
+
+
+$med__width: 820px;
 $max__width: 1000px;
 
 $min__width: 279px;
@@ -25,26 +27,26 @@ $small_screen: 280px;
         @content
     }
 };
-@mixin mobile {
+/* @mixin mobile {
     @media (min-width: #{$small_screen}){
         @content
     }
-};
+}; */
 
 
 
 @mixin ipad {
-    @media (max-width: #{$med__width}){
+    @media (max-width: #{$med__width}) and (min-width: #{$ipad_width}){
         @content
     }
 };
-@mixin ipad {
+/* @mixin ipad {
     @media (min-width: #{$ipad_width}){
         @content
     }
 };
 
-
+ */
 
 
 @mixin min__width {
