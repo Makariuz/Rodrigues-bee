@@ -139,15 +139,17 @@ export function Products(){
               </div>
 
               <div className="product-wrapper">
-        
+           
         {/* https://css-tricks.com/css-only-carousel/ */}
 
         <div className="product-slides">
+
+        
             
             {products.map((product) => {
                return (
                 <div key={product._id} id="product-slide">
-                <img src="/assets/1.png" alt="" />
+                <img src={product.image} alt="" />
                 {product.name}
                 <br />
                 {product.price} €

@@ -1,31 +1,29 @@
-import './app.scss';
+import "./app.scss";
 import { useContext, useState } from "react";
-import { AuthContext } from './context';
-import { Outlet } from 'react-router-dom';
+import { AuthContext } from "./context";
+import { Outlet } from "react-router-dom";
 
-import {  Menu, Navbar, ScreenSize } from './components'
-
-
+import { Menu, Navbar, ScreenSize } from "./components";
 
 function App() {
-
-  const [menuOpen, setMenuOpen] = useState(false)
-  const user = useContext(AuthContext)
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { user, recipes, setRecipes } = useContext(AuthContext);
 
   return (
     <div className="app">
-     <Navbar users={user.user} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <Menu users={user.user} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <div className='screen__size'>
+      <Navbar
+        users={user}
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+      />
+      <Menu users={user} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <div className="screen__size">
         <ScreenSize />
-        </div>
-      
-        <div className='app__sections'>
+      </div>
 
-        <Outlet users={user.user}  />
-  
-         
-        </div>
+      <div className="app__sections">
+        <Outlet users={user} />
+      </div>
     </div>
   );
 }

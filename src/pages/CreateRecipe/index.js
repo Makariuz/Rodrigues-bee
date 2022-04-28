@@ -5,7 +5,7 @@ import { AiOutlineFileAdd } from "react-icons/ai";
 import axios from "axios";
 
 export function CreateRecipe() {
-  const { createRecipe, recipes, getRecipes } = useContext(AuthContext);
+  const { createRecipe, recipes, getRecipes, setRecipes } = useContext(AuthContext);
 
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
@@ -22,7 +22,8 @@ export function CreateRecipe() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     createRecipe(title, ingredients, instructions, picture);
-    getRecipes();
+ 
+ 
   };
 
   const uploadImage = (file) => {

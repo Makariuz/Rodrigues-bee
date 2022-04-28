@@ -14,9 +14,13 @@ export function Recipes(){
     const [recipe, setRecipe] = useState(recipes)
 
     const handleSearch = (e) => setRecipe(recipes.filter((recipe) => recipe.title.toLowerCase().includes(e.target.value))) 
+/* 
 
-
-
+    useEffect(() => {
+      console.log(recipes + ' <--- RECIPES ')
+      setRecipe(...recipes)
+    }, [recipes])
+ */
     return (
       
 
@@ -51,9 +55,9 @@ export function Recipes(){
         </div>
         <div className="wrapper__bottom">
         <ul>
-      {recipe.map((recipe) => {
+      {recipes && recipe.map((recipe) => {
           return(
-            <div  key={recipe._id} className="recipe__card__container" onClick={() => navigate(`read/${recipe._id}`)}>
+            <div  key={recipe._id} className="recipe__card__container"  onClick={() => navigate(`edit/${recipe._id}`)}>
             <div className="recipe__card">
            
           <small>Title</small>  
@@ -67,7 +71,7 @@ export function Recipes(){
           
           </div>
           <div className="img__card__container">
-            <img height="100px" src={recipe.image} alt="" />
+            <img height="100px" src={recipe.image} alt=""  onClick={() => navigate(`read/${recipe._id}`)} />
           </div>
        
           </div>

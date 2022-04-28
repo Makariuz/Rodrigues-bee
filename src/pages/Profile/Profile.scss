@@ -1,277 +1,263 @@
-@import '../../global.scss';
+@import "../../global.scss";
 
-.container__user__profile{
-    background-color: darkgrey;
-    display:flex;
-    background-image: url('../../images/honey__opacity.png');
-    background-position: 50% 0;
-    background-repeat: no-repeat;
+.container__user__profile {
+  background-color: darkgrey;
+  display: flex;
+  background-image: url("../../images/honey__opacity.png");
+  background-position: 50% 0;
+  background-repeat: no-repeat;
 
-    @include mobile{
-        display:flex;
-        flex-direction: column;
-    }
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+  }
 
+  .user__profile__page {
+    flex: 0.25;
 
-    .user__profile__page{
-        flex: .25;
-        
-        background-color: #FAE7BF;
-        display:flex;
-        flex-direction: column;
+    background-color: #fae7bf;
+    display: flex;
+    flex-direction: column;
 
-       
-       
-       
-  
+    .pPicture__header__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-        .pPicture__header__container{
-            display:flex;
-           flex-direction: column;
-           align-items: center;
-           justify-content: center;
-       
-           background-image: url('../../images/bee__background.png');
-           background-position: 20% 80%;
-           background-repeat: no-repeat;
-           background-size: cover;
-     
-            width: 100%;
-            padding: 10px;
+      background-image: url("../../images/bee__background.png");
+      background-position: 20% 80%;
+      background-repeat: no-repeat;
+      background-size: cover;
 
-            .pPicture{
-                border: 1px solid white;
-                background-color: $offYellow;
-                margin: 10px;
-                border-radius: 10px;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); 
-                overflow: hidden;
-                img {
-                   height: 100px;
-                   
-                }
-            }
-        }
+      width: 100%;
+      padding: 10px;
 
-        .uProfile__name{
-            display:flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .user__profile__info{
-            height: 100%;
-            display:flex;
-            flex-direction: column;
-            @include mobile{
-                display:none;
-            }
-      
-
-            .acc__personal__details{
-               
-                height: 50%;
-                padding: 10px;
-                display:flex;
-                flex-direction: column;
-                justify-content: space-around;
-
-
-                button {
-                    align-self: center;
-                    
-                    background-color: $buttonColor;
-                    color: $offWhite;
-                    border: none;
-                    outline: none;
-                    font-family: 'Roboto', sans-serif;
-                    border-radius: 6px;
-                    font-size: 1rem;
-                    font-weight: 600;
-                    padding: 10px 5px;
-                    width: 250px;
-                    margin: 10px;
-                    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-                    cursor: pointer;
-                }
-            }
-        }
-    }
-
-
-    /* USER RECIPES */
-
-
-    .user__recipes__page{
-        flex: .5;
-       
-        padding: 20px;
-        overflow-y: scroll;
-        position: relative;
-
-        .edit__recipe{
-            display:none;
-            height: 400px;
-            width: 95%;
-            margin: 10px;
-            padding: 10px;
-            background-color: lightgrey;
-            position: absolute;
-            border-radius: 10px;
-
-            .edit__card{
-                display:flex;
-                flex-direction: column;
-                flex-wrap: wrap;
-                width: 60%;
-
-            }
-
-            button{
-                align-self: center;
-                    
-                background-color: $buttonColor;
-                color: $offWhite;
-                border: none;
-                outline: none;
-                font-family: 'Roboto', sans-serif;
-                border-radius: 6px;
-                font-size: 1.4rem;
-               
-                padding: 5px;
-                box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-                cursor: pointer;
-            }
-
-        }
-
-        @include mobile {
-            flex: 1;
-        }
-        
-     
-
-        h2{
-            text-align: center;
-            font-family: 'Lemonada', cursive;
-            font-weight: 400;
-            font-size: 5vh;
-
-        }
-        .recipes__img__container{
-        display:flex;
-        justify-content: center;
-           width: 100%;
-            img{
-                
-            }
-        }
-        
-        .recipes__top__extra{
-            display:flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 10px;
-
-            button{
-                background-color: green;
-                color: $offWhite;
-                border: none;
-                outline: none;
-                font-family: 'Roboto', sans-serif;
-                border-radius: 6px;
-                font-size: 1rem;
-                font-weight: 600;
-                padding: 10px 5px;
-                width: 250px;
-                margin: 10px;
-                box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-                cursor: pointer;
-            }
-        }
-        .recipe__owned{
-          
-            
-            margin: 10px;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-            background-color: white;
-            display:flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-          
-
-            &:hover{
-                box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-            }
-
-            button{
-                margin: 10px;
-                padding: 10px;
-                border: 0px;
-                background-color: $buttonColor;
-                color: white;
-                border-radius: 10px;
-            }
-        }
-       
-    }
-
-    .user__store__page{
-        padding: 20px;
-        flex: .25;
-        width: 100%;
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: relative;
+      .pPicture {
+        border: 1px solid white;
+        background-color: $offYellow;
+        margin: 10px;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
         overflow: hidden;
-
-        @include mobile{
-            display:none;
+        img {
+          height: 100px;
         }
-        
-      /*   background-image: url('../../images/honey2.png');
+      }
+    }
+
+    .uProfile__name {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .user__profile__info {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      @include mobile {
+        display: none;
+      }
+
+      .acc__personal__details {
+        height: 50%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        button {
+          align-self: center;
+
+          background-color: $buttonColor;
+          color: $offWhite;
+          border: none;
+          outline: none;
+          font-family: "Roboto", sans-serif;
+          border-radius: 6px;
+          font-size: 1rem;
+          font-weight: 600;
+          padding: 10px 5px;
+          width: 250px;
+          margin: 10px;
+          box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  /* USER RECIPES */
+
+  .user__recipes__page {
+    flex: 0.5;
+
+    padding: 20px;
+    overflow-y: scroll;
+    position: relative;
+
+    .edit__recipe {
+      display: none;
+      height: 400px;
+      width: 95%;
+      margin: 10px;
+      padding: 10px;
+      background-color: lightgrey;
+      position: absolute;
+      border-radius: 10px;
+
+      &.edit__open{
+          display:flex;
+      }
+
+      .edit__card {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 60%;
+      }
+
+      button {
+        align-self: center;
+
+        background-color: $buttonColor;
+        color: $offWhite;
+        border: none;
+        outline: none;
+        font-family: "Roboto", sans-serif;
+        border-radius: 6px;
+        font-size: 1.4rem;
+
+        padding: 5px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+      }
+    }
+
+    @include mobile {
+      flex: 1;
+    }
+
+    .top__recipe__container {
+      h2 {
+        text-align: center;
+        font-family: "Lemonada", cursive;
+        font-weight: 400;
+        font-size: 5vh;
+      }
+      .recipes__img__container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        img {
+        }
+      }
+
+      .recipes__top__extra {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px;
+
+        button {
+          background-color: green;
+          color: $offWhite;
+          border: none;
+          outline: none;
+          font-family: "Roboto", sans-serif;
+          border-radius: 6px;
+          font-size: 1rem;
+          font-weight: 600;
+          padding: 10px 5px;
+          width: 250px;
+          margin: 10px;
+          box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+          cursor: pointer;
+        }
+      }
+    }
+
+    .recipes__owned__wrapper {
+      background-color: rgba(245, 245, 245, 0.242);
+      overflow-y: scroll;
+      height: 60%;
+      padding: 5px;
+      border-radius: 10px;
+
+      .recipe__owned {
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        background-color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &:hover {
+          box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+            0 10px 10px rgba(0, 0, 0, 0.22);
+        }
+
+        button {
+          margin: 10px;
+          padding: 10px;
+          border: 0px;
+          background-color: $buttonColor;
+          color: white;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+
+  .user__store__page {
+    padding: 20px;
+    flex: 0.25;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+
+    @include mobile {
+      display: none;
+    }
+
+    /*   background-image: url('../../images/honey2.png');
         background-position: 50% 0;
         background-repeat: no-repeat;
         opacity: .9; */
 
-       
-        .carousel__container{
-            
-            background-color: rgba(255, 255, 255, 0.018);
-           display:flex;
-       
-           align-items: center;
-           justify-content: center;
-            height: 100%;
-            width: 100%;
-            border-left: 1px solid black;
-           
-            .carousel{
-             
-                margin: 10px;
-            }
+    .carousel__container {
+      background-color: rgba(255, 255, 255, 0.018);
+      display: flex;
 
-        }
-    
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      border-left: 1px solid black;
 
-        img{
-            height: 100%;
-            opacity: .6;
-            z-index: -1;
-        }
+      .carousel {
+        margin: 10px;
+      }
     }
 
     img {
-        height: 100px;
-        
+      height: 100%;
+      opacity: 0.6;
+      z-index: -1;
     }
+  }
 
-
+  img {
+    height: 100px;
+  }
 }

@@ -7,7 +7,7 @@ export { Signup } from './Signup';
 export { Store } from './Store';
 export { Recipes } from './Recipes'
 export { CreateRecipe } from './CreateRecipe'
-
+export {EditRecipe } from './EditRecipe'
 
 export { ReadRecipe } from './ReadRecipe'
 

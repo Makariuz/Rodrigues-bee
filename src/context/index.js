@@ -1,8 +1,6 @@
 import axios from "axios";
-import { client} from '../client';
+import { client } from "../client";
 import { useNavigate } from "react-router-dom";
-
-
 
 const { createContext, useState, useEffect } = require("react");
 
@@ -11,135 +9,155 @@ export const AuthContext = createContext();
 export function AuthContextProvider({ children }) {
   const navigate = useNavigate();
 
+  const [user, setUser] = useState(null);
+  const [recipes, setRecipes] = useState([]);
 
-    const [user, setUser] = useState(null);
-    const [recipes, setRecipes] = useState([])
+  const saveToken = (token) => {
+    localStorage.setItem("token", `Bearer ${token}`);
+  };
 
+  const deleteToken = () => {
+    localStorage.removeItem("token");
+  };
 
-    const saveToken = (token) => {
-      localStorage.setItem("token", `Bearer ${token}`);
-    };
-  
-    const deleteToken = () => {
-      localStorage.removeItem("token");
-    };
-  
-
-    const signup = async (username, email, picture, password) => {
-     
-      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/new-user`, {
+  const signup = async (username, email, picture, password) => {
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/auth/new-user`,
+      {
         username,
         email,
         picture,
-        password
-      });
-      navigate('/user/login')
-     
-    }
+        password,
+      }
+    );
+    navigate("/user/login");
+  };
 
-    const addProduct = async (name, price, image) => {
-     
-      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/products/add`, {
+  const addProduct = async (name, price, image) => {
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/products/add`,
+      {
         name,
         price,
-        image
-      });
-      navigate('/user/profile')
-     
-    }
+        image,
+      }
+    );
+    navigate("/user/profile");
+  };
 
-    const createRecipe = async (title, ingredients,instructions,image,  ) => {
-
-      const response = await client.post(`${process.env.REACT_APP_BACKEND_URL}/recipes/create`, {
+  const createRecipe = async (title, ingredients, instructions, image) => {
+    const response = await client.post(
+      `${process.env.REACT_APP_BACKEND_URL}/recipes/create`,
+      {
         title,
         ingredients,
         instructions,
-        image
-      });
-      navigate('/recipes')
+        image,
+      }
+    );
+    setRecipes(...recipes, response.data)
+    console.log(recipes)
+    navigate("/recipes");
+  };
 
-     
-    }
+  const getRecipes = async () => {
+    const response = await client.get(
+      `${process.env.REACT_APP_BACKEND_URL}/recipes`
+    );
 
-    const getRecipes = async () => {
-      const response = await client.get(`${process.env.REACT_APP_BACKEND_URL}/recipes`)
-      
-      setRecipes(response.data);
+    setRecipes(response.data);
+  };
 
-    }
+  const readRecipe = async (id) => {
+    const response = await client.get(
+      `${process.env.REACT_APP_BACKEND_URL}/recipes/read/${id}`
+    );
 
-    const readRecipe = async (id) => {
-      const response = await client.get(`${process.env.REACT_APP_BACKEND_URL}/recipes/read/${id}`)
-     
-      return response.data
-    }
+    return response.data;
+  };
 
-    const editRecipe  = async (id) => {
-      const response = await client.get(`${process.env.REACT_APP_BACKEND_URL}/recipes/edit/${id}`)
-     
-      return response.data
-    }
+  const editRecipe = async (id, newTitle, newIngredients, newInstructions, newImage) => {
+    const response = await client.put(
+      `${process.env.REACT_APP_BACKEND_URL}/recipes/edit/${id}`,
+      {
+        id,
+        newTitle,
+        newIngredients,
+        newInstructions,
+        newImage,
+      }
+    );
+    setRecipes(...recipes, response.data)
+    console.log(recipes)
+    navigate("/recipes");
+  };
 
-    const deleteRecipe  = async (id) => {
-      const response = await client.delete(`${process.env.REACT_APP_BACKEND_URL}/recipes/${id}`)
-    
-      return response.data
-    }
+  const deleteRecipe = async (id) => {
+    const response = await client.delete(
+      `${process.env.REACT_APP_BACKEND_URL}/recipes/${id}`
+    );
 
+    return response.data;
+  };
 
-    const login = async (email, password) => {
-      try {
-        const response = await client.post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, {
+  const login = async (email, password) => {
+    try {
+      const response = await client.post(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
+        {
           email,
           password,
-        });
-        saveToken(response.data.token);
-        setUser(response.data.user);
-        navigate("/user/profile");
-      } catch (error) {
-        console.error('incorrect user ' + error);
-
-      }
-    };
-  
-    const verify = async () => {
-      try {
-        const response = await client.get(`${process.env.REACT_APP_BACKEND_URL}/auth/verify`);
-      
-        setUser(response.data);
-        navigate("/user/profile");
-   
-      } catch (error) {
-        navigate("/");
-      }
-    };
-  
-    const logout = () => {
-      deleteToken();
-      setUser(null);
-      navigate("/");
-    };
-  
-    useEffect(() => {
-      verify();
-      getRecipes();
-    
-    }, []);
-
-      const value = {
-        user,
-        signup,
-        login,
-        logout,
-        createRecipe,
-        recipes,
-        getRecipes,
-        readRecipe,
-        deleteRecipe,
-        addProduct,
-      };
-    
-      return (
-        <AuthContext.Provider value={ value }>{children}</AuthContext.Provider>
+        }
       );
+      saveToken(response.data.token);
+      setUser(response.data.user);
+      navigate("/user/profile");
+    } catch (error) {
+      console.error("incorrect user " + error);
+    }
+  };
+
+  const verify = async () => {
+    try {
+      const response = await client.get(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/verify`
+      );
+       
+      setUser(response.data);
+    
+      navigate("/user/profile");
+      
+    } catch (error) {
+      navigate("/");
+     
+    }
+  };
+
+  const logout = () => {
+    deleteToken();
+    setUser(null);
+    navigate("/");
+  };
+
+  useEffect(() => {
+    verify();
+    getRecipes();
+  }, []);
+
+  const value = {
+    user,
+    signup,
+    login,
+    logout,
+    createRecipe,
+    recipes,
+    getRecipes,
+    readRecipe,
+    editRecipe,
+    deleteRecipe,
+    addProduct,
+    setRecipes,
+  };
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
