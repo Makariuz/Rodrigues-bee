@@ -18,34 +18,46 @@ import "./Profile.scss";
 export function Profile() {
   const navigate = useNavigate();
 
-  const [editOpen, setEditOpen] = useState(false);
+  const [editOpen, setEditOpen] = useState(true);
+  const [newId, setNewId] = useState("");
   const [newTitle, setNewTitle] = useState("");
   const [newIngredients, setNewIngredients] = useState("");
   const [newImage, setNewImage] = useState();
   const [newInstructions, setNewInstructions] = useState("");
 
-  const { user, logout, recipes, getRecipes, setRecipes, editRecipe, deleteRecipe } =
-    useContext(AuthContext);
+  const {
+    user,
+    logout,
+    recipes,
+    getRecipes,
+    setRecipes,
+    editRecipe,
+    deleteRecipe,
+  } = useContext(AuthContext);
 
   const handleDelete = async (id) => {
     await deleteRecipe(id);
     getRecipes();
   };
 
+  const handleEdit = (recipe) => {
+    setEditOpen(true);
+    setNewId(recipe._id);
+    setNewTitle(recipe.title);
+    setNewIngredients(recipe.ingredients);
+    setNewInstructions(recipe.instructions);
+    setNewImage(recipe.image);
+  };
+
+  const handleSubmit =  (e) => {
+    e.preventDefault();
+    console.log(newId + ' -- ' + newTitle + ' -- ' + newIngredients + ' -- ' + newInstructions  + ' -- ' + newImage)
+    editRecipe(newId, newTitle, newIngredients, newInstructions, newImage);
+    getRecipes()
+    setEditOpen(false)
 
 
-const handleEdit = (recipe) => {
-
-  setEditOpen(true)
-  setNewTitle(recipe.title)
-
-}
-
- const handleSubmit = (e) => {
-   e.preventDefault()
-   console.log(newTitle)
-   editRecipe(newTitle)
- }
+  };
 
   useEffect(() => {
     getRecipes();
@@ -55,10 +67,8 @@ const handleEdit = (recipe) => {
     `${new Date(user?.createdAt.toString())}`
   );
 
-
   return (
     <>
-
       {user ? (
         <div className="container__user__profile">
           <div className="user__profile__page">
@@ -90,55 +100,53 @@ const handleEdit = (recipe) => {
             </div>
           </div>
           <div className="user__recipes__page">
-
-          {/* EDIT RECIPES */}
+            {/* EDIT RECIPES */}
 
             <div className={"edit__recipe " + (editOpen && "edit__open")}>
-             
-                      <div className="edit__card">
+              <div className="edit__card">
+                <form onSubmit={handleSubmit}>
+                  <label htmlFor="title">Title</label>
+                  <input
+                    value={newTitle}
+                    name="title"
+                    onChange={(e) => setNewTitle(e.target.value)}
+                    placeholder="Title"
+                  />
+                  <br />
 
-                      <form onSubmit={handleSubmit}>
-                        <label htmlFor="title">Title</label>
-                        <input value={newTitle} name="title" onChange={(e) => setNewTitle(e.target.value)} placeholder="Title" />
-                        <br />
+                  <label htmlFor="ingredients">Ingredients</label>
+                  <div className="ingredients__div">
+                    <input
+                      value={newIngredients}
+                      name="ingredients"
+                      placeholder="Ingredients (use dash (-) to separate)"
+                      onChange={(e) => setNewIngredients(e.target.value)}
+                    />
+                  </div>
 
-                        <label htmlFor="ingredients">Ingredients</label>
-                        <div className="ingredients__div">
-                          <input
-                            name="ingredients"
-                            placeholder="Ingredients (use dash (-) to separate)"
-                          />
-                          <button>
-                            <AiOutlineFileAdd />
-                          </button>
-                        </div>
+                  <br />
 
-                        <br />
-
-                        <label htmlFor="image">Image</label>
-                        <input
-                          type="file"
-                          name="image"
-                          className="image__input"
-                        />
-                        <br />
-                        <label htmlFor="instructions">Instructions</label>
-                        <textarea
-                          name="instructions"
-                          placeholder="Instructions"
-                        />
-                        <div className="btn__save__cancel">
-                        {/* submit button...save button */}
-                          <button type="submit">
-                            <AiOutlineSave />
-                          </button>
-                          <button onClick={() => setEditOpen(false)}>
-                            <MdOutlineCancel />
-                          </button>
-                        </div>
-                        </form>
-                      </div>
-                   
+                  <label htmlFor="image">Image</label>
+                  <input type="file" name="image" className="image__input" />
+                  <br />
+                  <label htmlFor="instructions">Instructions</label>
+                  <textarea
+                    value={newInstructions}
+                    name="instructions"
+                    placeholder="Instructions"
+                    onChange={(e) => setNewInstructions(e.target.value)}
+                  />
+                  <div className="btn__save__cancel">
+                    {/* submit button...save button */}
+                    <button type="submit">
+                      <AiOutlineSave />
+                    </button>
+                    <button type="text" onClick={() => setEditOpen(false)}>
+                      <MdOutlineCancel />
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
             <div className="top__recipe__container">
               <h2>My Recipes</h2>

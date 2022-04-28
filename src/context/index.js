@@ -80,16 +80,13 @@ export function AuthContextProvider({ children }) {
     const response = await client.put(
       `${process.env.REACT_APP_BACKEND_URL}/recipes/edit/${id}`,
       {
-        id,
         newTitle,
         newIngredients,
         newInstructions,
         newImage,
       }
     );
-    setRecipes(...recipes, response.data)
-    console.log(recipes)
-    navigate("/recipes");
+
   };
 
   const deleteRecipe = async (id) => {
