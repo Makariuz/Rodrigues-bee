@@ -113,12 +113,29 @@
       box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); 
       
       transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-      z-index: 9;
+     
+
+      @include mobile{
+    
+        width: 90%;
+        margin: 0 auto;
+        padding: 0 auto;
+        height: 60%;
+     
+        
+      }
 
      
 
       &.edit__open{
           display:flex;
+
+          @include mobile{
+          
+          
+            overflow-y: scroll;
+           
+          }
       }
 
       
@@ -131,9 +148,7 @@
         position: relative;
         z-index: 99999;
 
-        @include mobile {
-          width: 50%;
-        }
+        
        
         .close__card{
           position:absolute;
@@ -144,6 +159,10 @@
           font-size: 2rem;
           font-weight: 200;
           color: $buttonColor;
+
+          @include mobile {
+            font-size: 1rem;
+          }
 
 
           &:active,
@@ -170,8 +189,13 @@
           height: 100%;
           @include mobile{
 
-              width: 50%;
-              height: 100%;
+           
+
+
+             height: 100%;
+           
+             overflow-x: hidden;
+            
           }
 
         .form__wrapper{
@@ -181,7 +205,8 @@
           @include mobile{
             display:flex;
             flex-direction: column;
-        }
+
+          }
 
           .title__ing__div{
             padding: 5px;
@@ -190,7 +215,8 @@
             justify-content: center;
           
             height: 100%;
-          
+            
+ 
           }
           .instructions__div{
             padding: 5px;
@@ -215,6 +241,8 @@
           background-color: transparent;
           color: $buttonColor;
           border: 1px solid $buttonColor;
+
+
 
           &:active,
           &:hover{
@@ -244,7 +272,11 @@
             box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
             cursor: pointer;
 
+            @include mobile {
+              width: 100%;
+              font-size: 1rem;
             
+            }
             
   
           }
@@ -261,6 +293,10 @@
               padding: 14px 16px;
               font-size: 17px;
               border-radius: 10px;
+              @include mobile{
+                width: 100%;
+    
+              }
 
             
           }
@@ -284,9 +320,7 @@
             
 
           }
-          #inst__saved{
-              white-space: pre-line;
-            }
+
 
          
 
@@ -338,6 +372,17 @@
           margin: 10px;
           box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
           cursor: pointer;
+
+          @include mobile{
+            width: 20%;
+           span{
+             display:none;
+             
+           }
+        
+         
+            
+          }
         }
       }
     }

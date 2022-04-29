@@ -196,7 +196,7 @@ export function Profile() {
               <div className="recipes__top__extra">
                 <h3> All my recipes </h3>
                 <button onClick={() => navigate("/recipes/create")}>
-                  Create Recipe <AiOutlineFileAdd />
+                <span>  Create Recipe </span><AiOutlineFileAdd />
                 </button>
               </div>
             </div>
