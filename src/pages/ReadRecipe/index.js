@@ -1,13 +1,13 @@
 import { AuthContext } from '../../context';
 import { useContext, useEffect, useState } from "react"
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './ReadRecipe.scss'
 export function ReadRecipe(){
     const {readRecipe } = useContext(AuthContext);
     const { id } = useParams();
     const [recipe, setRecipe] = useState(null)
  
-
+const navigate = useNavigate();
 
 
 
@@ -53,6 +53,7 @@ export function ReadRecipe(){
          <p>{recipe.instructions}</p>
          </div>
          </div>
+         <button onClick={() => navigate(-1)}> back</button>
          </div>
         ) :
         <div className='loading__screen'>        

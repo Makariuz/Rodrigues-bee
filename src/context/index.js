@@ -3,6 +3,8 @@ import { client } from "../client";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
+
+
 const { createContext, useState, useEffect } = require("react");
 
 export const AuthContext = createContext();
@@ -43,6 +45,27 @@ export function AuthContextProvider({ children }) {
      
     }
    
+  };
+
+  const login = async (email, password) => {
+
+    try {
+      const response = await client.post(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
+        {
+          email,
+          password,
+        }
+      );
+      saveToken(response.data.token);
+      setUser(response.data.user);
+      
+      navigate("/user/profile");
+    } catch (error) {
+      console.error("incorrect user " + error);
+      setLoginResult(`Email or Password is incorrect.`) 
+    
+    }
   };
 
   const editUser = async (id, newUsername) => {
@@ -123,33 +146,14 @@ export function AuthContextProvider({ children }) {
     return response.data;
   };
 
-  const login = async (email, password) => {
-    try {
-      const response = await client.post(
-        `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
-        {
-          email,
-          password,
-        }
-      );
-      saveToken(response.data.token);
-      setUser(response.data.user);
-      
-      navigate("/user/profile");
-    } catch (error) {
-      console.error("incorrect user " + error);
-      setLoginResult(`Email or Password is incorrect. ${<AiOutlineCloseCircle />}`) 
-    }
-  };
+  
 
   const verify = async () => {
     try {
       const response = await client.get(
         `${process.env.REACT_APP_BACKEND_URL}/auth/verify`
       );
-       
       setUser(response.data);
-    
       navigate("/user/profile");
       
     } catch (error) {
