@@ -6,6 +6,13 @@
   background-position: 50% 0;
   background-repeat: no-repeat;
   background-size: cover;
+  @include ipad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     
+    
+  }
 
   .logo__left {
     flex: 0.5;
@@ -13,22 +20,15 @@
     align-items: center;
     justify-content: flex-end;
 
-
     @include mobile {
       display: none;
-      
-      
     }
-
-  
-
-
 
     @include ipad {
       display: flex;
-      flex: 1;
      
-     
+      height: 100%;
+      
     }
 
     .logo__left__img {
@@ -40,7 +40,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
       background-color: whitesmoke;
 
       @include ipad {
@@ -49,9 +48,8 @@
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
         margin-left: 20px;
+        
       }
-
-
 
       img {
         height: 80%;
@@ -61,11 +59,7 @@
           height: 40%;
           width: 100%;
           padding: 10px;
-         
-
         }
-
-        
       }
     }
   }
@@ -76,24 +70,16 @@
     display: flex;
     align-items: center;
 
-   
-
     @include mobile {
       flex: 1;
       justify-content: center;
-      
-      
     }
-
 
     @include ipad {
-      flex: 1;
-        
+  
+    height: 100%;
       
     }
-
-
-    
 
     .recipe__list__wrapper {
       height: 70%;
@@ -111,15 +97,13 @@
         border-radius: 50px;
         height: 500px;
         width: 95%;
-        
       }
-
 
       @include ipad {
         display: flex;
-
+        
         height: 70%;
-
+        width: 100%;
         border-radius: 50px;
         border-top-left-radius: 0px;
         border-bottom-left-radius: 0px;
@@ -142,7 +126,6 @@
         @include mobile {
           font-size: 8vw;
         }
-
 
         @include ipad {
           font-size: 8vw;
@@ -218,7 +201,6 @@
               line-height: initial;
             }
           }
-          
         }
       }
     }
@@ -226,9 +208,7 @@
     .wrapper__bottom {
       overflow-y: scroll;
 
-      @include mobile {
-        border-radius: 50px;
-      }
+ 
 
       &::-webkit-scrollbar {
         display: none;
@@ -276,9 +256,6 @@
             border-top: 1px solid black;
             border-bottom: 1px solid black;
             padding: 3px;
-            
-
-            
           }
           .img__card__container {
             flex: 0.2;
