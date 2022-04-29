@@ -15,6 +15,7 @@ import {
 
 import { MdOutlineCancel } from "react-icons/md";
 import "./Profile.scss";
+import Draggable from "react-draggable";
 
 export function Profile() {
   const navigate = useNavigate();
@@ -75,7 +76,6 @@ export function Profile() {
       })
       .catch((err) => console.log("Error while uploading the file: ", err));
   };
-  
 
   useEffect(() => {
     getRecipes();
@@ -119,65 +119,71 @@ export function Profile() {
           </div>
           <div className="user__recipes__page">
             {/* EDIT RECIPES */}
-
-            <div className={"edit__recipe " + (editOpen && "edit__open")}>
-              <div className="edit__card">
-              <div className="close__card" onClick={() => setEditOpen(false)}>  <AiOutlineCloseCircle /> </div>
-                <form onSubmit={handleSubmit}>
-                  <div className="form__wrapper">
-                    <div className="title__ing__div">
-                      <label htmlFor="title">Title</label>
-                      <input
-                        value={newTitle}
-                        name="title"
-                        onChange={(e) => setNewTitle(e.target.value)}
-                        placeholder="Title"
-                      />
-                      <br />
-
-                      <label htmlFor="ingredients">Ingredients</label>
-
-                      <input
-                        value={newIngredients}
-                        name="ingredients"
-                        placeholder="Ingredients (use / to separate)"
-                        onChange={(e) => setNewIngredients(e.target.value)}
-                      />
-
-                      <br />
-
-                      <label htmlFor="picture">Image</label>
-                      <input
-                        type="file"
-                        name="picture"
-                        className="image__input"
-                        onChange={handleFileUpload}
-                      />
-                    </div>
-
-                    <div className="instructions__div">
-                      <label htmlFor="instructions">Instructions</label>
-                      <textarea
-                        value={newInstructions}
-                        name="instructions"
-                        placeholder="Instructions"
-                        onChange={(e) => setNewInstructions(e.target.value)}
-                      />
-                    </div>
+            <Draggable>
+              <div className={"edit__recipe " + (editOpen && "edit__open")}>
+                <div className="edit__card">
+                  <div
+                    className="close__card"
+                    onClick={() => setEditOpen(false)}
+                  >
+                    {" "}
+                    <AiOutlineCloseCircle />{" "}
                   </div>
-                  <div className="btn__save__cancel">
-                    {/* submit button...save button */}
-                    <button type="submit" className="submit__btn">
-                      Save <AiOutlineSave />
-                    </button>
-                    <button type="text" onClick={() => setEditOpen(false)}>
-                      Cancel <MdOutlineCancel />
-                    </button>
-                  </div>
-                </form>
+                  <form onSubmit={handleSubmit}>
+                    <div className="form__wrapper">
+                      <div className="title__ing__div">
+                        <label htmlFor="title">Title</label>
+                        <input
+                          value={newTitle}
+                          name="title"
+                          onChange={(e) => setNewTitle(e.target.value)}
+                          placeholder="Title"
+                        />
+                        <br />
+
+                        <label htmlFor="ingredients">Ingredients</label>
+
+                        <input
+                          value={newIngredients}
+                          name="ingredients"
+                          placeholder="Ingredients (use / to separate)"
+                          onChange={(e) => setNewIngredients(e.target.value)}
+                        />
+
+                        <br />
+
+                        <label htmlFor="picture">Image</label>
+                        <input
+                          type="file"
+                          name="picture"
+                          className="image__input"
+                          onChange={handleFileUpload}
+                        />
+                      </div>
+
+                      <div className="instructions__div">
+                        <label htmlFor="instructions">Instructions</label>
+                        <textarea
+                          value={newInstructions}
+                          name="instructions"
+                          placeholder="Instructions"
+                          onChange={(e) => setNewInstructions(e.target.value)}
+                        />
+                      </div>
+                    </div>
+                    <div className="btn__save__cancel">
+                      {/* submit button...save button */}
+                      <button type="submit" className="submit__btn">
+                        Save <AiOutlineSave />
+                      </button>
+                      <button type="text" onClick={() => setEditOpen(false)}>
+                        Cancel <MdOutlineCancel />
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </div>
-            </div>
-
+            </Draggable>
             {/* EDIT END RECIPE */}
 
             <div className="top__recipe__container">

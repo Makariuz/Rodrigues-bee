@@ -15,7 +15,7 @@ export function CreateRecipe() {
   let arr = [];
   const handleInputs = (e) => {
     e.preventDefault();
-    arr.push(ingredients.split(","));
+    arr.push(ingredients.split("/"));
     console.log(arr);
   };
 
@@ -70,7 +70,7 @@ export function CreateRecipe() {
             <input
               value={ingredients}
               name="ingredients"
-              placeholder="Ingredients (use dash (-) to separate)"
+              placeholder="Ingredients (use / to separate)"
               onChange={(event) => setIngredients(event.target.value)}
             />
             <button onClick={handleInputs}>
@@ -95,8 +95,6 @@ export function CreateRecipe() {
             placeholder="Instructions"
             onChange={(event) => setInstructions(event.target.value)}
           />
-          {/* <p id="inst__saved">{instructions}</p> */}
-
           <button type="submit" className="submit__btn">
             Submit
           </button>

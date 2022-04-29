@@ -18,16 +18,13 @@ export function ReadRecipe(){
     let newArr= []
 
     recipe ?
-    newArr = recipe.ingredients.split(',')
+    newArr = recipe.ingredients.split('/')
     :
     console.log('loading...')
     
   
     return (
        <div className='read__recipes__container'>
-
-       
-      
 
        {recipe ? (
            <div className='read__card'>
