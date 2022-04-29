@@ -20,7 +20,7 @@ import Draggable from "react-draggable";
 export function Profile() {
   const navigate = useNavigate();
 
-  const [editOpen, setEditOpen] = useState(true);
+  const [editOpen, setEditOpen] = useState(false);
   const [newId, setNewId] = useState("");
   const [newTitle, setNewTitle] = useState("");
   const [newIngredients, setNewIngredients] = useState("");
@@ -173,11 +173,12 @@ export function Profile() {
                     </div>
                     <div className="btn__save__cancel">
                       {/* submit button...save button */}
-                      <button type="submit" className="submit__btn">
-                        Save <AiOutlineSave />
-                      </button>
+
                       <button type="text" onClick={() => setEditOpen(false)}>
                         Cancel <MdOutlineCancel />
+                      </button>
+                      <button type="submit" className="submit__btn">
+                        Save <AiOutlineSave />
                       </button>
                     </div>
                   </form>

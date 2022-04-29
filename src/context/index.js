@@ -11,6 +11,7 @@ export function AuthContextProvider({ children }) {
 
   const [user, setUser] = useState(null);
   const [recipes, setRecipes] = useState([]);
+  const [loginResult, setLoginResult] = useState('')
 
   const saveToken = (token) => {
     localStorage.setItem("token", `Bearer ${token}`);
@@ -108,9 +109,11 @@ export function AuthContextProvider({ children }) {
       );
       saveToken(response.data.token);
       setUser(response.data.user);
+      
       navigate("/user/profile");
     } catch (error) {
       console.error("incorrect user " + error);
+      setLoginResult('Email or Password is incorrect.')
     }
   };
 
@@ -154,6 +157,8 @@ export function AuthContextProvider({ children }) {
     deleteRecipe,
     addProduct,
     setRecipes,
+    loginResult,
+    setLoginResult,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

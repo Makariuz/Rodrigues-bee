@@ -1,5 +1,5 @@
 import './Login.scss'
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { NewUser } from '../../components';
@@ -17,26 +17,13 @@ export function Login(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [show, setShow] = useState(false)
-    const { login } = useContext(AuthContext);
-
+    const { login, loginResult, setLoginResult } = useContext(AuthContext);
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
-        login(email, password);
-       /*  const url = `${process.env.REACT_APP_BACKEND_URL}/auth/login`;
-        const data = {
-
-            email,
-            password,
-          };
-
-        const tokenRes = await axios.post(url, data);
-
-        if (tokenRes.status === 200) {
-            localStorage.setItem("token", `Bearer ${tokenRes.data.token}`);
-            localStorage.setItem("user", JSON.stringify(tokenRes.data.user));
-            navigate("/user/profile");
-        } */
+        login(email, password);  
     }
+
 
     return (
         <div className='container-user-login' >
@@ -58,6 +45,7 @@ export function Login(){
   
                 <div className='acc-container'>
                     <form onSubmit={handleSubmit}>
+                    <span> {loginResult} </span>
                     <input 
                         type="email" 
                         className='email-input' 
@@ -70,7 +58,7 @@ export function Login(){
                         className='password-input' 
                         placeholder='Enter your password' 
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}      
+                        onChange={(e) => setPassword(e.target.value)}    
                         />
                     <button type="submit"> Login </button>
 
