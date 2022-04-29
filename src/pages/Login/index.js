@@ -24,6 +24,14 @@ export function Login(){
         login(email, password);  
     }
 
+    useEffect(() => {
+       
+        const timer = setTimeout(() => {
+             setLoginResult("")
+          }, 3000);
+          return () => clearTimeout(timer);
+    }, [loginResult])
+
 
     return (
         <div className='container-user-login' >

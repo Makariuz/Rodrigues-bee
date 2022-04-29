@@ -3,7 +3,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { ProductsCarousel } from "../../components";
+import { EditProfile, ProductsCarousel } from "../../components";
 
 import {
   AiOutlineCloseCircle,
@@ -85,15 +85,26 @@ export function Profile() {
     `${new Date(user?.createdAt.toString())}`
   );
 
+  console.log(createdDate)
+
   return (
     <>
       {user ? (
         <div className="container__user__profile">
+          <div className="edit__profile__container">
+            <EditProfile />
+          </div>
           <div className="user__profile__page">
             <div className="pPicture__header__container">
               <div className="pPicture">
                 <img src={user?.picture} alt="" />
+                <br />
               </div>
+              <small>
+                {" "}
+                <a href="#">Edit profile picture</a>{" "}
+              </small>
+
               <div className="uProfile__name">
                 <h3> {user?.username} </h3>
                 <small> {user?.email}</small>
@@ -111,7 +122,7 @@ export function Profile() {
                       (recipe) => recipe.author.username === user.username
                     ).length}
                 </h3>
-                <p> Created date: {createdDate} </p>
+                <p> Created date: {user?.createdAt} </p>
                 <hr />
                 <button onClick={logout}>Logout</button>
               </div>
@@ -196,7 +207,8 @@ export function Profile() {
               <div className="recipes__top__extra">
                 <h3> All my recipes </h3>
                 <button onClick={() => navigate("/recipes/create")}>
-                <span>  Create Recipe </span><AiOutlineFileAdd />
+                  <span> Create Recipe </span>
+                  <AiOutlineFileAdd />
                 </button>
               </div>
             </div>

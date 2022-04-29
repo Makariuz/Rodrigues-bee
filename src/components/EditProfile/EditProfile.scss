@@ -1,0 +1,24 @@
+@import '../../global.scss';
+
+
+.profile__edit__wrapper{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+   
+    .profile__edit__card{
+        width: 40%;
+        height: 50%;
+        background-color: lightblue;
+        padding: 10px;
+
+        @include mobile{
+            width: 80%;
+        }
+
+    }
+  
+}

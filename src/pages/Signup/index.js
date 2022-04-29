@@ -1,10 +1,12 @@
 import './Signupp.scss'
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from '../../context';
 
 import { client} from '../../client'
+import { AiOutlineCloseCircle } from 'react-icons/ai';
+import Draggable from 'react-draggable';
 
 
 
@@ -15,9 +17,9 @@ export function Signup(){
 
   /*   const [menuOpen, setMenuOpen] = useState(false) */
 
-    const { signup } = useContext(AuthContext);
+    const { signup, loginResult, setLoginResult } = useContext(AuthContext);
   
-    
+    const [hideClosePop, setHideClosePop] = useState(false)
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [picture, setPicture] = useState("");
@@ -25,21 +27,10 @@ export function Signup(){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        signup(username, email, picture, password);
+        if (email.length === 0) {return setLoginResult('Please add an email address') }
+        if (username.length === 0) {return setLoginResult('Please add an username') }
         
-       /*  const url = `${process.env.REACT_APP_BACKEND_URL}/auth/new-user`;
-        const data = {
-            username,
-            pPicture,
-            email,
-            password,
-          };
-
-        const tokenRes = await axios.post(url, data);
-
-        if (tokenRes.status === 200) {
-        navigate("/");
-        } */
+        signup(username, email, picture, password);
     }
 
     const uploadImage = (file) => {
@@ -68,6 +59,30 @@ export function Signup(){
           .catch(err => console.log("Error while uploading the file: ", err));
       };
 
+
+/*       useEffect(() => {
+       
+        const timer = setTimeout(() => {
+        
+            setLoginResult("")
+            setHideClosePop(true)
+          }, 3000);
+          return () => clearTimeout(timer);
+
+    }, []) */
+
+   /*  const handlePopUp = () => {
+        
+        const timer = setTimeout(() => {
+        
+           
+            setHideClosePop(true)
+          }, 3000);
+          return () => clearTimeout(timer);
+    } */
+
+
+    
     return (
         <div className='container-user-logs'>
     
@@ -79,7 +94,11 @@ export function Signup(){
             </div>
 
                 <div className='user-info'>
+                
                     <form onSubmit={handleSubmit}>
+                    <Draggable>
+                    <span>{loginResult}</span>
+                    </Draggable>
                     <input 
                         type="text" 
                         className='username-input' 
@@ -106,6 +125,7 @@ export function Signup(){
                         placeholder='Enter your password' 
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}  
+                        minlength='4'
                         />
                     <button type="submit"> Create user </button>
                     </form>

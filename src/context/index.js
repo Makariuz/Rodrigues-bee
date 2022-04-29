@@ -1,6 +1,7 @@
 import axios from "axios";
 import { client } from "../client";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 const { createContext, useState, useEffect } = require("react");
 
@@ -22,17 +23,41 @@ export function AuthContextProvider({ children }) {
   };
 
   const signup = async (username, email, picture, password) => {
-    const response = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}/auth/new-user`,
+    try {
+
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/new-user`,
+        {
+          username,
+          email,
+          picture,
+          password,
+        }
+      );
+      
+      navigate("/user/login");
+
+    }catch (error){
+      console.log(error)
+      setLoginResult('Email already exists in the database.')
+     
+    }
+   
+  };
+
+  const editUser = async (id, newUsername) => {
+    const response = await axios.put(
+      `${process.env.REACT_APP_BACKEND_URL}/auth/edit-user/${id}`,
       {
-        username,
-        email,
-        picture,
-        password,
+        newUsername
+        /* newEmail,
+        newPicture,
+        newPassword, */
       }
     );
-    navigate("/user/login");
+    navigate("/user/profile");
   };
+
 
   const addProduct = async (name, price, image) => {
     const response = await axios.post(
@@ -113,7 +138,7 @@ export function AuthContextProvider({ children }) {
       navigate("/user/profile");
     } catch (error) {
       console.error("incorrect user " + error);
-      setLoginResult('Email or Password is incorrect.')
+      setLoginResult(`Email or Password is incorrect. ${<AiOutlineCloseCircle />}`) 
     }
   };
 
@@ -142,11 +167,14 @@ export function AuthContextProvider({ children }) {
   useEffect(() => {
     verify();
     getRecipes();
+
+    
   }, []);
 
   const value = {
     user,
     signup,
+    editUser,
     login,
     logout,
     createRecipe,

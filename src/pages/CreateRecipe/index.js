@@ -15,13 +15,13 @@ export function CreateRecipe() {
   let arr = [];
   const handleInputs = (e) => {
     e.preventDefault();
-    arr.push(ingredients.split("/"));
+    arr.push(ingredients.split("--"));
     console.log(arr);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit =  (event) => {
     event.preventDefault();
-    createRecipe(title, ingredients, instructions, picture);
+   createRecipe(title, ingredients, instructions, picture);
  
  
   };

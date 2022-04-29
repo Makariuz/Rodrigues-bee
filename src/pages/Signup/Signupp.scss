@@ -15,7 +15,7 @@
    .user-card{
     background-color: #FAE7BF;
     width: 500px;
-    height: 400px;
+    height: 500px;
     border-radius: 10px;
     position:relative;
     display: flex;
@@ -78,6 +78,28 @@
             align-items: center;
             margin: 5px;
             gap: 10px;
+            position: relative;
+           
+
+            .msg__error{
+                display:flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+                background-color: #121212;
+                padding: 20px 15px;
+                border-radius: 10px;
+
+                position: absolute;
+                color: whitesmoke;
+                transition: position 3s ease;
+               
+                .close__error{
+                    background-color: blue;
+                }
+              
+
+            }
 
             input{
                 border: .9px solid darkgray;
