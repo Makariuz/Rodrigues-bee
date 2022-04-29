@@ -11,15 +11,17 @@
     display: flex;
     flex-direction: column;
   }
+  @include ipad {
+    background-size: cover;
+  }
 
-  .edit__profile__container{
-    display:none;
-    position:absolute;
+
+  .edit__profile__container {
+    display: none;
+    position: absolute;
     width: 100%;
     height: 100%;
     z-index: 9;
-
-    
   }
 
   .user__profile__page {
@@ -30,12 +32,13 @@
     flex-direction: column;
     position: relative;
 
+    
+
     .pPicture__header__container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-     
 
       background-image: url("../../images/bee__background.png");
       background-position: 20% 80%;
@@ -44,8 +47,6 @@
 
       width: 100%;
       padding: 10px;
-     
-      
 
       .pPicture {
         border: 1px solid white;
@@ -112,8 +113,9 @@
     padding: 20px;
     overflow-y: scroll;
 
-
-    
+    @include ipad {
+      flex: 1;
+    }
 
     .edit__recipe {
       display: none;
@@ -124,35 +126,35 @@
       background-color: whitesmoke;
       position: absolute;
       border-radius: 10px;
-      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); 
-      
-      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-     
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
 
-      @include mobile{
-    
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+      @include mobile {
         width: 90%;
         margin: 0 auto;
         padding: 0 auto;
         height: 60%;
-     
-        
       }
 
-     
-
-      &.edit__open{
-          display:flex;
-
-          @include mobile{
-          
-          
-            overflow-y: scroll;
-           
-          }
+      @include ipad {
+        width: 60%;
+        margin: 0 auto;
+        padding: 0 auto;
+        height: 60%;
       }
 
-      
+      &.edit__open {
+        display: flex;
+
+        @include mobile {
+          overflow-y: scroll;
+        }
+        @include ipad {
+          overflow-y: scroll;
+        }
+      }
 
       .edit__card {
         display: flex;
@@ -162,12 +164,10 @@
         position: relative;
         z-index: 99999;
 
-        
-       
-        .close__card{
-          position:absolute;
+        .close__card {
+          position: absolute;
           align-self: flex-end;
-          
+
           cursor: pointer;
           padding: 5px;
           font-size: 2rem;
@@ -178,173 +178,139 @@
             font-size: 1rem;
           }
 
-
           &:active,
-          &:hover{
-
-            
+          &:hover {
             color: burlywood;
             border-radius: 100%;
             transition: all 400ms ease;
-          
           }
-          
         }
 
-
-      
-
-        form{
-          display:flex;
+        form {
+          display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: space-between;
-          
+
           height: 100%;
-          @include mobile{
-
-           
-
-
-             height: 100%;
-           
-             overflow-x: hidden;
-            
-          }
-
-        .form__wrapper{
-          display:flex;
-       
-          flex: 1;
-          @include mobile{
-            display:flex;
-            flex-direction: column;
-
-          }
-
-          .title__ing__div{
-            padding: 5px;
-            display:flex;
-            flex-direction: column;
-            justify-content: center;
-          
+          @include mobile {
             height: 100%;
-            
- 
-          }
-          .instructions__div{
-            padding: 5px;
-            display:flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 100%;
-       
-          
+
+            overflow-x: hidden;
           }
 
-          
+          .form__wrapper {
+            display: flex;
 
-        }
-        .btn__save__cancel {
-      
-        width: 100%;
-        display:flex;
-        justify-content: flex-end;
-       
-        .submit__btn{
-          background-color: transparent;
-          color: $buttonColor;
-          border: 1px solid $buttonColor;
-
-
-
-          &:active,
-          &:hover{
-
-            background-color: $buttonColor;
-            color: $offWhite;
-            transition: all 400ms ease;
-          
-          }
-
-        }
-          button{
-            display:flex;
-            align-items: center;
-            justify-content: space-evenly;
-            text-align: center;
-            background-color: $buttonColor;
-            color: $offWhite;
-            border: none;
-            outline: none;
-            font-family: "Roboto", sans-serif;
-            border-radius: 6px;
-            font-size: 1.4rem;
-            margin: 10px;
-            width: 15%;
-            padding: 5px;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-
+            flex: 1;
             @include mobile {
-              width: 100%;
-              font-size: 1rem;
-            
+              display: flex;
+              flex-direction: column;
             }
-            
-  
+            @include ipad {
+              display: flex;
+              flex-direction: column;
+            }
+
+            .title__ing__div {
+              padding: 5px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+
+              height: 100%;
+            }
+            .instructions__div {
+              padding: 5px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              height: 100%;
+            }
           }
+          .btn__save__cancel {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
 
-          
-         
-        }
-       
-
-          input{
-              border: .9px solid darkgray;
-              outline: none;
-              width: 330px;
-              padding: 14px 16px;
-              font-size: 17px;
-              border-radius: 10px;
-              @include mobile{
-                width: 100%;
-    
+            .submit__btn {
+              background-color: transparent;
+              color: $buttonColor;
+              border: 1px solid $buttonColor;
+              @include ipad {
+                width: 30%;
+                
               }
 
-            
-          }
-
-          .image__input{
-              border: 0;
-             /*  padding-bottom: 50px; */
-             
-          }
-
-          textarea{
-              border: .9px solid darkgray;
+              &:active,
+              &:hover {
+                background-color: $buttonColor;
+                color: $offWhite;
+                transition: all 400ms ease;
+              }
+            }
+            button {
+              display: flex;
+              align-items: center;
+              justify-content: space-evenly;
+              text-align: center;
+              background-color: $buttonColor;
+              color: $offWhite;
+              border: none;
               outline: none;
-              width: 100%;
-              padding: 14px 16px;
-              font-size: 17px;
-              border-radius: 10px;
-              height: 200px;
-              white-space: pre-line;
+              font-family: "Roboto", sans-serif;
+              border-radius: 6px;
+              font-size: 1.4rem;
+              margin: 10px;
+              width: 15%;
+              padding: 5px;
+              box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+              cursor: pointer;
 
-            
+              @include mobile {
+                width: 100%;
+                font-size: 1rem;
+              }
 
+              @include ipad {
+               
+                width: 30%;
+                
+              }
+
+          
+            }
           }
 
+          input {
+            border: 0.9px solid darkgray;
+            outline: none;
+            width: 330px;
+            padding: 14px 16px;
+            font-size: 17px;
+            border-radius: 10px;
+            @include mobile {
+              width: 100%;
+            }
+          }
 
-         
+          .image__input {
+            border: 0;
+            /*  padding-bottom: 50px; */
+          }
 
-           
+          textarea {
+            border: 0.9px solid darkgray;
+            outline: none;
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 17px;
+            border-radius: 10px;
+            height: 200px;
+            white-space: pre-line;
+          }
+        }
       }
-
-        
-      }
-
-      
     }
 
     @include mobile {
@@ -387,15 +353,11 @@
           box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
           cursor: pointer;
 
-          @include mobile{
+          @include mobile {
             width: 20%;
-           span{
-             display:none;
-             
-           }
-        
-         
-            
+            span {
+              display: none;
+            }
           }
         }
       }
@@ -408,7 +370,10 @@
       padding: 5px;
       border-radius: 10px;
 
-     
+      @include ipad {
+        height: 70%;
+      }
+
       .recipe__owned {
         margin: 10px;
         padding: 10px;
@@ -419,6 +384,13 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @include ipad {
+            .btn__options{
+              display:flex;
+             
+            }    
+        }
 
         &:hover {
           box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
@@ -452,6 +424,10 @@
       display: none;
     }
 
+    @include ipad {
+      display: none;
+    }
+
     /*   background-image: url('../../images/honey2.png');
         background-position: 50% 0;
         background-repeat: no-repeat;
@@ -466,15 +442,20 @@
       height: 100%;
       width: 100%;
       border-left: 1px solid black;
+      
+      overflow-x: hidden;
+      object-fit: cover;
+      
 
       .carousel {
         margin: 10px;
+        
       }
     }
 
     img {
       height: 100%;
-      opacity: 0.6;
+      opacity: 0.9;
       z-index: -1;
     }
   }
