@@ -80,6 +80,7 @@
 
     }
 
+    
 
     .products__shop__cart__wrapper{
           background-color: whitesmoke;
@@ -94,6 +95,24 @@
        display:none;
     }
 
+    .prod__detail__wrapper{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+       
+       
+        .prod__detail__item{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: lightblue;
+           
+            margin: 20px;
+
+        }
+
+    }
       
 
        .empty__cart{

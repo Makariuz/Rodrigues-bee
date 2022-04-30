@@ -15,6 +15,9 @@ export function Products() {
   const [emptyCart, setEmptyCart] = useState(true);
   const [total, setTotal] = useState(0);
 
+  const [productDetails, setProductDetails] = useState([])
+
+
   const getProducts = async () => {
     const url = `${process.env.REACT_APP_BACKEND_URL}/products`;
 
@@ -46,6 +49,16 @@ export function Products() {
     setEmptyCart(false);
   };
 
+  const addProdDetails =  (name, price, image, description) => {
+    
+
+  setProductDetails({name, price, image, description})
+  setEmptyCart(false);
+ 
+  }
+
+  console.log(productDetails)
+
   return (
     <div className="products__list__container">
       <div className="products__list__wrapper">
@@ -58,12 +71,17 @@ export function Products() {
 
               <div className="prod__card__name">
                 <h3> {product.name}</h3>
-                lorem stuff
+               <small> <i>See more</i> </small>
               </div>
 
               <div className="prod__card__price">
                 <span> {product.price} €</span>
               </div>
+              <button
+                onClick={() => addProdDetails(product.name, product.price, product.image, product.description)}
+              >
+                View Details <BsCartPlus />{" "}
+              </button>
               <button
                 value={`${product.name} ${product.price}€ `}
                 onClick={addItemToCart}
@@ -82,11 +100,8 @@ export function Products() {
           <h1>Nothing added to the cart!</h1>
         </div>
 
-        {/* <ul>
-          {cart.map(item => <li key={item}>{item}</li>)}
-        </ul> */}
 
-        {cart &&
+{/*         {cart &&
           cart.map((item, i) => {
             return (
               <div key={item._id} className="prod__cart__list">
@@ -95,17 +110,40 @@ export function Products() {
                 </div>
 
                 <div className="btn__remove">
-                  <button onClick={() => cart.splice(i, 1)}>
+                  <button onClick={() => cart.splice(0, 1)}>
                     Remove <IoMdRemoveCircleOutline />{" "}
                   </button>
                 </div>
               </div>
             );
-          })}
+          })} */}
 
-        <div className="total__cost">
-          <h2>Total Cost</h2>
-        </div>
+          {productDetails &&
+         
+              <div className="prod__detail__wrapper">
+                <div className="prod__detail__item">
+                  <img src={productDetails.image} alt="" />
+                  <h3>{productDetails.name}</h3>
+                  <p>{productDetails.description}</p>
+                  <small>{productDetails.price} €</small>
+                  <button
+               
+                onClick={addItemToCart}
+              >
+                Add to Cart <BsCartPlus />{" "}
+              </button>
+                </div>
+
+{/*                 <div className="add__to__cart">
+                  <button onClick={() => cart.splice(0, 1)}>
+                    Remove <IoMdRemoveCircleOutline />{" "}
+                  </button>
+                </div> */}
+              </div>
+            
+          } 
+
+       
       </div>
 
       <div className="product-wrapper">
