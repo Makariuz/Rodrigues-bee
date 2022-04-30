@@ -20,7 +20,7 @@ export function LandingPage(){
                     src="assets/logo8.png"
                     render={(src, style) => <img src={src} style={style} alt="" />}
                   />   
-                    <button onClick={handleNavigate}>STORE</button>
+                    <button onClick={handleNavigate}>STORE!</button>
                 </div>
            
             </div>
