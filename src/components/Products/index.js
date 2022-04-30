@@ -2,15 +2,16 @@ import "./ProductList.scss";
 import axios from "axios";
 import bees from "../../images/bee__bg.png";
 
-import pic1 from '../../images/pic1.png'
-import pic2 from '../../images/pic2.png'
-import pic3 from '../../images/pic3.png'
+import pic1 from '../../images/pic1.jpg'
+import pic2 from '../../images/pic2.jpg'
+import pic3 from '../../images/pic3.jpg'
 
 import { useState, useEffect } from "react";
 import { ProductsCarousel } from "../ProductCarousel";
 
 import { BsCartPlus, BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 import { IoMdCloseCircleOutline, IoMdRemoveCircleOutline } from "react-icons/io";
+import ProgressiveImage from "react-progressive-image-loading";
 
 export function Products() {
   const [products, setProducts] = useState([]);
@@ -107,7 +108,11 @@ const handleDetails = () => {
         className={"products__shop__cart__wrapper " + (!emptyCart && "active")}
       >
         <div className="empty__cart">
-          <img src={storeImages[Math.floor(Math.random()*storeImages.length)]} alt="" />
+        <ProgressiveImage
+          preview={pic1}
+          src={storeImages[Math.floor(Math.random()*storeImages.length)]}
+          render={(src, style) => <img src={src} style={style} alt="" />}
+        />
         </div>
 
 
