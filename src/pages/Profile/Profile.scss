@@ -420,6 +420,8 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
+    background-color: red;
+    border-left: 1px solid black;
 
     @include mobile {
       display: none;
@@ -429,10 +431,6 @@
       display: none;
     }
 
-    /*   background-image: url('../../images/honey2.png');
-        background-position: 50% 0;
-        background-repeat: no-repeat;
-        opacity: .9; */
 
     .carousel__container {
       background-color: rgba(255, 255, 255, 0.018);
@@ -442,7 +440,7 @@
       justify-content: center;
       height: 100%;
       width: 100%;
-      border-left: 1px solid black;
+      
       
       overflow-x: hidden;
       object-fit: cover;
@@ -450,6 +448,7 @@
 
       .carousel {
         margin: 10px;
+        
         
       }
     }

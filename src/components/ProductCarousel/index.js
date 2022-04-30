@@ -2,8 +2,11 @@ import './Products.scss'
 import axios from 'axios';
 
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export function ProductsCarousel(){
+
+  const navigate = useNavigate()
 
     const [products, setProducts] = useState([])
 
@@ -28,16 +31,18 @@ export function ProductsCarousel(){
 
     return(
         <div className="product-wrapper">
-        
+       
         {/* https://css-tricks.com/css-only-carousel/ */}
 
         <div className="product-slides">
+
+       
             
             {products.map((product) => {
                return (
                 <div key={product._id} id="product-slide">
                 
-                <img src={product.image} alt="" />
+                <img src={product.image} alt=""  onClick={() => navigate('/store')} />
                 {product.name}
                 <br />
                 {product.price} €
