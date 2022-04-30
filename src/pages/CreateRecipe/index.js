@@ -28,7 +28,7 @@ export function CreateRecipe() {
 
   const uploadImage = (file) => {
     return axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/auth/upload`, file)
+      .post(`${process.env.REACT_APP_BACKEND_URL}/recipes/upload`, file)
       .then((res) => res.data)
       .catch((err) => console.log(err));
   };
@@ -36,7 +36,7 @@ export function CreateRecipe() {
   const handleFileUpload = async (e) => {
     const uploadData = new FormData();
 
-    uploadData.append("picture", e.target.files[0]);
+    uploadData.append("image", e.target.files[0]);
 
     uploadImage(uploadData)
       .then((response) => {

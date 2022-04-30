@@ -2,6 +2,10 @@ import { AuthContext } from '../../context';
 import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from 'react-router-dom';
 import './ReadRecipe.scss'
+
+import default__img from '../../images/default__honey.png'
+
+
 export function ReadRecipe(){
     const {readRecipe } = useContext(AuthContext);
     const { id } = useParams();
@@ -30,7 +34,7 @@ const navigate = useNavigate();
            <div className='read__card'>
             <div className='header__read__recipe'> 
             <div className='img__wrapper' title="Click and hold to view image">
-            <img src={recipe.image} alt=""/>          
+            <img src={recipe.image ? recipe.image : default__img} alt=""/>          
             </div>
             
             <div className='title__wrapper'>

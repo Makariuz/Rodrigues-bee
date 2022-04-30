@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { NewRecipe } from "../../components";
 import { AuthContext } from "../../context";
 import "./Recipes.scss";
+
+import default__img from '../../images/default__honey.png'
 export function Recipes() {
   const navigate = useNavigate();
   const { user, recipes, getRecipes } = useContext(AuthContext);
@@ -87,7 +89,7 @@ export function Recipes() {
                         <small>Posted by: {recipe.author.username} </small>
                       </div>
                       <div className="img__card__container">
-                        <img height="100px" src={recipe.image} alt="" />
+                        <img height="100px" src={recipe.image ? recipe.image : default__img}  alt="" />
                       </div>
                     </div>
                   );
