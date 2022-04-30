@@ -85,7 +85,6 @@ export function Profile() {
     `${new Date(user?.createdAt.toString())}`
   );
 
-  console.log(createdDate)
 
   return (
     <>

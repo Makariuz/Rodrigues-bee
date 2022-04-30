@@ -2,11 +2,15 @@ import "./ProductList.scss";
 import axios from "axios";
 import bees from "../../images/bee__bg.png";
 
+import pic1 from '../../images/pic1.png'
+import pic2 from '../../images/pic2.png'
+import pic3 from '../../images/pic3.png'
+
 import { useState, useEffect } from "react";
 import { ProductsCarousel } from "../ProductCarousel";
 
-import { BsCartPlus } from "react-icons/bs";
-import { IoMdRemoveCircleOutline } from "react-icons/io";
+import { BsCartPlus, BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
+import { IoMdCloseCircleOutline, IoMdRemoveCircleOutline } from "react-icons/io";
 
 export function Products() {
   const [products, setProducts] = useState([]);
@@ -16,6 +20,8 @@ export function Products() {
   const [total, setTotal] = useState(0);
 
   const [productDetails, setProductDetails] = useState([])
+
+  const [storeImages, setStoreImages] = useState([pic1, pic2, pic3])
 
 
   const getProducts = async () => {
@@ -57,7 +63,11 @@ export function Products() {
  
   }
 
-  console.log(productDetails)
+const handleDetails = () => {
+
+  setProductDetails([])
+  setEmptyCart(true)
+}
 
   return (
     <div className="products__list__container">
@@ -97,7 +107,7 @@ export function Products() {
         className={"products__shop__cart__wrapper " + (!emptyCart && "active")}
       >
         <div className="empty__cart">
-          <h1>Nothing added to the cart!</h1>
+          <img src={storeImages[Math.floor(Math.random()*storeImages.length)]} alt="" />
         </div>
 
 
@@ -121,10 +131,12 @@ export function Products() {
           {productDetails &&
          
               <div className="prod__detail__wrapper">
-                <div className="prod__detail__item">
+                <div className={'prod__detail__item ' + (emptyCart && 'hide__details')}>
+                <IoMdCloseCircleOutline className="close__btn" onClick={handleDetails}/>
                   <img src={productDetails.image} alt="" />
                   <h3>{productDetails.name}</h3>
-                  <p>{productDetails.description}</p>
+                  <p> {productDetails.description} </p>
+                  <small> <BsStarFill />  <BsStarFill /> <BsStarFill /> <BsStarHalf /> <BsStar /> </small>
                   <small>{productDetails.price} €</small>
                   <button
                

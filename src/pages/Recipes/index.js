@@ -18,6 +18,15 @@ export function Recipes() {
       )
     );
 
+  useEffect(() => {
+    setRecipe(recipes)
+    
+  },[recipes])
+
+/*   useEffect(() => {
+    getRecipes()
+  }, []) */
+
   return (
     <div className="recipe__container">
       <div className="logo__left">
@@ -52,7 +61,8 @@ export function Recipes() {
           </div>
           <div className="wrapper__bottom">
             <ul>
-              {recipes &&
+         
+              {recipe && 
                 recipe.map((recipe) => {
                   return (
                     <div

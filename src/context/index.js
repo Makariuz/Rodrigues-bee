@@ -3,8 +3,6 @@ import { client } from "../client";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
-
-
 const { createContext, useState, useEffect } = require("react");
 
 export const AuthContext = createContext();
@@ -14,7 +12,7 @@ export function AuthContextProvider({ children }) {
 
   const [user, setUser] = useState(null);
   const [recipes, setRecipes] = useState([]);
-  const [loginResult, setLoginResult] = useState('')
+  const [loginResult, setLoginResult] = useState("");
 
   const saveToken = (token) => {
     localStorage.setItem("token", `Bearer ${token}`);
@@ -26,7 +24,6 @@ export function AuthContextProvider({ children }) {
 
   const signup = async (username, email, picture, password) => {
     try {
-
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/auth/new-user`,
         {
@@ -36,19 +33,15 @@ export function AuthContextProvider({ children }) {
           password,
         }
       );
-      
-      navigate("/user/login");
 
-    }catch (error){
-      console.log(error)
-      setLoginResult('Email already exists in the database.')
-     
+      navigate("/user/login");
+    } catch (error) {
+      console.log(error);
+      setLoginResult("Email already exists in the database.");
     }
-   
   };
 
   const login = async (email, password) => {
-
     try {
       const response = await client.post(
         `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
@@ -59,12 +52,11 @@ export function AuthContextProvider({ children }) {
       );
       saveToken(response.data.token);
       setUser(response.data.user);
-      
+
       navigate("/user/profile");
     } catch (error) {
       console.error("incorrect user " + error);
-      setLoginResult(`Email or Password is incorrect.`) 
-    
+      setLoginResult(`Email or Password is incorrect.`);
     }
   };
 
@@ -72,7 +64,7 @@ export function AuthContextProvider({ children }) {
     const response = await axios.put(
       `${process.env.REACT_APP_BACKEND_URL}/auth/edit-user/${id}`,
       {
-        newUsername
+        newUsername,
         /* newEmail,
         newPicture,
         newPassword, */
@@ -80,7 +72,6 @@ export function AuthContextProvider({ children }) {
     );
     navigate("/user/profile");
   };
-
 
   const addProduct = async (name, price, image) => {
     const response = await axios.post(
@@ -104,8 +95,11 @@ export function AuthContextProvider({ children }) {
         image,
       }
     );
-    setRecipes(...recipes, response.data)
-    console.log(recipes)
+    //console.log(recipes + ' RECIPES description of the data response create recipe')
+    /* setRecipes(...recipes, response.data) */
+    setRecipes((previousRecipes) => {
+      return ([ ...previousRecipes , response.data])
+    });
     navigate("/recipes");
   };
 
@@ -113,7 +107,7 @@ export function AuthContextProvider({ children }) {
     const response = await client.get(
       `${process.env.REACT_APP_BACKEND_URL}/recipes`
     );
-
+    console.log(response.data + " initial recipes");
     setRecipes(response.data);
   };
 
@@ -125,7 +119,13 @@ export function AuthContextProvider({ children }) {
     return response.data;
   };
 
-  const editRecipe = async (id, newTitle, newIngredients, newInstructions, newImage) => {
+  const editRecipe = async (
+    id,
+    newTitle,
+    newIngredients,
+    newInstructions,
+    newImage
+  ) => {
     const response = await client.put(
       `${process.env.REACT_APP_BACKEND_URL}/recipes/edit/${id}`,
       {
@@ -135,7 +135,6 @@ export function AuthContextProvider({ children }) {
         newImage,
       }
     );
-
   };
 
   const deleteRecipe = async (id) => {
@@ -146,8 +145,6 @@ export function AuthContextProvider({ children }) {
     return response.data;
   };
 
-  
-
   const verify = async () => {
     try {
       const response = await client.get(
@@ -155,10 +152,8 @@ export function AuthContextProvider({ children }) {
       );
       setUser(response.data);
       navigate("/user/profile");
-      
     } catch (error) {
       navigate("/");
-     
     }
   };
 
@@ -171,8 +166,6 @@ export function AuthContextProvider({ children }) {
   useEffect(() => {
     verify();
     getRecipes();
-
-    
   }, []);
 
   const value = {

@@ -16,7 +16,7 @@ export function CreateRecipe() {
   const handleInputs = (e) => {
     e.preventDefault();
     arr.push(ingredients.split("--"));
-    console.log(arr);
+ 
   };
 
   const handleSubmit =  (event) => {

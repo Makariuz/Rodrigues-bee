@@ -16,10 +16,7 @@ return (
   
     
     <div className="store__wrapper__bottom">
-    <div className="store__wrapper__top">
   
-    <h1>Our Products</h1>
-    </div>
     <Products />
 {/*     <ProductsCarousel /> */}
   
