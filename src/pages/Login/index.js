@@ -40,6 +40,7 @@ export function Login(){
 
                 <div className='logo-container'>
                     <div className='logo'>
+                    
                         <img src="/assets/new-logo.png" alt="" />
                     </div>
                     <div className='call-to-action'>
