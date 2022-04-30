@@ -24,6 +24,14 @@
     height: 80%;
     padding: 25px;
 
+    .go__back__btn{
+      background-color: $buttonColor;
+      color: $offWhite;
+      border: none;
+      border-radius: 6px;
+      height: 10%;
+    }
+
     @include mobile {
       width: 90%;
     }

@@ -57,7 +57,7 @@ const navigate = useNavigate();
          <p>{recipe.instructions}</p>
          </div>
          </div>
-         <button onClick={() => navigate(-1)}> back</button>
+         <button className='go__back__btn' onClick={() => navigate(-1)}> back</button>
          </div>
         ) :
         <div className='loading__screen'>        
