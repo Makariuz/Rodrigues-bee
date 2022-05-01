@@ -116,6 +116,7 @@
           align-items: center;
           justify-content: center;
           width: 100%;
+          overflow-y:hidden ;
          
 
           form {
@@ -133,10 +134,12 @@
               border-radius: 10px;
             }
     
-            input {
+            input,
+            textarea {
               border: 0.9px solid darkgray;
               outline: none;
               width: 100%;
+              
               padding: 10px 15px;
               font-size: 1rem;
               border-radius: 10px;

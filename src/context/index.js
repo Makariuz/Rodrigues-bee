@@ -73,15 +73,18 @@ export function AuthContextProvider({ children }) {
     navigate("/user/profile");
   };
 
-  const addProduct = async (name, price, image) => {
+  const addProduct = async (name, description, image, price) => {
     const response = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/products/add`,
       {
         name,
-        price,
+        description,
         image,
+        price
       }
     );
+
+    console.log(response.data)
     navigate("/user/profile");
   };
 

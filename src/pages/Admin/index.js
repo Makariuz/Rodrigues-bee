@@ -11,6 +11,7 @@ export function Admin() {
     const { addProduct } = useContext(AuthContext);
 
     const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
     const [image, setImage] = useState("");
 
@@ -19,8 +20,8 @@ export function Admin() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addProduct(name, price, image);
-     
+        addProduct(name, description, image, price);
+        
     }
 
     const uploadImage = (file) => {
@@ -70,7 +71,8 @@ export function Admin() {
                             name="name" 
                             placeholder='Name' 
                             value={name}
-                            onChange={(e) => setName(e.target.value)}      
+                            onChange={(e) => setName(e.target.value)}     
+                            autocomplete="off" 
                             />
                     
                     </label>
@@ -79,11 +81,24 @@ export function Admin() {
                         <br/>
                         <input 
                             type="number" 
-                            name='price' 
+                            name="price" 
                             placeholder='Price' 
                             value={price}
-                            onChange={(e) => setPrice(e.target.value)}  
-
+                            onChange={(e) => setPrice(e.target.value)}     
+                            autocomplete="off" 
+                            />
+                    
+                    </label>
+                    <label htmlFor='description'>
+                        Description
+                        <br/>
+                        <textarea 
+                            type="text" 
+                            name='description' 
+                            placeholder='Description' 
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}  
+                            autocomplete="off"
                             />
                     </label>
                     <label htmlFor='file'>
