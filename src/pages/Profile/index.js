@@ -20,13 +20,6 @@ import Draggable from "react-draggable";
 export function Profile() {
   const navigate = useNavigate();
 
-  const [editOpen, setEditOpen] = useState(false);
-  const [newId, setNewId] = useState("");
-  const [newTitle, setNewTitle] = useState("");
-  const [newIngredients, setNewIngredients] = useState("");
-  const [newPicture, setNewPicture] = useState("");
-  const [newInstructions, setNewInstructions] = useState("");
-
   const {
     user,
     logout,
@@ -36,6 +29,19 @@ export function Profile() {
     editRecipe,
     deleteRecipe,
   } = useContext(AuthContext);
+
+  const [editOpen, setEditOpen] = useState(false);
+  const [newId, setNewId] = useState("");
+  const [newTitle, setNewTitle] = useState("");
+  const [newIngredients, setNewIngredients] = useState("");
+  const [newPicture, setNewPicture] = useState("");
+  const [newInstructions, setNewInstructions] = useState("");
+
+/*   const [savedRecipes, setSavedRecipes] = useState(user.recipes) */
+
+
+console.log(user)
+
 
   const handleDelete = async (id) => {
     await deleteRecipe(id);
@@ -81,10 +87,11 @@ export function Profile() {
     getRecipes();
   }, []);
 
+
+
   const [createdDate, setCreatedDate] = useState(
     `${new Date(user?.createdAt.toString())}`
   );
-
 
   return (
     <>
@@ -122,6 +129,17 @@ export function Profile() {
                     ).length}
                 </h3>
                 <p> Created date: {user?.createdAt} </p>
+
+                <div className="saved__recipes__wrapper">
+                  <h3>Saved Recipes</h3>
+
+                  <label for="recipes">Choose a recipe:</label>
+
+                  <select name="recipes" className="recipes">
+                    <option value="empty">Empty</option>
+               
+                  </select>
+                </div>
                 <hr />
                 <button onClick={logout}>Logout</button>
               </div>
@@ -221,10 +239,12 @@ export function Profile() {
                   .map((recipe, i) => {
                     return (
                       <div key={i} className="recipe__owned">
-                        <div className="recipe__details">
-                          <h3> {recipe.title} </h3>
-                          <p> {recipe.instructions.slice(0, 50)}...</p>
-                        </div>
+                        <Link to={"/recipes/read/" + recipe._id}>
+                          <div className="recipe__details">
+                            <h3> {recipe.title} </h3>
+                            <p> {recipe.instructions.slice(0, 50)}...</p>
+                          </div>
+                        </Link>
                         <div className="btn__options">
                           <button onClick={() => handleEdit(recipe)}>
                             <AiOutlineEdit />

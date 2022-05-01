@@ -33,7 +33,7 @@
 
     .logo__left__img {
       width: 80%;
-      height: 70%;
+      height: 90%;
       border-radius: 100px;
       border-top-right-radius: 0px;
       border-bottom-right-radius: 0px;
@@ -52,7 +52,7 @@
         height: 100%;
       }
       img {
-        height: 70%;
+        height: 50%;
 
         @include ipad {
           height: 70%;
@@ -80,7 +80,7 @@
     }
 
     .admin__products {
-      height: 70%;
+      height: 90%;
       width: 80%;
       background-color: whitesmoke;
       display: flex;
@@ -116,6 +116,7 @@
           align-items: center;
           justify-content: center;
           width: 100%;
+          height: 100%;
           overflow-y:hidden ;
          
 

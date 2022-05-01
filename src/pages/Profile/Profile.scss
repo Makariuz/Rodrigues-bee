@@ -104,6 +104,16 @@
         }
       }
     }
+
+    .saved__recipes__wrapper{
+      display:flex;
+      flex-direction: column;
+      align-items: flex-start;
+      
+      h3{
+        margin-bottom: 10px;
+      }
+    }
   }
 
   /* USER RECIPES */
@@ -370,6 +380,11 @@
       height: 60%;
       padding: 5px;
       border-radius: 10px;
+
+      a{
+        text-decoration: none;
+        color: black;
+      }
 
       @include ipad {
         height: 70%;

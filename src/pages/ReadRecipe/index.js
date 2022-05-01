@@ -8,12 +8,13 @@ import { BsSave, BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 import { Rating } from "react-simple-star-rating";
 
 export function ReadRecipe() {
-  const { readRecipe } = useContext(AuthContext);
+  const { user, readRecipe, setSavedRecipes } = useContext(AuthContext);
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
 
 
   const [rating, setRating] = useState(0) // initial rating value
+  
 
   // Catch Rating value
   const handleRating = (rate) => {
@@ -22,9 +23,16 @@ export function ReadRecipe() {
   }
 
 
+
   const navigate = useNavigate();
 
 
+  const handleUserRecipes = () => {
+
+    setSavedRecipes(recipe)
+ 
+
+  }
 
   useEffect(() => {
     readRecipe(id).then(setRecipe);
@@ -72,7 +80,7 @@ export function ReadRecipe() {
               <div className="star__wrapper">
               <Rating
                onClick={handleRating}
-                ratingValue={rating}
+                ratingValue={rating}x
                 size={20}
                 label
                 transition
@@ -83,7 +91,7 @@ export function ReadRecipe() {
             </div>
 
               <div className="save__wrapper">
-            <button className="save__recipe__btn">Save recipe </button>
+            <button onClick={() => setSavedRecipes(recipe.title)} className="save__recipe__btn">Save recipe </button>
             </div>
           </div>
         </div>

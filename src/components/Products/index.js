@@ -2,16 +2,19 @@ import "./ProductList.scss";
 import axios from "axios";
 import bees from "../../images/bee__bg.png";
 
-import pic1 from '../../images/pic1.jpg'
-import pic2 from '../../images/pic2.jpg'
-import pic3 from '../../images/pic3.jpg'
+import pic1 from "../../images/pic1.jpg";
+import pic2 from "../../images/pic2.jpg";
+import pic3 from "../../images/pic3.jpg";
 
 import { useState, useEffect } from "react";
 import { ProductsCarousel } from "../ProductCarousel";
 
 import { BsCartPlus, BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
-import { IoMdCloseCircleOutline, IoMdRemoveCircleOutline } from "react-icons/io";
-import {AiOutlineFundView} from 'react-icons/ai'
+import {
+  IoMdCloseCircleOutline,
+  IoMdRemoveCircleOutline,
+} from "react-icons/io";
+import { AiOutlineFundView } from "react-icons/ai";
 
 import ProgressiveImage from "react-progressive-image-loading";
 
@@ -22,10 +25,9 @@ export function Products() {
   const [emptyCart, setEmptyCart] = useState(true);
   const [total, setTotal] = useState(0);
 
-  const [productDetails, setProductDetails] = useState([])
+  const [productDetails, setProductDetails] = useState([]);
 
-  const [storeImages, setStoreImages] = useState([pic1, pic2, pic3])
-
+  const [storeImages, setStoreImages] = useState([pic1, pic2, pic3]);
 
   const getProducts = async () => {
     const url = `${process.env.REACT_APP_BACKEND_URL}/products`;
@@ -58,23 +60,22 @@ export function Products() {
     setEmptyCart(false);
   };
 
-  const addProdDetails =  (name, price, image, description) => {
-    
+  const addProdDetails = (name, price, image, description) => {
+    setProductDetails({ name, price, image, description });
+    setEmptyCart(false);
+  };
 
-  setProductDetails({name, price, image, description})
-  setEmptyCart(false);
- 
-  }
-
-const handleDetails = () => {
-
-  setProductDetails([])
-  setEmptyCart(true)
-}
+  const handleDetails = () => {
+    setProductDetails([]);
+    setEmptyCart(true);
+  };
 
   return (
+    <>
+    {products ? (
     <div className="products__list__container">
       <div className="products__list__wrapper">
+      
         {products.map((product) => {
           return (
             <div key={product._id} className="prod__card">
@@ -84,16 +85,26 @@ const handleDetails = () => {
 
               <div className="prod__card__name">
                 <h3> {product.name}</h3>
-               <small> <i>See more</i> </small>
+                <small>
+                  {" "}
+                  <i>See more</i>{" "}
+                </small>
               </div>
 
               <div className="prod__card__price">
                 <span> {product.price} €</span>
               </div>
               <button
-                onClick={() => addProdDetails(product.name, product.price, product.image, product.description)}
+                onClick={() =>
+                  addProdDetails(
+                    product.name,
+                    product.price,
+                    product.image,
+                    product.description
+                  )
+                }
               >
-                View <AiOutlineFundView /> 
+                View <AiOutlineFundView />
               </button>
               <button
                 value={`${product.name} ${product.price}€ `}
@@ -110,15 +121,14 @@ const handleDetails = () => {
         className={"products__shop__cart__wrapper " + (!emptyCart && "active")}
       >
         <div className="empty__cart">
-        <ProgressiveImage
-          preview={pic1}
-          src={storeImages[Math.floor(Math.random()*storeImages.length)]}
-          render={(src, style) => <img src={src} style={style} alt="" />}
-        />
+          <ProgressiveImage
+            preview={pic1}
+            src={storeImages[Math.floor(Math.random() * storeImages.length)]}
+            render={(src, style) => <img src={src} style={style} alt="" />}
+          />
         </div>
 
-
-{/*         {cart &&
+        {/*         {cart &&
           cart.map((item, i) => {
             return (
               <div key={item._id} className="prod__cart__list">
@@ -135,34 +145,36 @@ const handleDetails = () => {
             );
           })} */}
 
-          {productDetails &&
-         
-              <div className="prod__detail__wrapper">
-                <div className={'prod__detail__item ' + (emptyCart && 'hide__details')}>
-                <IoMdCloseCircleOutline className="close__btn" onClick={handleDetails}/>
-                  <img src={productDetails.image} alt="" />
-                  <h3>{productDetails.name}</h3>
-                  <p> {productDetails.description} </p>
-                  <small> <BsStarFill />  <BsStarFill /> <BsStarFill /> <BsStarHalf /> <BsStar /> </small>
-                  <small>{productDetails.price} €</small>
-                  <button
-               
-                onClick={addItemToCart}
-              >
+        {productDetails && (
+          <div className="prod__detail__wrapper">
+            <div
+              className={"prod__detail__item " + (emptyCart && "hide__details")}
+            >
+              <IoMdCloseCircleOutline
+                className="close__btn"
+                onClick={handleDetails}
+              />
+              <img src={productDetails.image} alt="" />
+              <h3>{productDetails.name}</h3>
+              <p> {productDetails.description} </p>
+              <small>
+                {" "}
+                <BsStarFill /> <BsStarFill /> <BsStarFill /> <BsStarHalf />{" "}
+                <BsStar />{" "}
+              </small>
+              <small>{productDetails.price} €</small>
+              <button onClick={addItemToCart}>
                 Add to Cart <BsCartPlus />{" "}
               </button>
-                </div>
+            </div>
 
-{/*                 <div className="add__to__cart">
+            {/*                 <div className="add__to__cart">
                   <button onClick={() => cart.splice(0, 1)}>
                     Remove <IoMdRemoveCircleOutline />{" "}
                   </button>
                 </div> */}
-              </div>
-            
-          } 
-
-       
+          </div>
+        )}
       </div>
 
       <div className="product-wrapper">
@@ -183,5 +195,16 @@ const handleDetails = () => {
         </div>
       </div>
     </div>
+    ) : (
+      <div className="loading__screen">
+          <div className="img__wrapper__loading">
+            <img src="/assets/bees__loading.png" alt="" />
+          </div>
+          <div className="loading__message__container">
+            <h1>Loading..</h1>
+          </div>
+        </div>
+    )}
+    </>
   );
 }

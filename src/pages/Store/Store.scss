@@ -6,9 +6,10 @@
     background: -webkit-linear-gradient(274deg, rgba(233,212,193,1) 0%, rgba(255,255,255,1) 48%, rgba(233,212,193,1) 100%);
     background: linear-gradient(274deg, rgba(233,212,193,1) 0%, rgba(255,255,255,1) 48%, rgba(233,212,193,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e9d4c1",endColorstr="#e9d4c1",GradientType=1); */
-  height: 100vh;
+  
   display: flex;
-  flex-direction: column;
+ /*  flex-direction: column; */
+ 
   overflow-y: scroll;
   background-image: url("../../images/honey__opacity.png");
   background-position: 50% 0;

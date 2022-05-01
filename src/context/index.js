@@ -13,7 +13,10 @@ export function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [recipes, setRecipes] = useState([]);
   const [loginResult, setLoginResult] = useState("");
-  const [recipeRating, setRecipeRating] = useState('')
+  const [recipeRating, setRecipeRating] = useState('');
+  const [savedRecipes, setSavedRecipes] = useState([]);
+
+
 
   const saveToken = (token) => {
     localStorage.setItem("token", `Bearer ${token}`);
@@ -154,7 +157,9 @@ export function AuthContextProvider({ children }) {
         `${process.env.REACT_APP_BACKEND_URL}/auth/verify`
       );
       setUser(response.data);
+      setSavedRecipes(response.data.recipes)
       navigate("/user/profile");
+      
     } catch (error) {
       navigate("/");
     }
@@ -183,6 +188,8 @@ export function AuthContextProvider({ children }) {
     readRecipe,
     editRecipe,
     deleteRecipe,
+    savedRecipes,
+    setSavedRecipes,
     addProduct,
     setRecipes,
     loginResult,
