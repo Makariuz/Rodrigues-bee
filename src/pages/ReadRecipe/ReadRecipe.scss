@@ -1,7 +1,7 @@
 @import "../../global.scss";
 
 .read__recipes__container {
-  height: 100vh;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,12 +24,39 @@
     height: 80%;
     padding: 25px;
 
-    .go__back__btn{
-      background-color: $buttonColor;
-      color: $offWhite;
-      border: none;
-      border-radius: 6px;
-      height: 10%;
+    .btns__wrapper{
+   
+      display:flex;
+      align-items: center;
+      justify-content: space-between;
+    
+
+      div {
+        display:flex;
+
+ 
+      }
+        .star {
+          
+          background-color: transparent;
+          color: $buttonColor;
+        }
+  
+
+    
+      button{
+        background-color: $buttonColor;
+        color: $offWhite;
+        border: none;
+        border-radius: 6px;
+        padding: 5px 7px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      
+        
+         
+      }
     }
 
     @include mobile {
@@ -103,6 +130,8 @@
       width: 100%;
       flex: 1;
       padding: 10px;
+      overflow-y: scroll;
+      margin-bottom: 50px;
 
       @include mobile {
         overflow-y: scroll;
@@ -119,6 +148,8 @@
           margin: 20px;
         }
       }
+
+
 
       @include ipad {
         overflow-y: scroll;

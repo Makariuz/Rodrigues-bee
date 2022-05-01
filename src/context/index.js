@@ -13,6 +13,7 @@ export function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [recipes, setRecipes] = useState([]);
   const [loginResult, setLoginResult] = useState("");
+  const [recipeRating, setRecipeRating] = useState('')
 
   const saveToken = (token) => {
     localStorage.setItem("token", `Bearer ${token}`);
@@ -110,7 +111,6 @@ export function AuthContextProvider({ children }) {
     const response = await client.get(
       `${process.env.REACT_APP_BACKEND_URL}/recipes`
     );
-    console.log(response.data + " initial recipes");
     setRecipes(response.data);
   };
 
