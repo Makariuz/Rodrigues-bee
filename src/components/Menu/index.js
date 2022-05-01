@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { AiFillGithub, AiFillTwitterCircle } from 'react-icons/ai';
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../context';
 import './Menu.scss'
@@ -56,6 +57,10 @@ export function Menu({users, menuOpen, setMenuOpen}){
                
                 
             </ul>
+
+            <div className='about__dev'>
+            <AiFillGithub /> <AiFillTwitterCircle /> made by Sam.
+            </div>
         </div>
     )
 }

@@ -11,6 +11,8 @@ import { ProductsCarousel } from "../ProductCarousel";
 
 import { BsCartPlus, BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 import { IoMdCloseCircleOutline, IoMdRemoveCircleOutline } from "react-icons/io";
+import {AiOutlineFundView} from 'react-icons/ai'
+
 import ProgressiveImage from "react-progressive-image-loading";
 
 export function Products() {
@@ -91,13 +93,13 @@ const handleDetails = () => {
               <button
                 onClick={() => addProdDetails(product.name, product.price, product.image, product.description)}
               >
-                View Details <BsCartPlus />{" "}
+                View <AiOutlineFundView /> 
               </button>
               <button
                 value={`${product.name} ${product.price}€ `}
                 onClick={addItemToCart}
               >
-                Add to Cart <BsCartPlus />{" "}
+                Add <BsCartPlus />{" "}
               </button>
             </div>
           );

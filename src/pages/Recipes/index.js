@@ -53,12 +53,12 @@ export function Recipes() {
                   placeholder="Search for ingredients"
                 />
               </div>
-              <div className="create__recipe__btn">
+             {user && <div className="create__recipe__btn">
                 <button onClick={() => navigate("/recipes/create")}>
                   {" "}
                   New <AiOutlineFileAdd />{" "}
                 </button>
-              </div>
+              </div>}
             </div>
           </div>
           <div className="wrapper__bottom">
