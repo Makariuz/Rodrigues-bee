@@ -12,16 +12,29 @@ export function CreateRecipe() {
   const [picture, setPicture] = useState("");
   const [instructions, setInstructions] = useState("");
 
+  const [error, setError] = useState(false)
+
   let arr = [];
   const handleInputs = (e) => {
     e.preventDefault();
-    arr.push(ingredients.split("--"));
+    if(!ingredients.includes(';')) {
+     return setError(true)
+    } else {
+      setError(false)
+      arr.push(ingredients.split(";"));
+    }
+   
  
   };
 
   const handleSubmit =  (event) => {
     event.preventDefault();
-   createRecipe(title, ingredients, instructions, picture);
+    if(!ingredients.includes(';') && ingredients !== "") {
+      return setError(true)
+    } else {
+      setError(false)
+      createRecipe(title, ingredients, instructions, picture);
+    }
  
  
   };
@@ -66,11 +79,11 @@ export function CreateRecipe() {
           <br />
 
           <label htmlFor="ingredients">Ingredients</label>
-          <div className="ingredients__div">
+          <div className={"ingredients__div " + (error && 'error')}>
             <input
               value={ingredients}
               name="ingredients"
-              placeholder="Ingredients (use / to separate)"
+              placeholder="Ingredients (use ; to separate)"
               onChange={(event) => setIngredients(event.target.value)}
             />
             <button onClick={handleInputs}>

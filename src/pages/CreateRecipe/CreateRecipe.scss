@@ -76,6 +76,12 @@
         display: flex;
         align-items: center;
 
+        &.error{
+          input{
+            background-color: lightcoral;
+          }
+        }
+
         input {
           border-right: 0;
           border-top-right-radius: 0px;

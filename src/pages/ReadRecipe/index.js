@@ -22,7 +22,7 @@ const navigate = useNavigate();
     let newArr= []
 
     recipe ?
-    newArr = recipe.ingredients.split('/')
+    newArr = recipe.ingredients.split(';')
     :
     console.log('loading...')
     
