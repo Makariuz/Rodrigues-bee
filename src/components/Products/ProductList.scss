@@ -113,6 +113,10 @@
             align-items: center;
             justify-content: space-evenly;
 
+            img {
+                height: 30%;
+            }
+
             &.hide__details{
                 display:none;
             }
