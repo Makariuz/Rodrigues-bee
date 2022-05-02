@@ -2,7 +2,7 @@
 
 .recipe__container {
   display: flex;
-  background-image: url("../../images/honey__opacity.png");
+  background-image: url("../../images/honey__opacity.jpg");
   background-position: 50% 0;
   background-repeat: no-repeat;
   background-size: cover;
@@ -120,7 +120,7 @@
 
       h1 {
         text-align: center;
-        font-family: "Lemonada", cursive;
+        font-family: 'Playfair Display', serif;
         font-weight: 400;
         font-size: 2vw;
         @include mobile {
