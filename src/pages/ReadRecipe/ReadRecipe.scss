@@ -133,6 +133,11 @@
       overflow-y: scroll;
       margin-bottom: 50px;
 
+      p{
+
+        white-space: pre-line;
+      }
+
       @include mobile {
         overflow-y: scroll;
         display:flex;

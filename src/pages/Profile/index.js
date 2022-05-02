@@ -1,9 +1,12 @@
 import axios from "axios";
 
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { EditProfile, ProductsCarousel } from "../../components";
+
+
+
 
 import {
   AiOutlineCloseCircle,
@@ -15,10 +18,84 @@ import {
 
 import { MdOutlineCancel } from "react-icons/md";
 import "./Profile.scss";
-import Draggable from "react-draggable";
+import Draggable, { DraggableCore } from "react-draggable";
+
+let state = {
+  activeDrags: 0,
+  deltaPosition: {
+    x: 0, y: 0
+  },
+  controlledPosition: {
+    x: -400, y: 200
+  }
+};
+
+ function handleDrag(e, ui) {
+  const {x, y} = this.state.deltaPosition;
+  this.setState({
+    deltaPosition: {
+      x: x + ui.deltaX,
+      y: y + ui.deltaY,
+    }
+  });
+};
+
+function onStart() {
+  this.setState({activeDrags: ++this.state.activeDrags});
+};
+
+function onStop()  {
+  this.setState({activeDrags: --this.state.activeDrags});
+};
+function onDrop(e) {
+  this.setState({activeDrags: --this.state.activeDrags});
+  if (e.target.classList.contains("drop-target")) {
+    alert("Dropped!");
+    e.target.classList.remove('hovered');
+  }
+};
+function onDropAreaMouseEnter(e) {
+  if (this.state.activeDrags) {
+    e.target.classList.add('hovered');
+  }
+}
+function onDropAreaMouseLeave(e) {
+  e.target.classList.remove('hovered');
+}
+
+// For controlled component
+function adjustXPos(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  const {x, y} = this.state.controlledPosition;
+  this.setState({controlledPosition: {x: x - 10, y}});
+};
+
+function adjustYPos (e)  {
+  e.preventDefault();
+  e.stopPropagation();
+  const {controlledPosition} = this.state;
+  const {x, y} = controlledPosition;
+  this.setState({controlledPosition: {x, y: y - 10}});
+};
+
+function onControlledDrag(e, position) {
+  const {x, y} = position;
+  this.setState({controlledPosition: {x, y}});
+};
+
+function  onControlledDragStop (e, position) {
+  this.onControlledDrag(e, position);
+  this.onStop();
+};
 
 export function Profile() {
   const navigate = useNavigate();
+
+  
+
+  const nodeRef = React.useRef(null);
+  
 
   const {
     user,
@@ -38,10 +115,7 @@ export function Profile() {
   const [newInstructions, setNewInstructions] = useState("");
 
 /*   const [savedRecipes, setSavedRecipes] = useState(user.recipes) */
-
-
-console.log(user)
-
+  const test = false;
 
   const handleDelete = async (id) => {
     await deleteRecipe(id);
@@ -63,6 +137,7 @@ console.log(user)
     getRecipes();
     setEditOpen(false);
   };
+
 
   const uploadImage = (file) => {
     return axios
@@ -92,6 +167,11 @@ console.log(user)
   const [createdDate, setCreatedDate] = useState(
     `${new Date(user?.createdAt.toString())}`
   );
+
+
+  const dragHandlers = {onStart: onStart, onStop: onStop};
+
+  const [deltaPosition, controlledPosition] = useState()
 
   return (
     <>
@@ -147,8 +227,11 @@ console.log(user)
           </div>
           <div className="user__recipes__page">
             {/* EDIT RECIPES */}
-            <Draggable>
+          
+           
               <div className={"edit__recipe " + (editOpen && "edit__open")}>
+              
+              <div className="bar__drag"></div>
                 <div className="edit__card">
                   <div
                     className="close__card"
@@ -212,7 +295,8 @@ console.log(user)
                   </form>
                 </div>
               </div>
-            </Draggable>
+              
+            
             {/* EDIT END RECIPE */}
 
             <div className="top__recipe__container">

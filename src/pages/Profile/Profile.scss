@@ -131,7 +131,7 @@
     .edit__recipe {
       display: none;
       height: 400px;
-      width: 50%;
+      width: 40%;
       margin: 10px;
       padding: 10px;
       background-color: whitesmoke;
@@ -141,6 +141,10 @@
         0 10px 10px rgba(0, 0, 0, 0.22);
 
       transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+      .test_drag{
+        display:none;
+      }
 
       @include mobile {
         width: 90%;
@@ -318,6 +322,8 @@
             font-size: 17px;
             border-radius: 10px;
             height: 200px;
+            white-space: pre-line;
+            resize: none;
             white-space: pre-line;
           }
         }
