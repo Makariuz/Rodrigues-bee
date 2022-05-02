@@ -26,6 +26,7 @@ export function Products() {
   const [total, setTotal] = useState(0);
 
   const [productDetails, setProductDetails] = useState([]);
+  const [seeMore, setSeeMore] = useState(true)
 
   const [storeImages, setStoreImages] = useState([pic1, pic2, pic3]);
 
@@ -61,6 +62,8 @@ export function Products() {
   };
 
   const addProdDetails = (name, price, image, description) => {
+    
+   
     setProductDetails({ name, price, image, description });
     setEmptyCart(false);
   };
@@ -179,14 +182,14 @@ export function Products() {
             return (
               <div key={product._id} id="product-slide">
                 
-                <img src={product.image} alt=""  />
+                <img src={product.image} alt="" className="see-more" />
                 <h3>{product.name} </h3> 
 
                <p> {product.price} € </p>
               
           
                 <button
-                className="btns"
+               
                 onClick={() =>
                   addProdDetails(
                     product.name,
@@ -204,22 +207,29 @@ export function Products() {
           })}
         </div>
 
-        <div onClick={() => setEmptyCart(true)} className={'product__details '   + (emptyCart && 'empy__details')}>
+        <div className={'product__details '   + (emptyCart && 'empy__details')}>
      
             <div className='detail__card'>
             <IoMdCloseCircleOutline
                 className="close__btn"
                 onClick={handleDetails}
               />
-            <img src={productDetails.image} alt="" />
+           {/*  <img src={productDetails.image} alt="" className={seeMore && 'hideImage'}/> */}
               <h3>{productDetails.name}</h3>
-              <p> {productDetails.description} </p>
+              
+              <p> 
+                {productDetails.description} 
+    
+               </p>
+              
+          
               <small>
                 <BsStarFill /> <BsStarFill /> <BsStarFill /> <BsStarHalf />
                 <BsStar />
               </small>
               <small>{productDetails.price} €</small>
-              <button>
+
+              <button  onClick={() => setSeeMore(true)} >
                 Add <BsCartPlus />{" "}
               </button>
             </div>

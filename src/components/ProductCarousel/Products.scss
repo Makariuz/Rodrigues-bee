@@ -51,6 +51,8 @@
         justify-content: space-evenly;
         border-radius: 10px;
 
+        
+
 
         .close__btn{
           align-self: flex-end;
@@ -60,13 +62,28 @@
           
           
         }
+
+        .hideImage{
+
+          display:none;
+        }
         
         img {
           height: 140px;
-          
-          background-color: black;
+
+         
           z-index: 99999;
+
+       /*   &.see-more{
+          border: 3px solid black;
+          
+          } */
         }
+
+
+       
+        
+        
       
 
         p {
