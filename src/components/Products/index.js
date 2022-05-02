@@ -158,9 +158,8 @@ export function Products() {
               <h3>{productDetails.name}</h3>
               <p> {productDetails.description} </p>
               <small>
-                {" "}
-                <BsStarFill /> <BsStarFill /> <BsStarFill /> <BsStarHalf />{" "}
-                <BsStar />{" "}
+                <BsStarFill /> <BsStarFill /> <BsStarFill /> <BsStarHalf />
+                <BsStar />
               </small>
               <small>{productDetails.price} €</small>
               <button onClick={addItemToCart}>
@@ -168,11 +167,6 @@ export function Products() {
               </button>
             </div>
 
-            {/*                 <div className="add__to__cart">
-                  <button onClick={() => cart.splice(0, 1)}>
-                    Remove <IoMdRemoveCircleOutline />{" "}
-                  </button>
-                </div> */}
           </div>
         )}
       </div>
@@ -184,14 +178,53 @@ export function Products() {
           {products.map((product) => {
             return (
               <div key={product._id} id="product-slide">
-                <img src={product.image} alt="" />
-                {product.name}
-                <br />
-                {product.price} €
-                <br />
-              </div>
+                
+                <img src={product.image} alt=""  />
+                <h3>{product.name} </h3> 
+
+               <p> {product.price} € </p>
+              
+          
+                <button
+                className="btns"
+                onClick={() =>
+                  addProdDetails(
+                    product.name,
+                    product.price,
+                    product.image,
+                    product.description
+                  )
+                }
+              >
+                View <AiOutlineFundView/>
+              </button>
+           
+                </div>
             );
           })}
+        </div>
+
+        <div onClick={() => setEmptyCart(true)} className={'product__details '   + (emptyCart && 'empy__details')}>
+     
+            <div className='detail__card'>
+            <IoMdCloseCircleOutline
+                className="close__btn"
+                onClick={handleDetails}
+              />
+            <img src={productDetails.image} alt="" />
+              <h3>{productDetails.name}</h3>
+              <p> {productDetails.description} </p>
+              <small>
+                <BsStarFill /> <BsStarFill /> <BsStarFill /> <BsStarHalf />
+                <BsStar />
+              </small>
+              <small>{productDetails.price} €</small>
+              <button>
+                Add <BsCartPlus />{" "}
+              </button>
+            </div>
+             
+
         </div>
       </div>
     </div>

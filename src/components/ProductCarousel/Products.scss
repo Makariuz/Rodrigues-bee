@@ -16,15 +16,89 @@
     padding: 50px;
     border-radius: 10px;
     background-color: transparent;
+    position: relative;
 
     @include mobile {
   
-      width: 100%;
+      width: 90%;
       height: 80%;
     }
   
 /*     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
  */
+
+
+    .product__details{
+      background-color: whitesmoke;
+      position: absolute;
+      width:  350px;/* affects the card size */
+      /* text-align: center; */
+      height:400px;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      
+      border-radius: 10px;
+
+     
+    
+    
+      div {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        border-radius: 10px;
+
+
+        .close__btn{
+          align-self: flex-end;
+         font-size: 2rem;
+          cursor: pointer;
+          margin-right: 30px;
+          
+          
+        }
+        
+        img {
+          height: 140px;
+          
+          background-color: black;
+          z-index: 99999;
+        }
+      
+
+        p {
+          width: 80%;
+          padding: 15px;
+          font-family: "Roboto", sans-serif;
+          font-weight: 400;
+        }
+
+        button {
+          background-color: green;
+          color: $offWhite;
+          border: none;
+          outline: none;
+          font-family: "Roboto", sans-serif;
+          border-radius: 6px;
+          font-size: 1rem;
+          font-weight: 600;
+          letter-spacing: 2.5px;
+          padding: 5px 10px;
+          width: 150px;
+          margin: 10px;
+          box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+          cursor: pointer;
+        }
+      }
+  
+      &.empy__details{
+        display:none;
+      }
+    }
+
   
 
     .product-slides {
@@ -40,7 +114,8 @@
         
         scroll-snap-points-x: repeat(300px);
         scroll-snap-type: mandatory;
-
+       
+        
 
         div {
             
@@ -61,7 +136,8 @@
             align-items: center;
             font-size: 20px;
             cursor: pointer;
-            
+       
+           
 
             @include mobile{
                 height: 100%;
@@ -77,6 +153,28 @@
                 padding: 20px;
                
                 
+            }
+
+            button {
+              background-color: green;
+              color: $offWhite;
+              display: flex;
+              align-items: center;
+              justify-content: space-around;
+      
+              border: none;
+              outline: none;
+              font-family: "Roboto", sans-serif;
+              border-radius: 6px;
+              font-size: 1rem;
+              font-weight: 600;
+              letter-spacing: 2.5px;
+              padding: 10px 10px;
+              width: 100px;
+      
+              margin: 10px;
+              box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+              cursor: pointer;
             }
           }
     }
