@@ -14,7 +14,7 @@ $max__width: 1100px;
 
 $min__width: 279px;
 
-
+$max__mobile__height: 1023px;
 $small_screen: 280px;
 
 $max__height__ipad: 1000px;
@@ -25,7 +25,7 @@ $max__height__ipad: 1000px;
 
 
 @mixin mobile {
-    @media (max-width: #{$width}) and (min-width: #{$small_screen}){
+    @media (max-width: #{$width}) and (min-width: #{$small_screen}) and (max-height: #{$max__mobile__height}){
         @content
     }
 };
