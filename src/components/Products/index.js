@@ -14,7 +14,7 @@ import {
   IoMdCloseCircleOutline,
   IoMdRemoveCircleOutline,
 } from "react-icons/io";
-import { AiOutlineFundView } from "react-icons/ai";
+import { AiOutlineDoubleRight, AiOutlineFundView } from "react-icons/ai";
 
 import ProgressiveImage from "react-progressive-image-loading";
 
@@ -77,6 +77,8 @@ export function Products() {
     <>
     {products ? (
     <div className="products__list__container">
+
+
       <div className="products__list__wrapper">
       
         {products.map((product) => {
