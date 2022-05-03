@@ -153,6 +153,7 @@ export function AuthContextProvider({ children }) {
 
   const verify = async () => {
     try {
+      console.log(process.env.REACT_APP_BACKEND_URL)
       const response = await client.get(
         `${process.env.REACT_APP_BACKEND_URL}/auth/verify`
       );
