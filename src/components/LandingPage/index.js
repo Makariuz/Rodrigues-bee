@@ -1,7 +1,7 @@
 import './LandingPage.scss'
 import { useNavigate } from "react-router-dom";
 import ProgressiveImage from "react-progressive-image-loading";
-
+import flying__bee from '../../images/flying__bee.png'
 
 export function LandingPage(){
     const navigate = useNavigate();
@@ -12,7 +12,10 @@ export function LandingPage(){
     return (
         <div className="landing__page" id="landing__page">
 
-        
+        {/* <div className='fly_div'>
+        <img className='fly_img' src={flying__bee} alt="" />
+        </div> */}
+     
             <div className='wrapper__landing__page'>
                 <div className='img__container'>
                 <ProgressiveImage

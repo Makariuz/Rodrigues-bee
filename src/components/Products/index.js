@@ -110,6 +110,7 @@ export function Products() {
                 View <AiOutlineFundView />
               </button>
               <button
+                
                 value={`${product.name} ${product.price}€ `}
                 onClick={addItemToCart}
               >

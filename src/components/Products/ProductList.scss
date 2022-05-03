@@ -13,6 +13,16 @@
     flex-direction: column;
   }
 
+  @include ipad {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+   /*  padding: 50px; */
+    gap: 30px;
+  }
+  
+
+
   .products__list__wrapper {
     background-color: whitesmoke;
 
@@ -25,6 +35,12 @@
     @include mobile {
       display: none;
     }
+
+    @include ipad {
+      width: 70%;
+      height: 40%;
+    }
+    
 
     .prod__card {
       background-color: lightgray;
@@ -86,6 +102,11 @@
 
     @include mobile {
       display: none;
+    }
+
+    @include ipad {
+      width: 70%;
+      height: 40%;
     }
 
     .prod__detail__wrapper {
