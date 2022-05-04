@@ -118,10 +118,7 @@ export function AuthContextProvider({ children }) {
     setRecipes(response.data);
   };
 
-  const getSavedRecipes = async (id) => {
-    const response = await client.get(`${process.env.REACT_APP_BACKEND_URL}/recipes/save/${id}`)
-    console.log(response.data)
-  }
+
 
   const readRecipe = async (id) => {
     const response = await client.get(
@@ -155,7 +152,7 @@ export function AuthContextProvider({ children }) {
     const response = await client.get(
       `${process.env.REACT_APP_BACKEND_URL}/recipes/save/${id}`
     );
-      console.log(response.data)
+      
 
   };
 

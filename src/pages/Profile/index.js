@@ -46,10 +46,8 @@ export function Profile() {
   const [newPicture, setNewPicture] = useState("");
   const [newInstructions, setNewInstructions] = useState("");
 
-  /* const [favRecipes, setFaveRecipes] = useState(user.recipes) */
+  const [favRecipes, setFaveRecipes] = useState(user.recipes ? user.recipes :  [{title: 'loading'}])
 
-/*   const [savedRecipes, setSavedRecipes] = useState(user.recipes) */
-  const test = false;
 
   const handleDelete = async (id) => {
     await deleteRecipe(id);
@@ -95,7 +93,7 @@ export function Profile() {
   useEffect(() => {
     getRecipes();
   }, []);
-
+ 
 
 
   const [createdDate, setCreatedDate] = useState(
@@ -113,7 +111,7 @@ export function Profile() {
           <div className="edit__profile__container">
             <EditProfile />
           </div>
-        {console.log(user)}
+
           <div className="user__profile__page">
             <div className="pPicture__header__container">
               <div className="pPicture">
@@ -152,9 +150,12 @@ export function Profile() {
                   <select name="recipes" className="recipes">
               
                     <option value="empty">default</option>
-                      {/*   {favRecipes && favRecipes.map((recipe)=>  
-                      <option value="empty">noma</option>
-                   )} */}
+                        {favRecipes && favRecipes.map((recipe)=>  
+            
+                      <option value={recipe.title}>{recipe.title}</option> 
+                     
+                      
+                   )}
                    
                
                   </select>
