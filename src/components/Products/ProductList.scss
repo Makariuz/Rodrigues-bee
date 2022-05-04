@@ -96,7 +96,7 @@
 
   .products__shop__cart__wrapper {
     background-color: whitesmoke;
-
+  
     width: 40%;
     height: 70%;
     overflow-y: scroll;
@@ -110,6 +110,7 @@
     @include ipad {
       width: 70%;
       height: 40%;
+      justify-content: center;
     }
 
     .prod__detail__wrapper {
@@ -117,6 +118,13 @@
       align-items: center;
       justify-content: center;
       border-radius: 10px;
+     
+      @include ipad {
+       
+        width: 60%;
+        padding: 5px;
+        
+      }
       .prod__detail__item {
         display: flex;
         flex-direction: column;
@@ -146,6 +154,10 @@
           padding: 15px;
           font-family: "Roboto", sans-serif;
           font-weight: 400;
+
+          @include ipad {
+            width: 100%;
+          }
         }
 
         button {
@@ -163,6 +175,9 @@
           margin: 10px;
           box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
           cursor: pointer;
+          @include ipad {
+            width: 200px;
+          }
         }
       }
     }
@@ -183,6 +198,7 @@
 
     .prod__cart__list {
       background-color: lightgray;
+      
       display: flex;
       align-items: center;
       justify-content: space-between;
