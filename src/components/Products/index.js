@@ -164,8 +164,8 @@ export function Products() {
               <h3>{productDetails.name}</h3>
               <p> {productDetails.description} </p>
               <small>
-                <BsStarFill /> <BsStarFill /> <BsStarFill /> <BsStarHalf />
-                <BsStar />
+                <BsStarFill /> <BsStarFill /> <BsStarFill /> <BsStarFill /> <BsStarHalf />
+             
               </small>
               <small>{productDetails.price} €</small>
               <button onClick={addItemToCart}>
