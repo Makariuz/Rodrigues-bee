@@ -31,7 +31,7 @@ export function EditProfile() {
     setNewPassword(user.password); */
   
   };
-  console.log(newUsername)
+
   const uploadImage = (file) => {
     return axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/auth/upload`, file)

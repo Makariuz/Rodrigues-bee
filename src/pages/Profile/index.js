@@ -20,74 +20,6 @@ import { MdOutlineCancel } from "react-icons/md";
 import "./Profile.scss";
 import Draggable, { DraggableCore } from "react-draggable";
 
-let state = {
-  activeDrags: 0,
-  deltaPosition: {
-    x: 0, y: 0
-  },
-  controlledPosition: {
-    x: -400, y: 200
-  }
-};
-
- function handleDrag(e, ui) {
-  const {x, y} = this.state.deltaPosition;
-  this.setState({
-    deltaPosition: {
-      x: x + ui.deltaX,
-      y: y + ui.deltaY,
-    }
-  });
-};
-
-function onStart() {
-  this.setState({activeDrags: ++this.state.activeDrags});
-};
-
-function onStop()  {
-  this.setState({activeDrags: --this.state.activeDrags});
-};
-function onDrop(e) {
-  this.setState({activeDrags: --this.state.activeDrags});
-  if (e.target.classList.contains("drop-target")) {
-    alert("Dropped!");
-    e.target.classList.remove('hovered');
-  }
-};
-function onDropAreaMouseEnter(e) {
-  if (this.state.activeDrags) {
-    e.target.classList.add('hovered');
-  }
-}
-function onDropAreaMouseLeave(e) {
-  e.target.classList.remove('hovered');
-}
-
-// For controlled component
-function adjustXPos(e) {
-  e.preventDefault();
-  e.stopPropagation();
-  const {x, y} = this.state.controlledPosition;
-  this.setState({controlledPosition: {x: x - 10, y}});
-};
-
-function adjustYPos (e)  {
-  e.preventDefault();
-  e.stopPropagation();
-  const {controlledPosition} = this.state;
-  const {x, y} = controlledPosition;
-  this.setState({controlledPosition: {x, y: y - 10}});
-};
-
-function onControlledDrag(e, position) {
-  const {x, y} = position;
-  this.setState({controlledPosition: {x, y}});
-};
-
-function  onControlledDragStop (e, position) {
-  this.onControlledDrag(e, position);
-  this.onStop();
-};
 
 export function Profile() {
   const navigate = useNavigate();
@@ -113,6 +45,8 @@ export function Profile() {
   const [newIngredients, setNewIngredients] = useState("");
   const [newPicture, setNewPicture] = useState("");
   const [newInstructions, setNewInstructions] = useState("");
+
+  /* const [favRecipes, setFaveRecipes] = useState(user.recipes) */
 
 /*   const [savedRecipes, setSavedRecipes] = useState(user.recipes) */
   const test = false;
@@ -169,9 +103,8 @@ export function Profile() {
   );
 
 
-  const dragHandlers = {onStart: onStart, onStop: onStop};
 
-  const [deltaPosition, controlledPosition] = useState()
+ 
 
   return (
     <>
@@ -180,6 +113,7 @@ export function Profile() {
           <div className="edit__profile__container">
             <EditProfile />
           </div>
+        {console.log(user)}
           <div className="user__profile__page">
             <div className="pPicture__header__container">
               <div className="pPicture">
@@ -213,10 +147,15 @@ export function Profile() {
                 <div className="saved__recipes__wrapper">
                   <h3>Saved Recipes</h3>
 
-                  <label for="recipes">Choose a recipe:</label>
+                  <label htmlFor="recipes">Choose a recipe:</label>
 
                   <select name="recipes" className="recipes">
-                    <option value="empty">Empty</option>
+              
+                    <option value="empty">default</option>
+                      {/*   {favRecipes && favRecipes.map((recipe)=>  
+                      <option value="empty">noma</option>
+                   )} */}
+                   
                
                   </select>
                 </div>

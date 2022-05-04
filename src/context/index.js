@@ -16,6 +16,7 @@ export function AuthContextProvider({ children }) {
   const [recipeRating, setRecipeRating] = useState('');
   const [savedRecipes, setSavedRecipes] = useState([]);
 
+  const [bookedMarkRecipes, setBookedMarkedRecipes] = useState([])
 
 
   const saveToken = (token) => {
@@ -117,6 +118,11 @@ export function AuthContextProvider({ children }) {
     setRecipes(response.data);
   };
 
+  const getSavedRecipes = async (id) => {
+    const response = await client.get(`${process.env.REACT_APP_BACKEND_URL}/recipes/save/${id}`)
+    console.log(response.data)
+  }
+
   const readRecipe = async (id) => {
     const response = await client.get(
       `${process.env.REACT_APP_BACKEND_URL}/recipes/read/${id}`
@@ -143,6 +149,16 @@ export function AuthContextProvider({ children }) {
     );
   };
 
+  const bookmarkRecipe = async (
+    id,
+  ) => {
+    const response = await client.get(
+      `${process.env.REACT_APP_BACKEND_URL}/recipes/save/${id}`
+    );
+      console.log(response.data)
+
+  };
+
   const deleteRecipe = async (id) => {
     const response = await client.delete(
       `${process.env.REACT_APP_BACKEND_URL}/recipes/${id}`
@@ -158,7 +174,7 @@ export function AuthContextProvider({ children }) {
         `${process.env.REACT_APP_BACKEND_URL}/auth/verify`
       );
       setUser(response.data);
-      setSavedRecipes(response.data.recipes)
+
       navigate("/user/profile");
       
     } catch (error) {
@@ -175,6 +191,7 @@ export function AuthContextProvider({ children }) {
   useEffect(() => {
     verify();
     getRecipes();
+    
   }, []);
 
   const value = {
@@ -190,11 +207,13 @@ export function AuthContextProvider({ children }) {
     editRecipe,
     deleteRecipe,
     savedRecipes,
+    bookmarkRecipe,
     setSavedRecipes,
     addProduct,
     setRecipes,
     loginResult,
     setLoginResult,
+
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

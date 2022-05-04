@@ -24,6 +24,7 @@ export function Recipes() {
     setRecipe(recipes)
     
   },[recipes])
+  
 
 /*   useEffect(() => {
     getRecipes()

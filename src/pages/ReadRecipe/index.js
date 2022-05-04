@@ -8,10 +8,12 @@ import { BsSave, BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 import { Rating } from "react-simple-star-rating";
 
 export function ReadRecipe() {
-  const { user, readRecipe, setSavedRecipes } = useContext(AuthContext);
+  const { user, readRecipe, bookmarkRecipe } = useContext(AuthContext);
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
 
+
+  //const [savedRecipes, setSavedRecipes] = useState(user.recipes)
 
   const [rating, setRating] = useState(0) // initial rating value
   
@@ -27,20 +29,21 @@ export function ReadRecipe() {
   const navigate = useNavigate();
 
 
-  const handleUserRecipes = () => {
-
-    setSavedRecipes(recipe)
- 
-
-  }
+/*   const handleUserRecipes = (id) => {
+    saveRecipe(id)
+  } */
 
   useEffect(() => {
     readRecipe(id).then(setRecipe);
   }, []);
 
+ /*  useEffect(() => {
+    bookmarkRecipe(id)
+  }, []); */
+
   let newArr = [];
 
-  recipe ? (newArr = recipe.ingredients.split(";")) : console.log("loading...");
+  //recipe ? (newArr = recipe.ingredients.split(";")) : console.log("loading...");
 
   return (
     <div className="read__recipes__container">
@@ -91,7 +94,7 @@ export function ReadRecipe() {
             </div>
 
               <div className="save__wrapper">
-            <button onClick={() => setSavedRecipes(recipe.title)} className="save__recipe__btn">Save recipe </button>
+            <button onClick={() => bookmarkRecipe(id)} className="save__recipe__btn">Save recipe </button>
             </div>
           </div>
         </div>
