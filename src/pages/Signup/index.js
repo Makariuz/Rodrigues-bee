@@ -125,7 +125,7 @@ export function Signup(){
                         placeholder='Enter your password' 
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}  
-                        minlength='4'
+                        minLength='4'
                         />
                     <button type="submit"> Create user </button>
                     </form>

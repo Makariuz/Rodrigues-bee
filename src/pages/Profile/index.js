@@ -49,7 +49,13 @@ export function Profile() {
   const [displayOwned, setDisplayOwned] = useState(true)
   const [displaySaved, setDisplaySaved] = useState(false)
 
+
+  useEffect(() => {
+    getRecipes();
+  }, []);
+
   const [favRecipes, setFaveRecipes] = useState(user.recipes ? user.recipes :  [{title: 'loading'}])
+ 
 
 
   const handleDelete = async (id) => {
@@ -93,9 +99,7 @@ export function Profile() {
       .catch((err) => console.log("Error while uploading the file: ", err));
   };
 
-  useEffect(() => {
-    getRecipes();
-  }, []);
+
  
 
 
@@ -263,8 +267,8 @@ const handleSaved = () => {
 
               <div className="recipes__top__extra">
               <div className="recipes__h3">
-                <h3 className={displayOwned && "activated"} onClick={handleOwned}> All my recipes </h3>
-                <h3 className={displaySaved && "activated" }onClick={handleSaved}> All my saved recipes </h3>
+                <h3 className={'h3 ' + (displayOwned && "activated")} onClick={handleOwned}> All my recipes </h3>
+                <h3 className={'h3 ' + (displaySaved && "activated")} onClick={handleSaved}> All my saved recipes </h3>
                 </div>
                 <button onClick={() => navigate("/recipes/create")}>
                   <span> Create Recipe </span>

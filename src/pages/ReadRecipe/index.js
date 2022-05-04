@@ -12,38 +12,26 @@ export function ReadRecipe() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
 
-
   //const [savedRecipes, setSavedRecipes] = useState(user.recipes)
 
-  const [rating, setRating] = useState(0) // initial rating value
-  
+  const [rating, setRating] = useState(0); // initial rating value
 
   // Catch Rating value
   const handleRating = (rate) => {
-    setRating(rate)
-   
-  }
-
-
+    setRating(rate);
+  };
 
   const navigate = useNavigate();
-
-
-/*   const handleUserRecipes = (id) => {
-    saveRecipe(id)
-  } */
 
   useEffect(() => {
     readRecipe(id).then(setRecipe);
   }, []);
 
- /*  useEffect(() => {
-    bookmarkRecipe(id)
-  }, []); */
-
   let newArr = [];
 
-  //recipe ? (newArr = recipe.ingredients.split(";")) : console.log("loading...");
+  recipe
+    ? (newArr = recipe.ingredients.split(";"))
+    : console.log("loading ingredients...");
 
   return (
     <div className="read__recipes__container">
@@ -73,28 +61,33 @@ export function ReadRecipe() {
             </div>
           </div>
           <div className="btns__wrapper">
-          <div className="back__wrapper">
-          <button className="go__back__btn" onClick={() => navigate(-1)}>
-          Go Back{" "}
-            </button>
-          </div>
-             
+            <div className="back__wrapper">
+              <button className="go__back__btn" onClick={() => navigate(-1)}>
+                Go Back{" "}
+              </button>
+            </div>
 
-              <div className="star__wrapper">
+            <div className="star__wrapper">
               <Rating
-               onClick={handleRating}
-                ratingValue={rating}x
+                onClick={handleRating}
+                ratingValue={rating}
+                x
                 size={20}
                 label
                 transition
-                fillColor='orange'
-                emptyColor='gray'
-                className='foo' //
-               />
+                fillColor="orange"
+                emptyColor="gray"
+                className="foo" //
+              />
             </div>
 
-              <div className="save__wrapper">
-            <button onClick={() => bookmarkRecipe(id)} className="save__recipe__btn">Save recipe </button>
+            <div className="save__wrapper">
+              <button
+                onClick={() => bookmarkRecipe(id)}
+                className="save__recipe__btn"
+              >
+                Save recipe{" "}
+              </button>
             </div>
           </div>
         </div>
