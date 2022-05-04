@@ -46,6 +46,9 @@ export function Profile() {
   const [newPicture, setNewPicture] = useState("");
   const [newInstructions, setNewInstructions] = useState("");
 
+  const [displayOwned, setDisplayOwned] = useState(true)
+  const [displaySaved, setDisplaySaved] = useState(false)
+
   const [favRecipes, setFaveRecipes] = useState(user.recipes ? user.recipes :  [{title: 'loading'}])
 
 
@@ -101,6 +104,17 @@ export function Profile() {
   );
 
 
+const handleOwned = () => {
+  setDisplayOwned(true)
+  setDisplaySaved(false)
+}
+
+
+
+const handleSaved = () => {
+  setDisplaySaved(true)
+  setDisplayOwned(false)
+}
 
  
 
@@ -249,8 +263,8 @@ export function Profile() {
 
               <div className="recipes__top__extra">
               <div className="recipes__h3">
-                <h3> All my recipes </h3>
-                <h3> All my saved recipes </h3>
+                <h3 onClick={handleOwned}> All my recipes </h3>
+                <h3 onClick={handleSaved}> All my saved recipes </h3>
                 </div>
                 <button onClick={() => navigate("/recipes/create")}>
                   <span> Create Recipe </span>
@@ -261,7 +275,7 @@ export function Profile() {
 
             <hr />
 
-            <div className="recipes__owned__wrapper">
+            <div className={"recipes__owned__wrapper " + (!displayOwned && 'hide')}>
               {recipes &&
                 recipes
                   .filter((recipe) => recipe.author.username === user?.username)
@@ -271,6 +285,32 @@ export function Profile() {
                         <Link to={"/recipes/read/" + recipe._id}>
                           <div className="recipe__details">
                             <h3> {recipe.title} </h3>
+                            <p> {recipe.instructions.slice(0, 50)}...</p>
+                          </div>
+                        </Link>
+                        <div className="btn__options">
+                          <button onClick={() => handleEdit(recipe)}>
+                            <AiOutlineEdit />
+                          </button>
+                          <button onClick={() => handleDelete(recipe._id)}>
+                            <AiOutlineDelete />
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
+            </div>
+
+            <div className={"recipes__saved__wrapper " + (displayOwned && 'hide')}>
+              {recipes &&
+                favRecipes
+                  .map((recipe, i) => {
+                    return (
+                      <div key={i} className="recipe__saved">
+                        <Link to={"/recipes/read/" + recipe._id}>
+                          <div className="recipe__details">
+                          {console.log(recipe)}
+                            <h3> {recipe.title} SAVED </h3>
                             <p> {recipe.instructions.slice(0, 50)}...</p>
                           </div>
                         </Link>

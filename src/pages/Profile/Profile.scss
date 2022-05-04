@@ -414,6 +414,7 @@
           border-radius: 10px 10px 0px 0px;
           padding: 5px;
           height: 50px;
+          cursor: pointer;
          
         }
 
@@ -451,6 +452,9 @@
       height: 60%;
       padding: 5px;
       border-radius: 10px;
+       &.hide{
+        display:none;
+      }
 
       a{
         text-decoration: none;
@@ -463,6 +467,62 @@
       }
 
       .recipe__owned {
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        background-color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include ipad {
+            .btn__options{
+              display:flex;
+             
+            }    
+        }
+
+        &:hover {
+          box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+            0 10px 10px rgba(0, 0, 0, 0.22);
+        }
+
+        button {
+          margin: 10px;
+          padding: 10px;
+          border: 0px;
+          background-color: $buttonColor;
+          color: white;
+          border-radius: 10px;
+        }
+      }
+    }
+
+    .recipes__saved__wrapper{
+      
+      background-color: rgba(245, 245, 245, 0.242);
+      overflow-y: scroll;
+      height: 60%;
+      padding: 5px;
+      border-radius: 10px;
+
+      &.hide{
+        display:none;
+      }
+
+      a{
+        text-decoration: none;
+        color: black;
+      }
+     
+
+      @include ipad {
+        height: 70%;
+      }
+
+      .recipe__saved {
         margin: 10px;
         padding: 10px;
         border-radius: 10px;
