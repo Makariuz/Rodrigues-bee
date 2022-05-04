@@ -42,6 +42,7 @@
     @include ipad {
       width: 70%;
       height: 40%;
+      
     }
     
 
@@ -52,6 +53,7 @@
       justify-content: space-between;
       margin: 20px;
       padding: 10px;
+
 
       .prod__card__pic {
         border-radius: 10px;
@@ -111,6 +113,7 @@
       width: 70%;
       height: 40%;
       justify-content: center;
+
     }
 
     .prod__detail__wrapper {
@@ -119,18 +122,14 @@
       justify-content: center;
       border-radius: 10px;
      
-      @include ipad {
-       
-        width: 100%;
-        padding: 5px;
-        
-      }
+     
       .prod__detail__item {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
 
+       
         img {
           height: 30%;
         }
@@ -151,12 +150,13 @@
 
         p {
           width: 80%;
-          padding: 5px;
+          padding: 15px;
           font-family: "Roboto", sans-serif;
           font-weight: 400;
 
           @include ipad {
             width: 100%;
+            font-size: 1rem;
           }
         }
 
@@ -175,9 +175,6 @@
           margin: 10px;
           box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
           cursor: pointer;
-          @include ipad {
-            width: 200px;
-          }
         }
       }
     }
@@ -202,9 +199,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin: 20px;
+      /* margin: 20px; */
       padding: 10px;
-
+      
+     
       .prod__added__cart {
         font-size: 1.5rem;
       }
