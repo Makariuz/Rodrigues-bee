@@ -157,8 +157,9 @@ export function Profile() {
                       
                    )}
                    
-               
+            
                   </select>
+
                 </div>
                 <hr />
                 
@@ -247,7 +248,10 @@ export function Profile() {
               </div>
 
               <div className="recipes__top__extra">
+              <div className="recipes__h3">
                 <h3> All my recipes </h3>
+                <h3> All my saved recipes </h3>
+                </div>
                 <button onClick={() => navigate("/recipes/create")}>
                   <span> Create Recipe </span>
                   <AiOutlineFileAdd />

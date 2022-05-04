@@ -389,6 +389,7 @@
         font-family: 'Playfair Display', serif;
         font-weight: 400;
         font-size: 5vh;
+        
       }
       .recipes__img__container {
         display: flex;
@@ -401,7 +402,23 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin: 10px;
+      /*   margin: 10px; */
+
+      .recipes__h3{
+        display:flex;
+        align-self: flex-end;
+        gap: 5px;
+        h3{
+          border: 1px solid black;
+          background-color: rgba(245, 245, 245, 0.463);
+          border-radius: 10px 10px 0px 0px;
+          padding: 5px;
+          height: 50px;
+         
+        }
+
+      }
+        
 
         button {
           background-color: green;
