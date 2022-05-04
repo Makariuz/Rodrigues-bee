@@ -8,3 +8,4 @@ export { NewUser } from './NewUser';
 export { NewRecipe } from './NewRecipe'
 export { ScreenSize } from './ScreenSize'
 export { EditProfile } from './EditProfile'
+export { Cart } from './Cart'

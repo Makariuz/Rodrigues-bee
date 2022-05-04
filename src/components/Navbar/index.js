@@ -4,7 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context";
 
 import { BsCartPlus } from "react-icons/bs";
-export function Navbar({ users, menuOpen, setMenuOpen }) {
+export function Navbar({ users, menuOpen, setMenuOpen, showCart, setShowCart }) {
   return (
     <div className={"navbar " + (menuOpen && "active")}>
       <div className="wrapper">
@@ -46,7 +46,7 @@ export function Navbar({ users, menuOpen, setMenuOpen }) {
               <li>
                 <Link to="/about"> About </Link>
               </li>
-              <li>
+              <li onClick={() => {setShowCart(!showCart)}}>
                 <BsCartPlus className="cart" />
               </li>
              

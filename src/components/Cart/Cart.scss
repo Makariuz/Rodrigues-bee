@@ -1,0 +1,62 @@
+@import '../../global.scss';
+
+.cart__wrapper{
+   
+   
+    width: 300px;
+    height: 0vh;
+    background-color: whitesmoke;
+    border-radius: 0px 0px 10px 10px;
+   
+    border-top: 0px;
+    position:fixed;
+    top:70px;
+    /* right: -300px; */
+    right: 100px;
+    z-index: 2;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 700ms ease;
+    z-index: 1;
+    overflow: hidden;
+
+    &.show{
+       /*  z-index: 99999; */
+       height: 30vh;
+       border: 1px solid black;
+       
+    }
+
+    .cart__empty {
+        
+        display:none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 50%;
+
+        button {
+            background-color: green;
+            color: $offWhite;
+            border: none;
+            outline: none;
+            font-family: "Roboto", sans-serif;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            padding: 5px 10px;
+            width: 150px;
+            margin: 10px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+          }
+
+        &.isEmpty{
+            display:flex;
+        }
+      
+    }
+}

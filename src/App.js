@@ -3,10 +3,11 @@ import { useContext, useState } from "react";
 import { AuthContext } from "./context";
 import {  Outlet, useNavigate } from "react-router-dom";
 
-import { Menu, Navbar, ScreenSize } from "./components";
+import { Cart, Menu, Navbar, ScreenSize } from "./components";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showCart, setShowCart] = useState(false);
   const { user, recipes, setRecipes } = useContext(AuthContext);
 
   const navigate = useNavigate()
@@ -16,8 +17,11 @@ function App() {
         users={user}
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
+        showCart={showCart} 
+        setShowCart={setShowCart}
       />
       <Menu users={user} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Cart users={user} showCart={showCart} setShowCart={setShowCart}/>
       <div className="screen__size">
         <ScreenSize />
       </div>
