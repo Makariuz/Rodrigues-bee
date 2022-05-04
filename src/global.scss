@@ -3,13 +3,13 @@ $buttonColor: #992409;
 $offWhite: #F9F5F2;
 $offYellow: #FAE7BF;
 
-$width: 780px;
+$width: 710px;
 
 /* $ipad_width: 781px; */
-$ipad_width: 768px;
+$ipad_width: 711px;
 
 
-$med__width: 912px;
+$med__width: 1276px;
 $max__width: 1100px;
 
 $min__width: 279px;
@@ -25,7 +25,7 @@ $max__height__ipad: 1000px;
 
 
 @mixin mobile {
-    @media (max-width: #{$width}) and (min-width: #{$small_screen}) and (max-height: #{$max__mobile__height}){
+    @media (max-width: #{$width}) and (min-width: #{$small_screen}) {
         @content
     }
 };

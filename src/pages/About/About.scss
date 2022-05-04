@@ -10,9 +10,9 @@
   align-items: center;
 
   @include mobile {
-    /*   width: 100vw;
+      width: 100vw;
     text-align: center;
-    overflow: hidden; */
+    overflow: hidden;
   }
 
   @include ipad {

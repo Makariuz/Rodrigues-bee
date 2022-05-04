@@ -72,7 +72,7 @@ export function Admin() {
                             placeholder='Name' 
                             value={name}
                             onChange={(e) => setName(e.target.value)}     
-                            autocomplete="off" 
+                            autoComplete="off" 
                             />
                     
                     </label>
@@ -85,7 +85,7 @@ export function Admin() {
                             placeholder='Price' 
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}     
-                            autocomplete="off" 
+                            autoComplete="off" 
                             />
                     
                     </label>
@@ -98,7 +98,7 @@ export function Admin() {
                             placeholder='Description' 
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}  
-                            autocomplete="off"
+                            autoComplete="off"
                             />
                     </label>
                     <label htmlFor='file'>

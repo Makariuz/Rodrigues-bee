@@ -14,6 +14,7 @@
   }
   @include ipad {
     background-size: cover;
+    
   }
 
 
@@ -23,6 +24,7 @@
     width: 100%;
     height: 100%;
     z-index: 9;
+    
   }
 
   .user__profile__page {
@@ -32,8 +34,15 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    height: 100%;
 
+    @include mobile {
+      height: 30%;
     
+      a {
+        display:none;
+      }
+    }
 
     .pPicture__header__container {
       display: flex;
@@ -41,15 +50,19 @@
       align-items: center;
       justify-content: center;
 
-      background-image: url("../../images/bee__background.png");
-      background-position: 20% 80%;
-      background-repeat: no-repeat;
-      background-size: cover;
 
       width: 100%;
       padding: 10px;
-      background-color: black;
-
+      height: 100%;
+      background-color: #fae7bfc2;
+      @include mobile {
+        height: 100%;
+      }
+     
+      @include ipad {
+        height: 50%;
+      
+      }
       .pPicture {
         border: 1px solid white;
         background-color: $offYellow;
@@ -59,7 +72,9 @@
           0 6px 6px rgba(0, 0, 0, 0.23);
         overflow: hidden;
         img {
-          height: 100px;
+          height: 100%;
+          width: 100%;
+
         }
       }
     }
@@ -69,51 +84,78 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      width: 100%;
+     
+
+      h3 {
+        font-family: "Roboto", sans-serif;
+        font-size: 2rem;
+      }
+      flex: 1;
     }
 
     .user__profile__info {
       height: 100%;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+
       @include mobile {
         display: none;
       }
 
+      @include ipad {
+        justify-content: flex-start;
+      }
       .acc__personal__details {
-        height: 50%;
+       /*  height: 50%; */
         padding: 10px;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-evenly;
+        
+        
 
-        button {
-          align-self: center;
+       flex: 1;
 
-          background-color: $buttonColor;
-          color: $offWhite;
-          border: none;
-          outline: none;
-          font-family: "Roboto", sans-serif;
-          border-radius: 6px;
-          font-size: 1rem;
-          font-weight: 600;
-          padding: 10px 5px;
-          width: 250px;
-          margin: 10px;
-          box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-          cursor: pointer;
-        }
-      }
-    }
-
-    .saved__recipes__wrapper{
-      display:flex;
-      flex-direction: column;
-      align-items: flex-start;
+       @include ipad {
+         
+        
+        flex: .5;
+       
+        
       
-      h3{
-        margin-bottom: 10px;
       }
+
+        .saved__recipes__wrapper{
+          display:flex;
+          flex-direction: column;
+          align-items: flex-start;
+          
+          h3{
+            margin-bottom: 10px;
+          }
+      }
+      }
+
+      button {
+        align-self: center;
+
+        background-color: $buttonColor;
+        color: $offWhite;
+        border: none;
+        outline: none;
+        font-family: "Roboto", sans-serif;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 10px 5px;
+        width: 250px;
+        margin: 10px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+      }
+    
     }
   }
 
@@ -124,6 +166,8 @@
 
     padding: 20px;
     overflow-y: scroll;
+
+   
 
     @include ipad {
       flex: 1;
@@ -152,6 +196,7 @@
         margin: 0 auto;
         padding: 0 auto;
         height: 60%;
+
       }
 
       @include ipad {
@@ -333,9 +378,12 @@
 
     @include mobile {
       flex: 1;
+    
     }
 
     .top__recipe__container {
+
+   
       h2 {
         text-align: center;
         font-family: 'Playfair Display', serif;
@@ -346,8 +394,7 @@
         display: flex;
         justify-content: center;
         width: 100%;
-        img {
-        }
+       
       }
 
       .recipes__top__extra {
@@ -392,6 +439,7 @@
         text-decoration: none;
         color: black;
       }
+     
 
       @include ipad {
         height: 70%;

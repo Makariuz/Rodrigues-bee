@@ -116,7 +116,7 @@ export function Profile() {
             <div className="pPicture__header__container">
               <div className="pPicture">
                 <img src={user?.picture} alt="" />
-                <br />
+
               </div>
               <small>
                 {" "}
@@ -141,7 +141,7 @@ export function Profile() {
                     ).length}
                 </h3>
                 <p> Created date: {user?.createdAt} </p>
-
+                <hr />
                 <div className="saved__recipes__wrapper">
                   <h3>Saved Recipes</h3>
 
@@ -150,9 +150,9 @@ export function Profile() {
                   <select name="recipes" className="recipes">
               
                     <option value="empty">default</option>
-                        {favRecipes && favRecipes.map((recipe)=>  
+                        {favRecipes && favRecipes.map((recipe, i)=>  
             
-                      <option value={recipe.title}>{recipe.title}</option> 
+                      <option key={i} value={recipe.title}>{recipe.title}</option> 
                      
                       
                    )}
@@ -161,8 +161,9 @@ export function Profile() {
                   </select>
                 </div>
                 <hr />
-                <button onClick={logout}>Logout</button>
+                
               </div>
+              <button onClick={logout}>Logout</button>
             </div>
           </div>
           <div className="user__recipes__page">
