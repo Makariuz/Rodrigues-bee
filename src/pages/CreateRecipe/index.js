@@ -29,7 +29,7 @@ export function CreateRecipe() {
 
   const handleSubmit =  (event) => {
     event.preventDefault();
-    if(!ingredients.includes(';') && ingredients !== "") {
+    if((!ingredients.includes(';') && ingredients !== "") || title.length === 0 || instructions.length === 0) {
       return setError(true)
     } else {
       setError(false)
@@ -74,6 +74,7 @@ export function CreateRecipe() {
             value={title}
             name="title"
             placeholder="Title"
+            className={'input ' + (error && 'error')}
             onChange={(event) => setTitle(event.target.value)}
           />
           <br />
@@ -106,6 +107,7 @@ export function CreateRecipe() {
             value={instructions}
             name="instructions"
             placeholder="Instructions"
+            className={'input ' + (error && 'error')}
             onChange={(event) => setInstructions(event.target.value)}
           />
           <button type="submit" className="submit__btn">
