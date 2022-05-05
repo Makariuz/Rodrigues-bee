@@ -1,0 +1,42 @@
+@import '../../global.scss';
+
+.loading__screen {
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: space-between;
+  
+    .img__wrapper__loading {
+      display: flex;
+      justify-content: center;
+      
+      img {
+        height: 100px;
+     
+        animation: bee 2s infinite;
+  
+        @keyframes bee {
+          50% {
+            transform: translateY(10px);
+          }
+        }
+
+      }
+
+      span {
+        animation: message 2s infinite;
+  
+        @keyframes message {
+          50% {
+            opacity: 0;
+          }
+        }
+      }
+    }
+    .loading__message__container {
+    
+    
+      
+    }
+  }
+  

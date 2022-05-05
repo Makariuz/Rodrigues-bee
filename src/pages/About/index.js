@@ -71,7 +71,9 @@ export function About() {
             className={"honey__info__main " + (showMoreHoney && "show")}
             onClick={() => setShowMoreHoney(!showMoreHoney)}
           >
-            <div className={"honey__info__img__main " + (showMoreHoney && "show")}>
+            <div
+              className={"honey__info__img__main " + (showMoreHoney && "show")}
+            >
               <img src={honey__pic} alt="" />
             </div>
 
@@ -80,7 +82,9 @@ export function About() {
               <h1>Our Honey</h1>
             </div>
 
-            <div className={"paragraph__intro__main " + (showMoreHoney && "show")}>
+            <div
+              className={"paragraph__intro__main " + (showMoreHoney && "show")}
+            >
               <p>
                 The Honey is a natural product with an accentuated aromatic
                 characteristic. Its color and flavor are directly related to the
@@ -88,7 +92,9 @@ export function About() {
               </p>
             </div>
 
-            <div className={"paragraph__info__main " + (showMoreHoney && "show")}>
+            <div
+              className={"paragraph__info__main " + (showMoreHoney && "show")}
+            >
               <p>
                 Our honey is produced by the species of bee 'Apis mellifera' in
                 a mountainous and forested region belonging to the district of
@@ -119,7 +125,9 @@ export function About() {
             onClick={() => setShowMoreKeeper(!showMoreKeeper)}
           >
             <div
-              className={"beekeeping__info__img__main " + (showMoreKeeper && "show")}
+              className={
+                "beekeeping__info__img__main " + (showMoreKeeper && "show")
+              }
             >
               <img src={pic1} alt="" />
             </div>
@@ -129,7 +137,9 @@ export function About() {
               <h1>The Fumigator</h1>
             </div>
 
-            <div className={"paragraph__intro__main " + (showMoreKeeper && "show")}>
+            <div
+              className={"paragraph__intro__main " + (showMoreKeeper && "show")}
+            >
               <p>
                 The fumigator is a tool used in the practice of beekeeping with
                 the function of producing smoke and with the objective of making
@@ -137,7 +147,9 @@ export function About() {
               </p>
             </div>
 
-            <div className={"paragraph__info__main " + (showMoreKeeper && "show")}>
+            <div
+              className={"paragraph__info__main " + (showMoreKeeper && "show")}
+            >
               <p>
                 The fumigator is a tool used in the practice of beekeeping with
                 the function of producing smoke and with the objective of making
@@ -164,15 +176,12 @@ export function About() {
               </p>
             </div>
           </div>
-
-
         </div>
       </div>
 
       {/* MOBILE VIEW */}
       <div className="about__wrapper__mobile">
         <div className="about__cards">
-
           <div className="about__bees">
             <div
               className={"bees__info " + (showMore && "show")}
@@ -218,112 +227,108 @@ export function About() {
               </div>
             </div>
           </div>
-      
+
           <div className="about__bee__honey">
-        
-
             <div
-            className={"honey__info " + (showMoreHoney && "show")}
-            onClick={() => setShowMoreHoney(!showMoreHoney)}
-          >
-            <div className={"honey__info__img " + (showMoreHoney && "show")}>
-              <img src={honey__pic} alt="" />
-            </div>
-
-            <div className="honey__info__header">
-              <small> Click to view more!</small>
-              <h1>Our Honey</h1>
-            </div>
-
-            <div className={"paragraph__intro " + (showMoreHoney && "show")}>
-              <p>
-                The Honey is a natural product with an accentuated aromatic
-                characteristic. Its color and flavor are directly related to the
-                predominance of the flowering used for its production.
-              </p>
-            </div>
-
-            <div className={"paragraph__info " + (showMoreHoney && "show")}>
-              <p>
-                Our honey is produced by the species of bee 'Apis mellifera' in
-                a mountainous and forested region belonging to the district of
-                Vila Real in Portugal.
-              </p>
-              <br />
-              <p>
-                Dark colored honeys are more nutritious, rich in proteins and
-                mineral salts, having a high price in the market. Another
-                outstanding feature in some honeys is the liquid or hard
-                consistency that it may present when stored in a container,
-                being of equal quality in that aspect.
-              </p>
-              <br />
-              <p>
-                Because it is a saturated solution of sugars, honey tends to
-                crystallize spontaneously, acquiring a solid consistency, this
-                effect is nothing more than the condensation, the agglutination,
-                of the glucose particles.
-              </p>
-            </div>
-          </div>
-          </div>
-
-              
-          <div className="about__bee__keeping">
-           
-
-            <div
-            className={"beekeeping__info " + (showMoreKeeper && "show")}
-            onClick={() => setShowMoreKeeper(!showMoreKeeper)}
-          >
-            <div
-              className={"beekeeping__info__img " + (showMoreKeeper && "show")}
+              className={"honey__info " + (showMoreHoney && "show")}
+              onClick={() => setShowMoreHoney(!showMoreHoney)}
             >
-              <img src={pic1} alt="" />
-            </div>
+              <div className={"honey__info__img " + (showMoreHoney && "show")}>
+                <img src={honey__pic} alt="" />
+              </div>
 
-            <div className="beekeeping__info__header">
-              <small> Click to view more!</small>
-              <h1>The Fumigator</h1>
-            </div>
+              <div className="honey__info__header">
+                <small> Click to view more!</small>
+                <h1>Our Honey</h1>
+              </div>
 
-            <div className={"paragraph__intro " + (showMoreKeeper && "show")}>
-              <p>
-                The fumigator is a tool used in the practice of beekeeping with
-                the function of producing smoke and with the objective of making
-                the bees calmer during the management of the swarm...
-              </p>
-            </div>
+              <div className={"paragraph__intro " + (showMoreHoney && "show")}>
+                <p>
+                  The Honey is a natural product with an accentuated aromatic
+                  characteristic. Its color and flavor are directly related to
+                  the predominance of the flowering used for its production.
+                </p>
+              </div>
 
-            <div className={"paragraph__info " + (showMoreKeeper && "show")}>
-              <p>
-                The fumigator is a tool used in the practice of beekeeping with
-                the function of producing smoke and with the objective of making
-                the bees calmer during the management of the swarm, thus
-                preventing the bees from stinging the beekeeper and, inherently,
-                the death of the bee.
-              </p>
-              <br />
-              <p>
-                The smoke also serves to mask the alarm pheromones released by
-                the guard bees, giving the beekeeper more time to work on the
-                hive.
-              </p>
-              <br />
-              <p>
-                This equipment is used in very specific cases, such as in hives
-                with a large amount of stored honey or in hives with a high
-                number of herds (bees).
-              </p>
-              <br />
-              <p>
-                The abusive use of this equipment can change the flavour of the
-                honey and harm the swarm.
-              </p>
+              <div className={"paragraph__info " + (showMoreHoney && "show")}>
+                <p>
+                  Our honey is produced by the species of bee 'Apis mellifera'
+                  in a mountainous and forested region belonging to the district
+                  of Vila Real in Portugal.
+                </p>
+                <br />
+                <p>
+                  Dark colored honeys are more nutritious, rich in proteins and
+                  mineral salts, having a high price in the market. Another
+                  outstanding feature in some honeys is the liquid or hard
+                  consistency that it may present when stored in a container,
+                  being of equal quality in that aspect.
+                </p>
+                <br />
+                <p>
+                  Because it is a saturated solution of sugars, honey tends to
+                  crystallize spontaneously, acquiring a solid consistency, this
+                  effect is nothing more than the condensation, the
+                  agglutination, of the glucose particles.
+                </p>
+              </div>
             </div>
           </div>
-          </div>
 
+          <div className="about__bee__keeping">
+            <div
+              className={"beekeeping__info " + (showMoreKeeper && "show")}
+              onClick={() => setShowMoreKeeper(!showMoreKeeper)}
+            >
+              <div
+                className={
+                  "beekeeping__info__img " + (showMoreKeeper && "show")
+                }
+              >
+                <img src={pic1} alt="" />
+              </div>
+
+              <div className="beekeeping__info__header">
+                <small> Click to view more!</small>
+                <h1>The Fumigator</h1>
+              </div>
+
+              <div className={"paragraph__intro " + (showMoreKeeper && "show")}>
+                <p>
+                  The fumigator is a tool used in the practice of beekeeping
+                  with the function of producing smoke and with the objective of
+                  making the bees calmer during the management of the swarm...
+                </p>
+              </div>
+
+              <div className={"paragraph__info " + (showMoreKeeper && "show")}>
+                <p>
+                  The fumigator is a tool used in the practice of beekeeping
+                  with the function of producing smoke and with the objective of
+                  making the bees calmer during the management of the swarm,
+                  thus preventing the bees from stinging the beekeeper and,
+                  inherently, the death of the bee.
+                </p>
+                <br />
+                <p>
+                  The smoke also serves to mask the alarm pheromones released by
+                  the guard bees, giving the beekeeper more time to work on the
+                  hive.
+                </p>
+                <br />
+                <p>
+                  This equipment is used in very specific cases, such as in
+                  hives with a large amount of stored honey or in hives with a
+                  high number of herds (bees).
+                </p>
+                <br />
+                <p>
+                  The abusive use of this equipment can change the flavour of
+                  the honey and harm the swarm.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

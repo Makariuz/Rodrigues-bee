@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { AiOutlineFundView } from 'react-icons/ai';
 import { BsCartPlus, BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
+import { Loading } from '../Loading';
 
 export function ProductsCarousel(){
 
@@ -51,9 +52,9 @@ export function ProductsCarousel(){
 
         <div className="product-slides">
 
-       
+        {products ? 
             
-            {products.map((product) => {
+            products.map((product) => {
                return (
                 <div key={product._id} id="product-slide">
                 
@@ -78,9 +79,11 @@ export function ProductsCarousel(){
                 </div>
                )
 
-            })}
+            })
             
-           
+            : (
+              <Loading />
+              )} 
             
         </div>
 
