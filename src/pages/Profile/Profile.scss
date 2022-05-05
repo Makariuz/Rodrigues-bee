@@ -14,9 +14,7 @@
   }
   @include ipad {
     background-size: cover;
-    
   }
-
 
   .edit__profile__container {
     display: none;
@@ -24,7 +22,6 @@
     width: 100%;
     height: 100%;
     z-index: 9;
-    
   }
 
   .user__profile__page {
@@ -38,10 +35,9 @@
 
     @include mobile {
       height: 30%;
-      
-    
+
       a {
-        display:none;
+        display: none;
       }
     }
 
@@ -51,19 +47,16 @@
       align-items: center;
       justify-content: center;
 
-
       width: 100%;
       padding: 10px;
       height: 100%;
       background-color: #fae7bfc2;
       @include mobile {
         height: 100%;
-      
       }
-     
+
       @include ipad {
         height: 50%;
-      
       }
       .pPicture {
         border: 1px solid white;
@@ -76,7 +69,6 @@
         img {
           height: 100%;
           width: 100%;
-
         }
       }
     }
@@ -87,7 +79,6 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-     
 
       h3 {
         font-family: "Roboto", sans-serif;
@@ -110,34 +101,27 @@
         justify-content: flex-start;
       }
       .acc__personal__details {
-       /*  height: 50%; */
+        /*  height: 50%; */
         padding: 10px;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        
-        
 
-       flex: 1;
+        flex: 1;
 
-       @include ipad {
-         
-        
-        flex: .5;
-       
-        
-      
-      }
+        @include ipad {
+          flex: 0.5;
+        }
 
-        .saved__recipes__wrapper{
-          display:flex;
+        .saved__recipes__wrapper {
+          display: flex;
           flex-direction: column;
           align-items: flex-start;
-          
-          h3{
+
+          h3 {
             margin-bottom: 10px;
           }
-      }
+        }
       }
 
       button {
@@ -157,7 +141,6 @@
         box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
         cursor: pointer;
       }
-    
     }
   }
 
@@ -168,8 +151,6 @@
 
     padding: 20px;
     overflow-y: scroll;
-
-   
 
     @include ipad {
       flex: 1;
@@ -189,8 +170,8 @@
 
       transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
-      .test_drag{
-        display:none;
+      .test_drag {
+        display: none;
       }
 
       @include mobile {
@@ -198,7 +179,6 @@
         margin: 0 auto;
         padding: 0 auto;
         height: 60%;
-
       }
 
       @include ipad {
@@ -302,7 +282,6 @@
               border: 1px solid $buttonColor;
               @include ipad {
                 width: 30%;
-                
               }
 
               &:active,
@@ -336,12 +315,8 @@
               }
 
               @include ipad {
-               
                 width: 30%;
-                
               }
-
-          
             }
           }
 
@@ -380,59 +355,52 @@
 
     @include mobile {
       flex: 1;
-    
     }
 
     .top__recipe__container {
-
-   
       h2 {
         text-align: center;
-        font-family: 'Playfair Display', serif;
+        font-family: "Playfair Display", serif;
         font-weight: 400;
         font-size: 5vh;
-        
       }
       .recipes__img__container {
         display: flex;
         justify-content: center;
         width: 100%;
-       
       }
 
       .recipes__top__extra {
         display: flex;
         justify-content: space-between;
         align-items: center;
-      /*   margin: 10px; */
+        /*   margin: 10px; */
 
-      .recipes__h3{
-        display:flex;
-        align-self: flex-end;
-        
-        .h3{
-          border: .4px solid black;
-          background-color: rgba(245, 245, 245, 0.463);
-          border-radius: 10px 10px 0px 0px;
-          padding: 5px;
-          
-          height: 45px;
-          cursor: pointer;
+        .recipes__h3 {
+          display: flex;
           align-self: flex-end;
-          font-size: 1rem;
 
-         
-         &.activated{
-          height: 50px;
-          align-self: flex-end;
-          box-shadow: 7px 0px 10px rgba(0,0,0,0.10), 5px 0px 20px rgba(0,0,0,0.22);
-          border-bottom: 0;
-          background-color: rgba(245, 245, 245, 0.648);
-         }
+          .h3 {
+            border: 0.4px solid black;
+            background-color: rgba(245, 245, 245, 0.463);
+            border-radius: 10px 10px 0px 0px;
+            padding: 5px;
+
+            height: 45px;
+            cursor: pointer;
+            align-self: flex-end;
+            font-size: 1rem;
+
+            &.activated {
+              height: 50px;
+              align-self: flex-end;
+              box-shadow: 7px 0px 10px rgba(0, 0, 0, 0.1),
+                5px 0px 20px rgba(0, 0, 0, 0.22);
+              border-bottom: 0;
+              background-color: rgba(245, 245, 245, 0.648);
+            }
+          }
         }
-
-      }
-        
 
         button {
           background-color: green;
@@ -465,15 +433,14 @@
       height: 60%;
       padding: 5px;
       border-radius: 10px;
-       &.hide{
-        display:none;
+      &.hide {
+        display: none;
       }
 
-      a{
+      a {
         text-decoration: none;
         color: black;
       }
-     
 
       @include ipad {
         height: 70%;
@@ -491,10 +458,9 @@
         align-items: center;
 
         @include ipad {
-            .btn__options{
-              display:flex;
-             
-            }    
+          .btn__options {
+            display: flex;
+          }
         }
 
         &:hover {
@@ -513,23 +479,21 @@
       }
     }
 
-    .recipes__saved__wrapper{
-      
+    .recipes__saved__wrapper {
       background-color: rgba(245, 245, 245, 0.242);
       overflow-y: scroll;
       height: 60%;
       padding: 5px;
       border-radius: 10px;
 
-      &.hide{
-        display:none;
+      &.hide {
+        display: none;
       }
 
-      a{
+      a {
         text-decoration: none;
         color: black;
       }
-     
 
       @include ipad {
         height: 70%;
@@ -547,10 +511,9 @@
         align-items: center;
 
         @include ipad {
-            .btn__options{
-              display:flex;
-             
-            }    
+          .btn__options {
+            display: flex;
+          }
         }
 
         &:hover {
@@ -591,7 +554,6 @@
       display: none;
     }
 
-
     .carousel__container {
       background-color: rgba(255, 255, 255, 0.018);
       display: flex;
@@ -600,16 +562,12 @@
       justify-content: center;
       height: 100%;
       width: 100%;
-      
-      
+
       overflow-x: hidden;
       object-fit: cover;
-      
 
       .carousel {
         margin: 10px;
-        
-        
       }
     }
 
@@ -622,5 +580,39 @@
 
   img {
     height: 100px;
+  }
+}
+
+.loading__screen {
+  display: flex;
+  flex-direction: column;
+
+  .img__wrapper__loading {
+    display: flex;
+    justify-content: center;
+
+    img {
+      height: 100px;
+
+      animation: bee 2s infinite;
+
+      @keyframes bee {
+        50% {
+          transform: translateY(10px);
+        }
+      }
+    }
+  }
+  .loading__message__container {
+
+    span {
+      animation: message 2s infinite;
+
+      @keyframes message {
+        50% {
+          opacity: 0;
+        }
+      }
+    }
   }
 }

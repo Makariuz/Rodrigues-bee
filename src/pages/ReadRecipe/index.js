@@ -50,8 +50,8 @@ export function ReadRecipe() {
           <div className="ingredients__instructions__wrapper">
             <ul>
               <h3>Ingredients</h3>
-              {newArr.map((ingredient) => {
-                return <li key={ingredient.id}>{ingredient}</li>;
+              {newArr.map((ingredient, i) => {
+                return <li key={i}>{ingredient}</li>;
               })}
             </ul>
             <hr />

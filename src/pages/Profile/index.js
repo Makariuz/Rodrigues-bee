@@ -48,13 +48,19 @@ export function Profile() {
 
   const [displayOwned, setDisplayOwned] = useState(true)
   const [displaySaved, setDisplaySaved] = useState(false)
+  const [favRecipes, setFaveRecipes] = useState(() => user ? user.recipes : {loading: ['loading']}) 
+
 
 
   useEffect(() => {
+
     getRecipes();
+
   }, []);
 
-  const [favRecipes, setFaveRecipes] = useState(user.recipes ? user.recipes :  [{title: 'loading'}])
+  
+
+  //const [favRecipes, setFaveRecipes] = useState(user.recipes)
  
 
 
@@ -158,7 +164,7 @@ const handleSaved = () => {
                       (recipe) => recipe.author.username === user.username
                     ).length}
                 </h3>
-                <p> Created date: {user?.createdAt} </p>
+                <p> Created date: {createdDate.substring(0, 15)} </p>
                 <hr />
                 <div className="saved__recipes__wrapper">
                   <h3>Saved Recipes</h3>
@@ -306,14 +312,13 @@ const handleSaved = () => {
             </div>
 
             <div className={"recipes__saved__wrapper " + (displayOwned && 'hide')}>
-              {recipes &&
+              {favRecipes &&
                 favRecipes
                   .map((recipe, i) => {
                     return (
                       <div key={i} className="recipe__saved">
                         <Link to={"/recipes/read/" + recipe._id}>
                           <div className="recipe__details">
-                          {console.log(recipe)}
                             <h3> {recipe.title}</h3>
                             <p> {recipe.instructions.slice(0, 50)}...</p>
                           </div>
@@ -338,7 +343,14 @@ const handleSaved = () => {
           </div>
         </div>
       ) : (
-        <h1>loading</h1>
+        <div className="loading__screen">
+          <div className="img__wrapper__loading">
+            <img src="/assets/bees__loading.png" alt="" />
+          </div>
+          <div className="loading__message__container">
+            <h1>Loading.<span>..</span></h1>
+          </div>
+        </div>
       )}
     </>
   );

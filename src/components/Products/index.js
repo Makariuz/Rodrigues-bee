@@ -18,8 +18,9 @@ import { AiOutlineDoubleRight, AiOutlineFundView } from "react-icons/ai";
 
 import ProgressiveImage from "react-progressive-image-loading";
 
-export function Products({showCart, setShowCart}) {
+export function Products({showCart, setShowCart, het}) {
   const [products, setProducts] = useState([]);
+  console.log(het)
   const [cart, setCart] = useState([]);
   const [price, setPrice] = useState([]);
   const [emptyCart, setEmptyCart] = useState(true);
@@ -47,19 +48,8 @@ export function Products({showCart, setShowCart}) {
     getProducts();
   }, []);
 
-  const handleRemove = async (i) => {
-    /* cart.splice(i, 1) */
-  };
 
-  /* console.log(cart) */
 
-  const addItemToCart = async (e) => {
-    const item = e.target.value;
-    let matches = await item.match(/(\d+)/);
-    setPrice([...price, matches[0]]);
-    setCart([...cart, item]);
-    setEmptyCart(false);
-  };
 
   const addProdDetails = (name, price, image, description) => {
     setProductDetails({ name, price, image, description });
@@ -70,6 +60,9 @@ export function Products({showCart, setShowCart}) {
     setProductDetails([]);
     setEmptyCart(true);
   };
+
+
+
 
   return (
     <>
@@ -111,10 +104,7 @@ export function Products({showCart, setShowCart}) {
                   >
                     View <AiOutlineFundView />
                   </button>
-                  <button
-                    value={`${product.name} ${product.price}€ `}
-                    onClick={addItemToCart}
-                  >
+                  <button onClick={() => setShowCart(!showCart)}>
                     Add <BsCartPlus />{" "}
                   </button>
                 </div>
@@ -137,23 +127,6 @@ export function Products({showCart, setShowCart}) {
               />
             </div>
 
-            {/*         {cart &&
-          cart.map((item, i) => {
-            return (
-              <div key={item._id} className="prod__cart__list">
-                <div index={i} className="prod__added__cart">
-                  {item}
-                </div>
-
-                <div className="btn__remove">
-                  <button onClick={() => cart.splice(0, 1)}>
-                    Remove <IoMdRemoveCircleOutline />{" "}
-                  </button>
-                </div>
-              </div>
-            );
-          })} */}
-
             {productDetails && (
               <div className="prod__detail__wrapper">
                 <div
@@ -175,7 +148,7 @@ export function Products({showCart, setShowCart}) {
                     <BsStarHalf />
                   </small>
                   <small>{productDetails.price} €</small>
-                  <button onClick={addItemToCart}>
+                  <button onClick={() => setShowCart(!showCart)}>
                     Add to Cart <BsCartPlus />{" "}
                   </button>
                 </div>
@@ -231,7 +204,7 @@ export function Products({showCart, setShowCart}) {
                 </small>
                 <small>{productDetails.price} €</small>
 
-                <button onClick={() => setSeeMore(true)}>
+                <button onClick={() => setShowCart(!showCart)}>
                   Add <BsCartPlus />{" "}
                 </button>
               </div>

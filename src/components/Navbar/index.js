@@ -46,7 +46,7 @@ export function Navbar({ users, menuOpen, setMenuOpen, showCart, setShowCart }) 
               <li>
                 <Link to="/about"> About </Link>
               </li>
-              <li onClick={() => {setShowCart(!showCart)}}>
+              <li onClick={() => setShowCart(!showCart)}>
                 <BsCartPlus className="cart" />
               </li>
              
