@@ -86,17 +86,17 @@ export function ReadRecipe() {
                 onClick={() => bookmarkRecipe(id)}
                 className="save__recipe__btn"
               >
-                Save recipe{" "}
+                Save recipe
               </button>
             </div>
           </div>
         </div>
       ) : (
-        <div className="loading__screen">
-          <div className="img__wrapper__loading">
-            <img src="/assets/bees__loading.png" alt="" />
+        <div className="loading__screen_read">
+          <div className="img__wrapper__loading_read">
+            <img src="/assets/bees__loading.png_read" alt="" />
           </div>
-          <div className="loading__message__container">
+          <div className="loading__message__container_read">
             <h1>Loading..</h1>
           </div>
         </div>

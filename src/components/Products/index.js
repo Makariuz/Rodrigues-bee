@@ -17,6 +17,7 @@ import {
 import { AiOutlineDoubleRight, AiOutlineFundView } from "react-icons/ai";
 
 import ProgressiveImage from "react-progressive-image-loading";
+import { Loading } from "../Loading";
 
 export function Products({showCart, setShowCart, het}) {
   const [products, setProducts] = useState([]);
@@ -69,7 +70,8 @@ export function Products({showCart, setShowCart, het}) {
       {products ? (
         <div className="products__list__container">
           <div className="products__list__wrapper">
-            {products.map((product) => {
+          {products ?   
+            products.map((product) => {
               return (
                 <div key={product._id} className="prod__card">
                   <div className="prod__card__pic">
@@ -109,7 +111,8 @@ export function Products({showCart, setShowCart, het}) {
                   </button>
                 </div>
               );
-            })}
+            })
+            : ( <Loading /> )}
           </div>
 
           <div
