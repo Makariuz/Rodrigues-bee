@@ -11,7 +11,7 @@ export function Cart({users, showCart, setShowCart}) {
       <div className={"cart__empty " + (isEmpty && showCart && "isEmpty")}>
         <h2>Cart is empty</h2>
 
-        <button> Continue shopping </button>
+        <button onClick={() => setShowCart(!showCart)}> Continue shopping </button>
       </div>
     </div>
   );

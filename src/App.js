@@ -28,7 +28,7 @@ function App() {
       
       
       <div className="app__sections">
-        <Outlet users={user} />
+        <Outlet users={user} showCart={showCart} setShowCart={setShowCart}/>
         
       </div>
     </div>

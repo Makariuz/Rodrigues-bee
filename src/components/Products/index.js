@@ -18,7 +18,7 @@ import { AiOutlineDoubleRight, AiOutlineFundView } from "react-icons/ai";
 
 import ProgressiveImage from "react-progressive-image-loading";
 
-export function Products() {
+export function Products({showCart, setShowCart}) {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [price, setPrice] = useState([]);
