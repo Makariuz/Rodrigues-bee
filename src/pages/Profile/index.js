@@ -5,9 +5,6 @@ import { AuthContext } from "../../context";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { EditProfile, ProductsCarousel } from "../../components";
 
-
-
-
 import {
   AiOutlineCloseCircle,
   AiOutlineDelete,
@@ -20,14 +17,10 @@ import { MdOutlineCancel } from "react-icons/md";
 import "./Profile.scss";
 import Draggable, { DraggableCore } from "react-draggable";
 
-
 export function Profile() {
   const navigate = useNavigate();
 
-  
-
   const nodeRef = React.useRef(null);
-  
 
   const {
     user,
@@ -35,6 +28,7 @@ export function Profile() {
     recipes,
     getRecipes,
     setRecipes,
+    savedRecipes,
     editRecipe,
     deleteRecipe,
   } = useContext(AuthContext);
@@ -46,27 +40,28 @@ export function Profile() {
   const [newPicture, setNewPicture] = useState("");
   const [newInstructions, setNewInstructions] = useState("");
 
-  const [displayOwned, setDisplayOwned] = useState(true)
-  const [displaySaved, setDisplaySaved] = useState(false)
-  const [favRecipes, setFaveRecipes] = useState(() => user ? user.recipes : {loading: ['loading']}) 
-
-
-
+  const [displayOwned, setDisplayOwned] = useState(true);
+  const [displaySaved, setDisplaySaved] = useState(false);
+  const [favRecipes, setFaveRecipes] = useState(user && user.recipes);
+ 
   useEffect(() => {
-
     getRecipes();
 
   }, []);
 
-  
+  useEffect(() => {
+   user && setFaveRecipes(user.recipes)
+   
+  }, [user])
 
   //const [favRecipes, setFaveRecipes] = useState(user.recipes)
- 
-
 
   const handleDelete = async (id) => {
     await deleteRecipe(id);
-    getRecipes();
+    setFaveRecipes((previousSaved) => {
+      //console.log(previousSaved[0], id)
+      return previousSaved.filter((recipe) => recipe._id !== id)
+    })
   };
 
   const handleEdit = (recipe) => {
@@ -84,7 +79,6 @@ export function Profile() {
     getRecipes();
     setEditOpen(false);
   };
-
 
   const uploadImage = (file) => {
     return axios
@@ -105,28 +99,30 @@ export function Profile() {
       .catch((err) => console.log("Error while uploading the file: ", err));
   };
 
-
- 
-
-
   const [createdDate, setCreatedDate] = useState(
     `${new Date(user?.createdAt.toString())}`
   );
 
+  const handleOwned = () => {
+    setDisplayOwned(true);
+    setDisplaySaved(false);
+  };
 
-const handleOwned = () => {
-  setDisplayOwned(true)
-  setDisplaySaved(false)
-}
+  const handleSaved = () => {
+    setDisplaySaved(true);
+    setDisplayOwned(false);
+  };
 
-
-
-const handleSaved = () => {
-  setDisplaySaved(true)
-  setDisplayOwned(false)
-}
-
- 
+  const removeSaved = async (id) => {
+  /*   setFaveRecipes((previousSaved) => {
+      return previousSaved.filter((recipe) => {
+        return recipe._id !== id
+      })
+    })
+ */
+ await deleteRecipe(id)
+   
+  }
 
   return (
     <>
@@ -140,11 +136,10 @@ const handleSaved = () => {
             <div className="pPicture__header__container">
               <div className="pPicture">
                 <img src={user?.picture} alt="" />
-
               </div>
               <small>
                 {" "}
-                <a href="#">Edit profile picture</a>{" "}
+                <small>Edit profile picture</small>{" "}
               </small>
 
               <div className="uProfile__name">
@@ -164,7 +159,7 @@ const handleSaved = () => {
                       (recipe) => recipe.author.username === user.username
                     ).length}
                 </h3>
-                <p> Created date: {createdDate.substring(0, 15)} </p>
+                <p> Created date: {createdDate.substring(0, 15) ? createdDate.substring(0, 15) : 'loading'} </p>
                 <hr />
                 <div className="saved__recipes__wrapper">
                   <h3>Saved Recipes</h3>
@@ -172,97 +167,87 @@ const handleSaved = () => {
                   <label htmlFor="recipes">Choose a recipe:</label>
 
                   <select name="recipes" className="recipes">
-              
                     <option value="empty">default</option>
-                        {favRecipes && favRecipes.map((recipe, i)=>  
-            
-                      <option key={i} value={recipe.title}>{recipe.title}</option> 
-                     
-                      
-                   )}
-                   
-            
-                  </select>
 
+                    {favRecipes &&
+                      favRecipes.map((recipe, i) => (
+                        <option key={i} value={recipe.title}>
+                          {recipe.title}
+                        </option>
+                      ))}
+                  </select>
                 </div>
                 <hr />
-                
               </div>
               <button onClick={logout}>Logout</button>
             </div>
           </div>
           <div className="user__recipes__page">
             {/* EDIT RECIPES */}
-          
-           
-              <div className={"edit__recipe " + (editOpen && "edit__open")}>
-              
+
+            <div className={"edit__recipe " + (editOpen && "edit__open")}>
               <div className="bar__drag"></div>
-                <div className="edit__card">
-                  <div
-                    className="close__card"
-                    onClick={() => setEditOpen(false)}
-                  >
-                    {" "}
-                    <AiOutlineCloseCircle />{" "}
-                  </div>
-                  <form onSubmit={handleSubmit}>
-                    <div className="form__wrapper">
-                      <div className="title__ing__div">
-                        <label htmlFor="title">Title</label>
-                        <input
-                          value={newTitle}
-                          name="title"
-                          onChange={(e) => setNewTitle(e.target.value)}
-                          placeholder="Title"
-                        />
-                        <br />
-
-                        <label htmlFor="ingredients">Ingredients</label>
-
-                        <input
-                          value={newIngredients}
-                          name="ingredients"
-                          placeholder="Ingredients (use / to separate)"
-                          onChange={(e) => setNewIngredients(e.target.value)}
-                        />
-
-                        <br />
-
-                        <label htmlFor="picture">Image</label>
-                        <input
-                          type="file"
-                          name="picture"
-                          className="image__input"
-                          onChange={handleFileUpload}
-                        />
-                      </div>
-
-                      <div className="instructions__div">
-                        <label htmlFor="instructions">Instructions</label>
-                        <textarea
-                          value={newInstructions}
-                          name="instructions"
-                          placeholder="Instructions"
-                          onChange={(e) => setNewInstructions(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                    <div className="btn__save__cancel">
-                      {/* submit button...save button */}
-
-                      <button type="text" onClick={() => setEditOpen(false)}>
-                        Cancel <MdOutlineCancel />
-                      </button>
-                      <button type="submit" className="submit__btn">
-                        Save <AiOutlineSave />
-                      </button>
-                    </div>
-                  </form>
+              <div className="edit__card">
+                <div className="close__card" onClick={() => setEditOpen(false)}>
+                  {" "}
+                  <AiOutlineCloseCircle />{" "}
                 </div>
+                <form onSubmit={handleSubmit}>
+                  <div className="form__wrapper">
+                    <div className="title__ing__div">
+                      <label htmlFor="title">Title</label>
+                      <input
+                        value={newTitle}
+                        name="title"
+                        onChange={(e) => setNewTitle(e.target.value)}
+                        placeholder="Title"
+                      />
+                      <br />
+
+                      <label htmlFor="ingredients">Ingredients</label>
+
+                      <input
+                        value={newIngredients}
+                        name="ingredients"
+                        placeholder="Ingredients (use / to separate)"
+                        onChange={(e) => setNewIngredients(e.target.value)}
+                      />
+
+                      <br />
+
+                      <label htmlFor="picture">Image</label>
+                      <input
+                        type="file"
+                        name="picture"
+                        className="image__input"
+                        onChange={handleFileUpload}
+                      />
+                    </div>
+
+                    <div className="instructions__div">
+                      <label htmlFor="instructions">Instructions</label>
+                      <textarea
+                        value={newInstructions}
+                        name="instructions"
+                        placeholder="Instructions"
+                        onChange={(e) => setNewInstructions(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div className="btn__save__cancel">
+                    {/* submit button...save button */}
+
+                    <button type="text" onClick={() => setEditOpen(false)}>
+                      Cancel <MdOutlineCancel />
+                    </button>
+                    <button type="submit" className="submit__btn">
+                      Save <AiOutlineSave />
+                    </button>
+                  </div>
+                </form>
               </div>
-              
-            
+            </div>
+
             {/* EDIT END RECIPE */}
 
             <div className="top__recipe__container">
@@ -272,9 +257,21 @@ const handleSaved = () => {
               </div>
 
               <div className="recipes__top__extra">
-              <div className="recipes__h3">
-                <h3 className={'h3 ' + (displayOwned && "activated")} onClick={handleOwned}> All my recipes </h3>
-                <h3 className={'h3 ' + (displaySaved && "activated")} onClick={handleSaved}> All my saved recipes </h3>
+                <div className="recipes__h3">
+                  <h3
+                    className={"h3 " + (displayOwned && "activated")}
+                    onClick={handleOwned}
+                  >
+                    {" "}
+                    All my recipes{" "}
+                  </h3>
+                  <h3
+                    className={"h3 " + (displaySaved && "activated")}
+                    onClick={handleSaved}
+                  >
+                    {" "}
+                    All my saved recipes{" "}
+                  </h3>
                 </div>
                 <button onClick={() => navigate("/recipes/create")}>
                   <span> Create Recipe </span>
@@ -285,7 +282,9 @@ const handleSaved = () => {
 
             <hr />
 
-            <div className={"recipes__owned__wrapper " + (!displayOwned && 'hide')}>
+            <div
+              className={"recipes__owned__wrapper " + (!displayOwned && "hide")}
+            >
               {recipes &&
                 recipes
                   .filter((recipe) => recipe.author.username === user?.username)
@@ -311,26 +310,27 @@ const handleSaved = () => {
                   })}
             </div>
 
-            <div className={"recipes__saved__wrapper " + (displayOwned && 'hide')}>
+            <div
+              className={"recipes__saved__wrapper " + (displayOwned && "hide")}
+            >
               {favRecipes &&
-                favRecipes
-                  .map((recipe, i) => {
-                    return (
-                      <div key={i} className="recipe__saved">
-                        <Link to={"/recipes/read/" + recipe._id}>
-                          <div className="recipe__details">
-                            <h3> {recipe.title}</h3>
-                            <p> {recipe.instructions.slice(0, 50)}...</p>
-                          </div>
-                        </Link>
-                        <div className="btn__options">
-                          <button onClick={() => handleDelete(recipe._id)}>
-                            <AiOutlineDelete />
-                          </button>
+                favRecipes.map((recipe, i) => {
+                  return (
+                    <div key={i} className="recipe__saved">
+                      <Link to={"/recipes/read/" + recipe._id}>
+                        <div className="recipe__details">
+                          <h3> {recipe.title}</h3>
+                          <p> {recipe.instructions.slice(0, 50)}...</p>
                         </div>
+                      </Link>
+                      <div className="btn__options">
+                        <button onClick={() => removeSaved(recipe._id)}>
+                          <AiOutlineDelete />
+                        </button>
                       </div>
-                    );
-                  })}
+                    </div>
+                  );
+                })}
             </div>
           </div>
 
@@ -348,7 +348,9 @@ const handleSaved = () => {
             <img src="/assets/bees__loading.png" alt="" />
           </div>
           <div className="loading__message__container">
-            <h1>Loading.<span>..</span></h1>
+            <h1>
+              Loading.<span>..</span>
+            </h1>
           </div>
         </div>
       )}

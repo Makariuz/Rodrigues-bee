@@ -88,8 +88,6 @@ export function AuthContextProvider({ children }) {
         price
       }
     );
-
-    console.log(response.data)
     navigate("/user/profile");
   };
 
@@ -152,10 +150,14 @@ export function AuthContextProvider({ children }) {
     const response = await client.get(
       `${process.env.REACT_APP_BACKEND_URL}/recipes/save/${id}`
     );
-      
-
+    setSavedRecipes((previousSaved) => {
+      return ([ ...previousSaved , response.data])
+    });
+    console.log(savedRecipes)
+//setSavedRecipes
   };
 
+  
   const deleteRecipe = async (id) => {
     const response = await client.delete(
       `${process.env.REACT_APP_BACKEND_URL}/recipes/${id}`

@@ -1,6 +1,6 @@
 import "./Login.scss";
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { NewUser } from "../../components";
 import { AuthContext } from "../../context";
@@ -8,6 +8,8 @@ import { AuthContext } from "../../context";
 
 export function Login() {
   const navigate = useNavigate();
+
+  const [onError, setOnError] = useState('Incorrect Password')
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -59,7 +61,7 @@ export function Login() {
               />
               <button type="submit"> Login </button>
 
-              <a href="#"> Forgot Password </a>
+              <Link to="#"> Forgot Password </Link>
               <hr className="hr__width" />
             </form>
             <div className="create__acc__wrapper">
