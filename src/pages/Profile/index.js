@@ -330,7 +330,6 @@ export function Profile() {
             {/* {console.log(favRecipes)} */}
               {favRecipes ?
                 favRecipes
-                .filter((recipe, i) => favRecipes.indexOf(recipe) !== i)
                 .map((recipe, i) => {
                   return (
                     <div key={i} className="recipe__saved">
