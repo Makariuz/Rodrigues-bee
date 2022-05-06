@@ -64,7 +64,7 @@ export function Menu({users, menuOpen, setMenuOpen}){
             </ul>
 
             <div className='about__dev'>
-            <AiFillGithub /> <AiFillTwitterCircle /> made by Sam.
+            <AiFillGithub />  <AiFillTwitterCircle /> made by<Link to="fakepage">Sam.</Link>
             </div>
         </div>
     )
