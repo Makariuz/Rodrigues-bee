@@ -26,10 +26,6 @@ export function Recipes() {
   },[recipes])
   
 
-/*   useEffect(() => {
-    getRecipes()
-  }, []) */
-
   return (
     <div className="recipe__container">
       <div className="logo__left">

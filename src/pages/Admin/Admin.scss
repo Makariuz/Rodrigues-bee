@@ -18,7 +18,8 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-
+   
+   
     @include mobile {
       display: none;
     }
@@ -33,7 +34,7 @@
 
     .logo__left__img {
       width: 80%;
-      height: 90%;
+      height: 80%;
       border-radius: 100px;
       border-top-right-radius: 0px;
       border-bottom-right-radius: 0px;
@@ -42,7 +43,7 @@
       justify-content: center;
 
       background-color: whitesmoke;
-
+      box-shadow: 10px 15px 5px rgba(0, 0, 0, 0.30);
       @include ipad {
         display: flex;
        
@@ -80,12 +81,12 @@
     }
 
     .admin__products {
-      height: 90%;
+      height: 80%;
       width: 80%;
       background-color: whitesmoke;
       display: flex;
       flex-direction: column;
-        
+      box-shadow: 10px 15px 5px rgba(0, 0, 0, 0.30);
       justify-content: center;
       flex-wrap: wrap;
 

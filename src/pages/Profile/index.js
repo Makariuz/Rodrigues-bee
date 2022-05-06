@@ -329,7 +329,9 @@ export function Profile() {
             >
             {/* {console.log(favRecipes)} */}
               {favRecipes ?
-                favRecipes.map((recipe, i) => {
+                favRecipes
+                .filter((recipe, i) => favRecipes.indexOf(recipe) !== i)
+                .map((recipe, i) => {
                   return (
                     <div key={i} className="recipe__saved">
                       <Link to={"/recipes/read/" + recipe._id}>
