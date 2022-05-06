@@ -33,6 +33,7 @@ export function Profile() {
     editRecipe,
     deleteRecipe,
     getSavedRecipes,
+    removeBookmarkRecipe
   } = useContext(AuthContext);
 
   const [editOpen, setEditOpen] = useState(false);
@@ -127,6 +128,8 @@ export function Profile() {
   };
 
   const removeSaved = async (id) => {
+
+    await removeBookmarkRecipe(id)
     await setFaveRecipes((previousSaved) => {
       return previousSaved.filter((recipe) => {
         return recipe._id !== id
@@ -337,7 +340,7 @@ export function Profile() {
                         </div>
                       </Link>
                       <div className="btn__options">
-                        <button disabled onClick={() => removeSaved(recipe._id)}>
+                        <button onClick={() => removeSaved(recipe._id)}>
                           <AiOutlineDelete />
                         </button>
                       </div>

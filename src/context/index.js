@@ -164,6 +164,14 @@ export function AuthContextProvider({ children }) {
    
   };
 
+  const removeBookmarkRecipe = async (id) => {
+    const response = await client.delete(
+      `${process.env.REACT_APP_BACKEND_URL}/recipes/saved/${id}`
+    );
+
+    return response.data
+  }
+
   const getSavedRecipes = async () => {
     const response = await client.get(
       `${process.env.REACT_APP_BACKEND_URL}/recipes/user/saved/`
@@ -221,6 +229,7 @@ export function AuthContextProvider({ children }) {
     deleteRecipe,
     savedRecipes,
     bookmarkRecipe,
+    removeBookmarkRecipe,
     setSavedRecipes,
     addProduct,
     setRecipes,
