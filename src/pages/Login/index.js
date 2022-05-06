@@ -53,13 +53,14 @@ export function Login() {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <input
+               
                 type="password"
                 className="password-input"
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button type="submit"> Login </button>
+              <button type="submit"  disabled={email.length === 0 || password.length === 0}> Login </button>
 
               <Link to="#"> Forgot Password </Link>
               <hr className="hr__width" />

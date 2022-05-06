@@ -16,6 +16,7 @@ import {
 import { MdOutlineCancel } from "react-icons/md";
 import "./Profile.scss";
 import Draggable, { DraggableCore } from "react-draggable";
+import { IoMdLogIn } from "react-icons/io";
 
 export function Profile() {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ export function Profile() {
     savedRecipes,
     editRecipe,
     deleteRecipe,
+    getSavedRecipes,
   } = useContext(AuthContext);
 
   const [editOpen, setEditOpen] = useState(false);
@@ -42,26 +44,34 @@ export function Profile() {
 
   const [displayOwned, setDisplayOwned] = useState(true);
   const [displaySaved, setDisplaySaved] = useState(false);
-  const [favRecipes, setFaveRecipes] = useState(user && user.recipes);
+  const [favRecipes, setFaveRecipes] = useState(user && savedRecipes);
+
+  //const [favRecipes, setFaveRecipes] = useState(savedRecipes);
+
+
  
   useEffect(() => {
     getRecipes();
-
+    getSavedRecipes();
+   
   }, []);
+console.log(savedRecipes)
+
 
   useEffect(() => {
-   user && setFaveRecipes(user.recipes)
-   
+    
+   setFaveRecipes(user && savedRecipes)
+ 
   }, [user])
 
   //const [favRecipes, setFaveRecipes] = useState(user.recipes)
 
   const handleDelete = async (id) => {
     await deleteRecipe(id);
-    setFaveRecipes((previousSaved) => {
+   /*  setFaveRecipes((previousSaved) => {
       //console.log(previousSaved[0], id)
       return previousSaved.filter((recipe) => recipe._id !== id)
-    })
+    }) */
   };
 
   const handleEdit = (recipe) => {
@@ -100,8 +110,9 @@ export function Profile() {
   };
 
   const [createdDate, setCreatedDate] = useState(
-    `${new Date(user?.createdAt.toString())}`
+    `${user && new Date(user?.createdAt.toString())}`
   );
+
 
   const handleOwned = () => {
     setDisplayOwned(true);
@@ -314,7 +325,7 @@ export function Profile() {
               className={"recipes__saved__wrapper " + (displayOwned && "hide")}
             >
               {favRecipes &&
-                favRecipes.map((recipe, i) => {
+                savedRecipes.map((recipe, i) => {
                   return (
                     <div key={i} className="recipe__saved">
                       <Link to={"/recipes/read/" + recipe._id}>

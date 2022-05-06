@@ -10,15 +10,20 @@ export const AuthContext = createContext();
 export function AuthContextProvider({ children }) {
   const navigate = useNavigate();
 
+  /* STATES */
   const [user, setUser] = useState(null);
   const [recipes, setRecipes] = useState([]);
   const [loginResult, setLoginResult] = useState("");
-  const [recipeRating, setRecipeRating] = useState('');
+  const [recipeRating, setRecipeRating] = useState("");
   const [savedRecipes, setSavedRecipes] = useState([]);
+  const [bookedMarkedRecipes, setBookedMarkedRecipes] = useState([]);
 
-  const [bookedMarkRecipes, setBookedMarkedRecipes] = useState([])
+  /* TESTTT */
 
-
+  const [favRecipes, setFaveRecipes] = useState([]);
+  //console.log(favRecipes)
+  /* END TESSTT */
+  /* TOKENS */
   const saveToken = (token) => {
     localStorage.setItem("token", `Bearer ${token}`);
   };
@@ -27,6 +32,7 @@ export function AuthContextProvider({ children }) {
     localStorage.removeItem("token");
   };
 
+  /* USER AUTHENTICATION */
   const signup = async (username, email, picture, password) => {
     try {
       const response = await axios.post(
@@ -78,6 +84,7 @@ export function AuthContextProvider({ children }) {
     navigate("/user/profile");
   };
 
+  /* ADMIN RELATED ACTIONS */
   const addProduct = async (name, description, image, price) => {
     const response = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/products/add`,
@@ -85,12 +92,13 @@ export function AuthContextProvider({ children }) {
         name,
         description,
         image,
-        price
+        price,
       }
     );
     navigate("/user/profile");
   };
 
+  /* RECIPES CREATION */
   const createRecipe = async (title, ingredients, instructions, image) => {
     const response = await client.post(
       `${process.env.REACT_APP_BACKEND_URL}/recipes/create`,
@@ -104,7 +112,7 @@ export function AuthContextProvider({ children }) {
     //console.log(recipes + ' RECIPES description of the data response create recipe')
     /* setRecipes(...recipes, response.data) */
     setRecipes((previousRecipes) => {
-      return ([ ...previousRecipes , response.data])
+      return [...previousRecipes, response.data];
     });
     navigate("/recipes");
   };
@@ -115,8 +123,6 @@ export function AuthContextProvider({ children }) {
     );
     setRecipes(response.data);
   };
-
-
 
   const readRecipe = async (id) => {
     const response = await client.get(
@@ -144,20 +150,29 @@ export function AuthContextProvider({ children }) {
     );
   };
 
-  const bookmarkRecipe = async (
-    id,
-  ) => {
-    const response = await client.get(
+  const bookmarkRecipe = async (id) => {
+    const response = await client.post(
       `${process.env.REACT_APP_BACKEND_URL}/recipes/save/${id}`
     );
+
     setSavedRecipes((previousSaved) => {
       return ([ ...previousSaved , response.data])
     });
-    console.log(savedRecipes)
-//setSavedRecipes
+
+    //console.log(response.data)
+
+   
   };
 
-  
+  const getSavedRecipes = async () => {
+    const response = await client.get(
+      `${process.env.REACT_APP_BACKEND_URL}/recipes/user/saved/`
+    );
+    setSavedRecipes(response.data);
+   // console.log(response.data)
+    // console.log(bookedMarkedRecipes)
+  };
+
   const deleteRecipe = async (id) => {
     const response = await client.delete(
       `${process.env.REACT_APP_BACKEND_URL}/recipes/${id}`
@@ -166,16 +181,15 @@ export function AuthContextProvider({ children }) {
     return response.data;
   };
 
+  /* USER VERICATION */
   const verify = async () => {
     try {
-
       const response = await client.get(
         `${process.env.REACT_APP_BACKEND_URL}/auth/verify`
       );
       setUser(response.data);
-
+     
       navigate("/user/profile");
-      
     } catch (error) {
       navigate("/");
     }
@@ -190,7 +204,7 @@ export function AuthContextProvider({ children }) {
   useEffect(() => {
     verify();
     getRecipes();
-    
+    getSavedRecipes();
   }, []);
 
   const value = {
@@ -212,7 +226,8 @@ export function AuthContextProvider({ children }) {
     setRecipes,
     loginResult,
     setLoginResult,
-
+    getSavedRecipes,
+    favRecipes,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

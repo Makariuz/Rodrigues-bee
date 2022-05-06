@@ -5,6 +5,7 @@ import { AuthContext } from "../../context";
 
 import { BsCartPlus } from "react-icons/bs";
 export function Navbar({ users, menuOpen, setMenuOpen, showCart, setShowCart }) {
+
   return (
     <div className={"navbar " + (menuOpen && "active")}>
       <div className="wrapper">
@@ -28,9 +29,9 @@ export function Navbar({ users, menuOpen, setMenuOpen, showCart, setShowCart }) 
               )}
               {users && (
                 <>
-                  <li>
+                  {(users.username === 'admin') && <li>
                     <Link to="/user/admin"> Admin </Link>
-                  </li>
+                  </li>}
                   <li>
                     <Link to="/user/profile"> Profile </Link>
                   </li>

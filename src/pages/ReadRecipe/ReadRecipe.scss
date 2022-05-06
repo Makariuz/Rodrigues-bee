@@ -52,6 +52,11 @@
           &:active {
             transform: scale(0.9);
           }
+          &:disabled {
+            background-color: lightgrey;
+            transform: scale(1);
+            cursor:not-allowed;
+          }
         }
       }
     }

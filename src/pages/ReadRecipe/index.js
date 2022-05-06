@@ -26,6 +26,7 @@ export function ReadRecipe() {
   useEffect(() => {
     readRecipe(id).then(setRecipe);
   }, []);
+  
 
   let newArr = [];
 
@@ -83,6 +84,7 @@ export function ReadRecipe() {
 
             <div className="save__wrapper">
               <button
+                disabled={!user}
                 onClick={() => bookmarkRecipe(id)}
                 className="save__recipe__btn"
               >
