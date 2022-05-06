@@ -68,7 +68,8 @@ export function Profile() {
 
   const handleDelete = async (id) => {
     await deleteRecipe(id);
-    getRecipes()
+    getRecipes();
+    getSavedRecipes();
    /*  setFaveRecipes((previousSaved) => {
       //console.log(previousSaved[0], id)
       return previousSaved.filter((recipe) => recipe._id !== id)
@@ -126,14 +127,12 @@ export function Profile() {
   };
 
   const removeSaved = async (id) => {
-  /*   setFaveRecipes((previousSaved) => {
+    await setFaveRecipes((previousSaved) => {
       return previousSaved.filter((recipe) => {
         return recipe._id !== id
       })
     })
- */
- await deleteRecipe(id)
-   
+    getSavedRecipes()
   }
 
   return (
@@ -221,7 +220,7 @@ export function Profile() {
                       <input
                         value={newIngredients}
                         name="ingredients"
-                        placeholder="Ingredients (use / to separate)"
+                        placeholder="Ingredients (use ; to separate)"
                         onChange={(e) => setNewIngredients(e.target.value)}
                       />
 
@@ -338,7 +337,7 @@ export function Profile() {
                         </div>
                       </Link>
                       <div className="btn__options">
-                        <button onClick={() => removeSaved(recipe._id)}>
+                        <button disabled onClick={() => removeSaved(recipe._id)}>
                           <AiOutlineDelete />
                         </button>
                       </div>
