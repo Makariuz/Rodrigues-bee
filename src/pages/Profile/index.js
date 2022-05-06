@@ -55,7 +55,7 @@ export function Profile() {
     getSavedRecipes();
    
   }, []);
-console.log(savedRecipes)
+//console.log(savedRecipes)
 
 
   useEffect(() => {
@@ -324,14 +324,16 @@ console.log(savedRecipes)
             <div
               className={"recipes__saved__wrapper " + (displayOwned && "hide")}
             >
-              {favRecipes &&
-                savedRecipes.map((recipe, i) => {
+            {console.log(favRecipes)}
+              {favRecipes ?
+                favRecipes.map((recipe, i) => {
                   return (
                     <div key={i} className="recipe__saved">
                       <Link to={"/recipes/read/" + recipe._id}>
                         <div className="recipe__details">
                           <h3> {recipe.title}</h3>
                           <p> {recipe.instructions.slice(0, 50)}...</p>
+                          
                         </div>
                       </Link>
                       <div className="btn__options">
@@ -341,7 +343,10 @@ console.log(savedRecipes)
                       </div>
                     </div>
                   );
-                })}
+                })
+                : console.log('Saved recipes did not load')
+              
+              } 
             </div>
           </div>
 
