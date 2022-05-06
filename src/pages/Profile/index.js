@@ -55,7 +55,7 @@ export function Profile() {
     getSavedRecipes();
    
   }, []);
-//console.log(savedRecipes)
+
 
 
   useEffect(() => {
@@ -68,6 +68,7 @@ export function Profile() {
 
   const handleDelete = async (id) => {
     await deleteRecipe(id);
+    getRecipes()
    /*  setFaveRecipes((previousSaved) => {
       //console.log(previousSaved[0], id)
       return previousSaved.filter((recipe) => recipe._id !== id)
@@ -324,7 +325,7 @@ export function Profile() {
             <div
               className={"recipes__saved__wrapper " + (displayOwned && "hide")}
             >
-            {console.log(favRecipes)}
+            {/* {console.log(favRecipes)} */}
               {favRecipes ?
                 favRecipes.map((recipe, i) => {
                   return (

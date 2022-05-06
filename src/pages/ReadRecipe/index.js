@@ -16,6 +16,7 @@ export function ReadRecipe() {
 
   const [rating, setRating] = useState(0); // initial rating value
 
+
   // Catch Rating value
   const handleRating = (rate) => {
     setRating(rate);
@@ -27,6 +28,7 @@ export function ReadRecipe() {
     readRecipe(id).then(setRecipe);
   }, []);
   
+
 
   let newArr = [];
 

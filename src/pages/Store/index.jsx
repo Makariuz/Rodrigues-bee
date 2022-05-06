@@ -8,7 +8,7 @@ export function Store() {
   return (
     <div className="store__container">
       <div className="store__wrapper__bottom">
-        <Products />
+        <Products het={'testing index store products'}/>
       </div>
     </div>
   );

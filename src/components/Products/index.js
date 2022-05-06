@@ -21,7 +21,7 @@ import { Loading } from "../Loading";
 
 export function Products({showCart, setShowCart, het}) {
   const [products, setProducts] = useState([]);
-  console.log(het)
+  //console.log(het)
   const [cart, setCart] = useState([]);
   const [price, setPrice] = useState([]);
   const [emptyCart, setEmptyCart] = useState(true);
