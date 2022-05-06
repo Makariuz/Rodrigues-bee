@@ -20,7 +20,8 @@
        /*  position: relative; */
         width: 960px;
         height: 456px;
-      
+        
+
         @include mobile{
             display:flex;
             flex-direction: column;
@@ -151,7 +152,7 @@
         .user-info{
             flex: .5;
             padding:20px;
-            
+
             @include mobile{
                 padding: 0 auto;
                
@@ -178,6 +179,7 @@
                 justify-content: center;
                 align-items: center;
                 border-radius: 10px;
+                box-shadow: 10px 15px 5px rgba(0, 0, 0, 0.30);
                 @include mobile{
                     padding: 10px;
                     height: 100%;

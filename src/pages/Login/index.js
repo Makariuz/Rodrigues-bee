@@ -36,7 +36,7 @@ export function Login() {
             <img src="/assets/new-logo.png" alt="" />
           </div>
           <div className="call-to-action">
-            <h3> Call to action lorem ispum</h3>
+            <h3> Get your home made honey product here!</h3>
             <button>Store</button>
           </div>
         </div>

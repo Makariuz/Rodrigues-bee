@@ -30,9 +30,14 @@ export function Menu({users, menuOpen, setMenuOpen}){
                 </li>}
                 {users && 
                 <>
+                {users.username === 'admin' && 
+                <>
                 <li onClick={() => setMenuOpen(false)}>
                 <Link to="/user/admin" > Admin        </Link>
                 </li>
+                </>
+                }
+                
                 <li onClick={() => setMenuOpen(false)}>
                 <Link to="/user/profile" > Profile        </Link>
                 </li>
