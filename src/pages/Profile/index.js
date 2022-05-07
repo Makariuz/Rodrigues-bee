@@ -47,7 +47,7 @@ export function Profile() {
   const [displaySaved, setDisplaySaved] = useState(false);
   const [favRecipes, setFaveRecipes] = useState(user && savedRecipes);
 
-  //const [favRecipes, setFaveRecipes] = useState(savedRecipes);
+  //const [favRecipes, setFaveRecipes] = useState(user && user.recipes);
 
 
  
@@ -183,8 +183,8 @@ export function Profile() {
                   <select name="recipes" className="recipes">
                     <option value="empty">default</option>
 
-                    {favRecipes &&
-                      favRecipes.map((recipe, i) => (
+                    {savedRecipes &&
+                      savedRecipes.map((recipe, i) => (
                         <option key={i} value={recipe.title}>
                           {recipe.title}
                         </option>
@@ -328,15 +328,15 @@ export function Profile() {
               className={"recipes__saved__wrapper " + (displayOwned && "hide")}
             >
             {/* {console.log(favRecipes)} */}
-              {favRecipes ?
-                favRecipes
+              {savedRecipes ?
+                savedRecipes
                 .map((recipe, i) => {
                   return (
                     <div key={i} className="recipe__saved">
                       <Link to={"/recipes/read/" + recipe._id}>
                         <div className="recipe__details">
                           <h3> {recipe.title}</h3>
-                          <p> {recipe.instructions.slice(0, 50)}...</p>
+                          <p> {recipe.instructions?.slice(0, 50)}...</p>
                           
                         </div>
                       </Link>
